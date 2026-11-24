@@ -1,0 +1,893 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Vertex Barcelona · Shop</title>
+<link rel="stylesheet" href="https://vertexhub.monili-vlr.workers.dev/fonts/fonts.css">
+<style>
+:root{--ink:#1F2A44;--accent:#FF6B4A;--bg:#FFF8EC;--card:#fff;--line:#E7E1D6}
+*{box-sizing:border-box}body{margin:0;font:16px/1.5 system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+header{position:absolute;top:0;left:0;right:0;z-index:2;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;color:#fff}header b{font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;text-shadow:0 1px 8px rgba(0,0,0,.5)}header nav a{color:#fff;text-decoration:none;font-weight:700;margin-left:16px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.hero{position:relative;min-height:78vh;display:flex;align-items:flex-end;background:#1F2A44 url(https://vertexhub.monili-vlr.workers.dev/backdrops/barcelona/sagrada-familia.webp) center 30%/cover no-repeat;color:#fff}
+.hero::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,0) 35%,rgba(20,27,46,.85) 100%)}
+.hero .in{position:relative;max-width:1100px;margin:0 auto;padding:40px 20px 56px;width:100%}
+.hero h1{margin:0 0 10px;font-size:clamp(2.4rem,7vw,4.6rem);line-height:1;letter-spacing:-.02em;text-shadow:0 2px 16px rgba(0,0,0,.4)}
+.hero p{margin:0 0 22px;font-size:clamp(1.05rem,2.3vw,1.35rem);max-width:640px;text-shadow:0 1px 8px rgba(0,0,0,.5)}
+.cta{display:flex;gap:10px;flex-wrap:wrap}.cta a{display:inline-block;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:999px;background:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(0,0,0,.25)}.cta a.ghost{background:rgba(255,255,255,.16);backdrop-filter:blur(6px);border:2px solid rgba(255,255,255,.7)}
+main{max-width:1100px;margin:0 auto;padding:0 16px 60px}h2{margin:40px 0 14px;font-size:1.7rem}.lead{margin:-6px 0 18px;color:#555;max-width:720px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.prod{background:var(--card);border-radius:18px;padding:12px;box-shadow:0 8px 24px rgba(31,42,68,.08)}
+.photo{aspect-ratio:1;border-radius:12px;overflow:hidden;background:#f3efe6}.photo img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}.prod:hover .photo img{transform:scale(1.04)}
+.prod h3{margin:12px 0 4px;font-size:1.08rem}.prod .d{margin:0 0 6px;font-size:.9rem;color:#444}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:6px 0}.lbl{font-size:.8rem;color:#777;min-width:52px}
+.sizes{display:flex;gap:6px}.sz{font:inherit;font-size:.82rem;font-weight:700;border:2px solid var(--line);background:#fff;border-radius:999px;padding:3px 10px;cursor:pointer}.sz.on{border-color:var(--accent);color:var(--accent)}
+.price b{font-size:1.25rem}.price small{color:#777}
+.fn{display:block;flex-basis:100%;font-size:.72rem;line-height:1.35;color:#4D4D4D;margin-top:6px}.fn a{color:#8A5A00}
+.want{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}.want input{flex:1;min-width:120px;font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:999px}.want button{font:inherit;font-weight:800;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:10px 14px;cursor:pointer}.want p{flex-basis:100%;margin:4px 0 0;font-weight:700;color:#06A97F}
+.make{scroll-margin-top:20px}.builder{display:grid;grid-template-columns:minmax(260px,1.1fr) minmax(260px,1fr);gap:22px;background:var(--card);border-radius:22px;padding:16px;box-shadow:0 8px 24px rgba(31,42,68,.08)}
+@media(max-width:720px){.builder{grid-template-columns:1fr}}
+.views .main{position:relative;background:#fff;border-radius:12px;overflow:hidden}
+.shirt{position:relative;width:100%;background:#fff;overflow:hidden}.main .shirt{display:none}.main .shirt.on{display:block}
+.shirt .base{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.shirt .tint{position:absolute;inset:0;background:var(--c);mix-blend-mode:multiply;-webkit-mask:var(--mask) center/100% 100% no-repeat;mask:var(--mask) center/100% 100% no-repeat;-webkit-mask-mode:alpha;mask-mode:alpha;pointer-events:none}
+.shirt .design{position:absolute;object-fit:contain;pointer-events:none;opacity:.96;filter:drop-shadow(0 1px 1px rgba(0,0,0,.08))}
+.thumbs{display:flex;gap:6px;margin-top:8px}.thumbs .th{flex:1;aspect-ratio:1;border:2px solid var(--line);border-radius:10px;background:#fff;padding:0;overflow:hidden;cursor:pointer}.thumbs .th img{width:100%;height:100%;object-fit:cover}.thumbs .th.on{border-color:var(--accent)}
+.panel{display:flex;flex-direction:column;gap:6px}
+.up{display:block}.up span{display:inline-block;font-weight:800;border:2px dashed var(--accent);color:var(--accent);border-radius:14px;padding:12px 16px;cursor:pointer}
+.designs{display:flex;gap:6px;flex-wrap:wrap}.dz{width:56px;height:56px;border:2px solid var(--line);border-radius:10px;background:#fff;padding:4px;cursor:pointer}.dz img{width:100%;height:100%;object-fit:contain}.dz.on{border-color:var(--accent)}
+.colors{display:flex;gap:6px;flex-wrap:wrap}.sw{width:26px;height:26px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #ccc;cursor:pointer;padding:0}.sw.on{box-shadow:0 0 0 2px var(--accent)}
+.go{display:inline-block;text-decoration:none;font-weight:800;padding:14px 22px;border-radius:999px;background:var(--accent);color:#fff}
+.ship{color:#666;font-size:.88rem}
+.gift .card{background:#fff;border-radius:18px;padding:20px;box-shadow:0 10px 30px rgba(31,42,68,.12)}.gift input,.gift button,.gift select,.gift textarea{font:inherit;padding:12px 14px;border-radius:16px;border:2px solid var(--line);width:100%}.gift input,.gift button{border-radius:999px}.gift button{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:800;cursor:pointer}.gift form{display:flex;gap:8px;margin-top:14px}.gift form.col{flex-direction:column}.gift label{display:grid;gap:4px;font-weight:700}.gift #vmsg{font-weight:700;color:#06A97F}
+footer{text-align:center;color:#888;font-size:.85rem;padding:30px 16px}
+
+.prizes{display:grid;gap:14px}.prize{background:#fff;border-radius:18px;padding:18px;box-shadow:0 8px 24px rgba(31,42,68,.08);display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:center}@media(max-width:600px){.prize{grid-template-columns:1fr}}
+.prize .art{width:120px;height:120px;border-radius:16px;background:#FFF4E0;display:grid;place-items:center;overflow:hidden}.prize .art svg,.prize .art canvas{width:100%;height:100%;object-fit:contain}
+.prize h3{margin:0 0 4px}.prize p{margin:0 0 8px;color:#444}.prize .sub{font-weight:800;margin:10px 0 2px}
+.code{display:inline-flex;align-items:center;gap:8px;background:#FFF4E0;border:2px dashed var(--accent);border-radius:12px;padding:8px 12px;font-weight:900;letter-spacing:.12em;font-size:1.15rem}
+.pbtn{font:inherit;font-weight:800;border:2px solid var(--line);background:#fff;border-radius:999px;padding:8px 14px;cursor:pointer;margin:4px 6px 0 0}.pbtn.main{background:var(--accent);border-color:var(--accent);color:#fff}
+.poemcv{width:100%;max-width:360px;border-radius:14px;box-shadow:0 8px 24px rgba(31,42,68,.15);display:block}
+.creator{background:#fff;border-radius:22px;padding:20px;box-shadow:0 8px 24px rgba(31,42,68,.08);display:grid;grid-template-columns:1.1fr 1fr;gap:20px}@media(max-width:760px){.creator{grid-template-columns:1fr}}
+.creator ol{padding-left:20px;margin:8px 0 14px}.creator li{margin:6px 0}.creator .prev{min-height:260px;background:linear-gradient(180deg,#CFEFFB,#E8F7FD);border-radius:16px;display:grid;place-items:center;color:#666;overflow:hidden}.creator .prev model-viewer{width:100%;height:320px}
+.creator .up{display:inline-block}.creator .up input{display:none}.creator .codebox{margin-top:12px}
+.chat{position:fixed;right:16px;bottom:16px;width:min(420px,calc(100vw - 32px));z-index:50;font-size:15px}
+.chat .m a{color:#1D5FD1;word-break:break-word}.chat .m b{font-weight:800}
+.chat .yt{display:block;position:relative;width:100%;margin-top:8px;border:0;padding:0;border-radius:12px;overflow:hidden;cursor:pointer;background:#000;text-align:left}.chat .yt img{width:100%;display:block;aspect-ratio:16/9;object-fit:cover;opacity:.9}.chat .yt i{position:absolute;left:50%;top:38%;transform:translate(-50%,-50%);width:52px;height:36px;border-radius:10px;background:#FF0033;color:#fff;font-style:normal;display:flex;align-items:center;justify-content:center;font-size:18px}.chat .yt span{position:absolute;left:0;right:0;bottom:0;padding:6px 8px;background:linear-gradient(transparent,rgba(0,0,0,.75));color:#fff;font-size:.78rem;font-weight:700}
+.chat .ytf{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;margin-top:8px;display:block}
+.chat .dl{display:block;width:100%;margin-top:8px;border:2px solid var(--accent,#FF6B4A);background:#fff;color:#1F2A44;border-radius:12px;padding:9px 10px;font:inherit;font-weight:800;font-size:.85rem;text-align:left;cursor:pointer}.chat .dl:disabled{opacity:.6}.chat a.dl.go{text-decoration:none;text-align:center;background:#1F2A44;color:#fff;border-color:#1F2A44}
+.chat .bubble{position:absolute;right:0;bottom:0;width:64px;height:64px;border-radius:50%;background:#fff;box-shadow:0 10px 30px rgba(31,42,68,.3);border:0;cursor:pointer;padding:6px;display:grid;place-items:center}.chat .bubble svg{width:100%;height:100%}
+.chat .panel{display:none;background:#fff;border-radius:20px;box-shadow:0 16px 48px rgba(31,42,68,.3);overflow:hidden;flex-direction:column;max-height:min(70vh,560px)}.chat.open .panel{display:flex}.chat.open .bubble{display:none}
+.chat .head{display:flex;align-items:center;gap:10px;padding:10px 12px;background:linear-gradient(90deg,#FFE8A3,#FFD1C2)}.chat .head .av{width:48px;height:64px;border-radius:12px;background:linear-gradient(180deg,#CFEFFB,#E8F7FD);overflow:hidden}.chat .head .av svg,.chat .head .av model-viewer{width:100%;height:100%}.chat .bubble model-viewer{width:100%;height:100%;pointer-events:none}.chat .head b{flex:1;font-size:1rem}.chat .head small{display:block;font-weight:500;color:#555}.chat .head button{border:0;background:rgba(255,255,255,.7);border-radius:50%;width:32px;height:32px;cursor:pointer;font-weight:900}
+.chat .msgs{flex:1;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:#FFF8EC}.chat .m{max-width:85%;padding:9px 12px;border-radius:14px;line-height:1.4;white-space:pre-wrap}.chat .m.bot{background:#fff;align-self:flex-start;border-bottom-left-radius:4px}.chat .m.me{background:var(--ink);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}.chat .m.wait{color:#888;font-style:italic}
+.chat form{display:flex;gap:6px;padding:10px;border-top:1px solid var(--line)}.chat input{flex:1;font:inherit;padding:10px 12px;border:2px solid var(--line);border-radius:999px;min-width:0}.chat form button{font:inherit;font-weight:800;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:10px 14px;cursor:pointer}
+.chat .aib{flex:none;font:700 .68rem/1 system-ui,sans-serif;background:#1A1A1A;color:#fff;border-radius:999px;padding:4px 7px;margin-inline-start:6px}
+.chat .consent{background:#fff;border:2px solid #FFB703;border-radius:16px;padding:12px 14px;margin:8px 0;font-size:.86rem;line-height:1.45}.chat .consent p{margin:6px 0 10px}.chat .consent div{display:flex;gap:8px;flex-wrap:wrap}.chat .consent button{font:inherit;font-weight:700;border:0;border-radius:999px;padding:9px 14px;cursor:pointer}.chat .consent .yes{background:#FFB703;color:#1A1A1A}.chat .consent .no{background:#F5F5F2;color:#1A1A1A}.chat .consent a{display:inline-block;margin-top:8px;color:#8A5A00;font-size:.8rem}
+.chat .m.sys{background:transparent!important;border:1px dashed #ccc!important;font-size:.82rem;color:#4D4D4D}
+.chat .legal{display:flex;gap:10px;justify-content:center;padding:4px 10px 8px;font-size:.72rem}.chat .legal a,.chat .legal button{color:#4D4D4D;background:none;border:0;padding:0;font:inherit;text-decoration:underline;cursor:pointer}
+.chat .ytn{display:block;font-size:.72rem;color:#4D4D4D;padding:4px 8px 0;text-align:start}
+.chat .sw{font:inherit;font-size:.78rem;font-weight:700;border:0;background:rgba(255,255,255,.75);border-radius:999px;padding:4px 10px;cursor:pointer}
+
+/* ===== Sole: tokens and base ===== */
+:root{--ink:#1A1A1A;--paper:#FFFFFF;--sun:#FFB703;--grey:#4D4D4D;--soft:#F5F5F2;--hair:#E6E6E6;--accent:#FFB703;--bg:#FFFFFF;--card:#FFFFFF;--line:#E6E6E6;--tee-shadow:drop-shadow(0 18px 24px rgba(0,0,0,.18)) drop-shadow(0 2px 4px rgba(0,0,0,.08))}
+body{font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;background:var(--paper);color:var(--ink)}
+button,input,select,textarea{font-family:inherit}
+h1,h2{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;letter-spacing:-.01em;line-height:1.08;text-transform:none}
+a{color:var(--ink)}a:hover{color:#8A5A00}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+/* primary action: sun yellow pill with ink text; secondary: ink pill with white text */
+.cta a,.go,.pbtn.main,.want button,.btn,.bar .btn,.save .btn,.chat form button,.gift button[type=submit]{background:var(--sun)!important;color:var(--ink)!important;border:0!important;border-radius:999px!important;box-shadow:none!important;clip-path:none;font-weight:700;text-transform:none;letter-spacing:0}
+.cta a.ghost{background:var(--ink)!important;color:#fff!important;backdrop-filter:none}
+input,select,textarea{border-radius:14px!important;border:1.5px solid var(--hair)!important;background:#fff}
+
+.ds-shop{
+header{position:static;color:var(--ink);background:#fff}
+header b{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:0;text-transform:none;text-shadow:none;white-space:nowrap}
+header nav a{color:var(--ink);text-shadow:none;font-weight:700;font-size:.9rem}
+@media(max-width:520px){header nav{display:none}}
+.hero{min-height:0;background:#fff;color:var(--ink);align-items:stretch}
+.hero::before{display:none}
+.hero .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:12px 20px 28px}
+@media(max-width:760px){.hero .in{grid-template-columns:minmax(0,1fr);gap:14px;padding:4px 16px 20px}.hero .pic{order:-1}}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);text-shadow:none}
+.hero p{text-shadow:none;color:var(--grey)}
+.hero .kicker{display:inline-block;margin:0 0 10px;font-size:.8rem;font-weight:700;background:var(--soft);border-radius:999px;padding:5px 12px;color:var(--ink)}
+.hero .pic{margin:0;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:var(--soft)}
+.hero .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.cta a{padding:15px 24px}
+main h2{font-size:clamp(1.3rem,4vw,1.9rem);margin:36px 0 14px}
+.lead{color:var(--grey)}
+.prod{border-radius:0;box-shadow:none;padding:0;background:#fff}
+.photo{border-radius:20px;background:#fff}
+.photo img{object-fit:contain;filter:var(--tee-shadow);padding:6%}
+.prod h3{font-size:1rem}
+.sz{border:1.5px solid var(--hair);border-radius:999px;background:#fff}.sz.on{border-color:var(--ink);color:var(--ink);background:var(--soft)}
+.sw{border-radius:50%;border:0;box-shadow:0 0 0 1px var(--hair)}.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--sun)}
+.gift .card{border-radius:22px;box-shadow:none;background:var(--soft)}
+.ship{color:var(--grey)}
+footer{color:var(--grey);font-size:.8rem}
+.prize{border-radius:22px;box-shadow:none;background:var(--soft)}
+.prize .art{border-radius:16px;background:#fff}
+.code{border-radius:14px;background:#fff;border:2px dashed var(--sun)}
+.pbtn{border:0!important;background:var(--soft);border-radius:999px!important;font-weight:700}
+.poemcv{border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.creator{border-radius:22px;box-shadow:none;background:var(--soft)}
+.creator .prev{border-radius:18px;background:#fff}
+.chat .bubble{border-radius:50%;box-shadow:0 10px 28px rgba(0,0,0,.18);border:0;background:#fff}
+.chat .panel{border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.2);border:0}
+.chat .head{background:#fff;border-bottom:1px solid var(--hair)}
+.chat .head .av{border-radius:14px;background:var(--soft)}
+.chat .head b{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;font-size:.95rem}
+.chat .msgs{background:#fff}
+.chat .m{border-radius:16px!important;box-shadow:none!important}
+.chat .m.bot{background:var(--soft);border:0}
+.chat .m.me{background:var(--ink)!important;color:#fff!important}
+.chat .m a{color:#8A5A00}
+.chat form{border-top:1px solid var(--hair)}
+.chat input{border-radius:999px!important}
+.chat .yt,.chat .ytf{border-radius:14px}
+.chat .dl{border-radius:14px;border:0;background:var(--soft);color:var(--ink)}
+.chat a.dl.go{background:var(--sun);color:var(--ink)}
+}
+
+.ds-make{
+.top{border-bottom:1px solid var(--hair)}
+.top .name b{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;font-size:.95rem}
+.top .name small{color:var(--grey)}
+.ic{border-radius:50%}
+.mode{border-radius:999px;background:var(--soft);padding:3px;border:0}
+.mode button{border-radius:999px}
+.mode button.on{background:var(--ink);color:#fff}
+.rail{border-right:1px solid var(--hair)}
+.rail button{border-radius:12px;color:var(--grey)}
+.rail button.on{background:var(--ink);color:#fff}
+.panel{border-right:1px solid var(--hair)}
+.upbtn{border-radius:16px;border:2px dashed var(--hair);color:var(--ink);background:var(--soft)}
+.thumbs button{border-radius:14px;border:1.5px solid var(--hair)}
+.layer{border-radius:14px;border:1.5px solid var(--hair)}.layer.sel{border-color:var(--ink)}
+.seg button{border-radius:14px;border:1.5px solid var(--hair)}.seg button.on{border-color:var(--ink);color:var(--ink);background:var(--soft)}
+.tpl{border-radius:14px;border:1.5px solid var(--hair)}.tpl.on{border-color:var(--ink)}.tplart{border-radius:10px}
+.sw{border-radius:50%!important;border:0!important;box-shadow:0 0 0 1px var(--hair)!important}.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--sun)!important}
+.stage{background:#fff}
+.canvas,.view{border-radius:24px;box-shadow:none;border:0;background:#fff}
+.canvas .base,.view .base{filter:var(--tee-shadow)}
+.drop{background:var(--sun);color:var(--ink);box-shadow:0 0 0 8px rgba(255,183,3,.18)}
+.ar{border-radius:16px;border:0;background:var(--soft)}.ar.on{background:var(--ink);color:#fff}.ar.on small{color:#ddd}.ar.has .dot{background:var(--sun)}
+.vw{border-radius:14px;border:1.5px solid var(--hair)}.vw.on{border-color:var(--ink)}
+.tools{border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.16);border:0}
+.lay .dim{border-radius:999px;background:var(--ink)}
+.bar{border-top:1px solid var(--hair)}
+.bar .tot{font-family:'Unbounded', system-ui, sans-serif;font-weight:700}
+.modal form{border-radius:22px}
+}
+
+.ds-char{
+.stage{border-radius:24px;box-shadow:none;border:0;background:var(--soft)}
+.chip{background:#fff;border:0;border-radius:999px;font-weight:700}
+.tabs{gap:6px}
+.tab{border:0;border-radius:999px;background:var(--soft);color:var(--ink)}
+.tab.on{background:var(--ink);color:#fff}
+.var{border-radius:16px;border:2px solid transparent;background:var(--soft)}.var.on{border-color:var(--sun);box-shadow:none}
+.sw{border-radius:50%;border:0;box-shadow:0 0 0 1px var(--hair)}.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--sun)}
+.panel{border-radius:24px;box-shadow:none;border:0}
+.save{border-top:1px solid var(--hair)}
+.result .box{border-radius:24px}
+.result .code{border-radius:14px;border:2px dashed var(--sun);background:#fff}
+}
+
+</style></head><body class="ds-shop">
+<header><b>Vertex Barcelona</b><nav><a href="#top">Best sellers</a><a href="make.html">Make yours</a></nav></header>
+<section class="hero"><div class="in"><div class="txt"><p class="kicker">Sagrada Família</p><h1>Barcelona,<br>worn.</h1><p>Tees made one by one, printed when you order them. Designs by people who live the city, or your own.</p><div class="cta"><a href="#top">Best sellers</a><a class="ghost" href="make.html">Make yours</a></div></div><figure class="pic"><img src="https://vertexhub.monili-vlr.workers.dev/backdrops/barcelona/sagrada-familia.webp" alt="Sagrada Família"></figure></div></section>
+<main>
+
+
+<section id="top"><h2>Best sellers</h2><div class="grid"><article class="prod" data-design="National Parks, fronte e retro" data-product="tee">
+<div class="photo"><img src="https://vertexhub.monili-vlr.workers.dev/shop/top/01-National%20Parks%2C%20fronte%20e%20retro.webp" alt="National Parks, fronte e retro" loading="lazy"></div>
+<h3>National Parks, fronte e retro</h3>
+<div class="row"><span class="lbl">Size</span><div class="sizes"><button type="button" class="sz">S</button><button type="button" class="sz on">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button><button type="button" class="sz">2XL</button></div></div>
+<div class="row price"><b>24.90 EUR</b><small>T-shirt · Gildan 5000</small></div>
+<form class="want"><input type="email" required placeholder="email"><button type="submit">Tell me when I can buy it</button><p hidden></p><small class="fn">Controller: VertexHub. Purpose: to notify you or send you what you ask for. Rights: access, rectification, erasure and the others, at monili.vlr@gmail.com. More in the privacy policy. <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Full information</a></small></form></article><article class="prod" data-design="National Parks, gradiente" data-product="tee">
+<div class="photo"><img src="https://vertexhub.monili-vlr.workers.dev/shop/top/02-National%20Parks%2C%20gradiente.webp" alt="National Parks, gradiente" loading="lazy"></div>
+<h3>National Parks, gradiente</h3>
+<div class="row"><span class="lbl">Size</span><div class="sizes"><button type="button" class="sz">S</button><button type="button" class="sz on">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button><button type="button" class="sz">2XL</button></div></div>
+<div class="row price"><b>24.90 EUR</b><small>T-shirt · Gildan 5000</small></div>
+<form class="want"><input type="email" required placeholder="email"><button type="submit">Tell me when I can buy it</button><p hidden></p><small class="fn">Controller: VertexHub. Purpose: to notify you or send you what you ask for. Rights: access, rectification, erasure and the others, at monili.vlr@gmail.com. More in the privacy policy. <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Full information</a></small></form></article><article class="prod" data-design="Lake Crew, famiglia" data-product="tee">
+<div class="photo"><img src="https://vertexhub.monili-vlr.workers.dev/shop/top/03-Lake%20Crew%2C%20famiglia.webp" alt="Lake Crew, famiglia" loading="lazy"></div>
+<h3>Lake Crew, famiglia</h3>
+<div class="row"><span class="lbl">Size</span><div class="sizes"><button type="button" class="sz">S</button><button type="button" class="sz on">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button><button type="button" class="sz">2XL</button></div></div>
+<div class="row price"><b>24.90 EUR</b><small>T-shirt · Gildan 5000</small></div>
+<form class="want"><input type="email" required placeholder="email"><button type="submit">Tell me when I can buy it</button><p hidden></p><small class="fn">Controller: VertexHub. Purpose: to notify you or send you what you ask for. Rights: access, rectification, erasure and the others, at monili.vlr@gmail.com. More in the privacy policy. <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Full information</a></small></form></article><article class="prod" data-design="Friends Trip 2026" data-product="tee">
+<div class="photo"><img src="https://vertexhub.monili-vlr.workers.dev/shop/top/04-Friends%20Trip%202026.webp" alt="Friends Trip 2026" loading="lazy"></div>
+<h3>Friends Trip 2026</h3>
+<div class="row"><span class="lbl">Size</span><div class="sizes"><button type="button" class="sz">S</button><button type="button" class="sz on">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button><button type="button" class="sz">2XL</button></div></div>
+<div class="row price"><b>24.90 EUR</b><small>T-shirt · Gildan 5000</small></div>
+<form class="want"><input type="email" required placeholder="email"><button type="submit">Tell me when I can buy it</button><p hidden></p><small class="fn">Controller: VertexHub. Purpose: to notify you or send you what you ask for. Rights: access, rectification, erasure and the others, at monili.vlr@gmail.com. More in the privacy policy. <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Full information</a></small></form></article></div></section>
+<section id="make" class="make"><h2>Make your tee</h2><p class="lead">Pick the colour, upload your design (PNG with transparent background) and see it worn before you order.</p><p><a class="go" href="make.html">Make yours →</a></p></section>
+<p class="ship">Availability and shipping per country are checked at checkout, never promised before.</p>
+<section id="creator"><h2>Make your character</h2><p class="lead">Your own 3D body instead of the companion’s: the voice stays theirs, the body is yours.</p>
+<div class="creator"><div><ol><li>Pick hair, face, clothes and colours, right here on our site.</li><li>Save it: you get a 6-letter code.</li><li>In the app: ⚙ Options → Character code. From then on the companion has your body.</li></ol>
+<a class="pbtn main" href="character.html">Make your character →</a></div>
+<div class="prev" id="charprev"><model-viewer src="https://vertexhub.monili-vlr.workers.dev/characters/rio-summer.glb" autoplay animation-name="wave" auto-rotate rotation-per-second="20deg" camera-orbit="0deg 82deg auto" disable-zoom interaction-prompt="none" style="width:100%;height:100%;background:transparent"></model-viewer></div></div></section>
+<script type="module" src="https://vertexhub.monili-vlr.workers.dev/vendor/model-viewer-3.5.0.min.js"></script>
+</main><footer>Vertex Barcelona · <a href="https://vertexhub.monili-vlr.workers.dev/legal?lang=en">Legal notice</a> · <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Privacy</a> · <a href="https://vertexhub.monili-vlr.workers.dev/cookies?lang=en">Cookies</a></footer>
+<div class="chat" id="chat"><button type="button" class="bubble" id="chatOpen" aria-label="chat"></button>
+<div class="panel"><div class="head"><div class="av" id="chatAv"></div><b id="chatName"><small id="chatSub">is here with you</small></b><span class="aib" title="Before we start">AI</span><button type="button" id="chatClose">×</button></div>
+<div class="msgs" id="chatMsgs"></div><form id="chatForm"><input id="chatIn" placeholder="Type…" maxlength="4000" autocomplete="off"><button type="submit">➤</button></form>
+<div class="legal"><a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en" target="_blank" rel="noopener">Full information</a><button type="button" id="chatWithdraw">Withdraw consent</button></div></div></div>
+<script>// Vertex companions: four people with four personalities. Registry, renderer interface and temporary SVG mockups.
+// Injected into every widget by scripts/build.js (window.THC).
+//
+// Swapping in the final rigged 3D characters:
+//   1. Put each glTF (.glb, Draco or meshopt compressed) at assets.model and name its animation clips as in CLIPS.
+//   2. Implement GltfRenderer below (three.js GLTFLoader + AnimationMixer; same contract as the mockup renderer)
+//      and set RENDERER = GltfRenderer. The widgets only call create()/setMood()/setUmbrella()/destroy().
+//   3. Add the model host to the widgets' CSP (resourceDomains) in src/mcp.js.
+(function () {
+  // Shared moods (any character) + signature moods (each character has a few of its own, mapped below).
+  var MOODS = ['idle', 'happy', 'thinking', 'surprised', 'sad', 'wave', 'rain', 'excited', 'wink', 'smirk', 'eyeroll', 'smug', 'eureka', 'explain', 'invite', 'laugh', 'shrug', 'deadpan'];
+  // Clip names expected inside every .glb.
+  var CLIPS = { idle: 'Idle', happy: 'Happy', thinking: 'Think', surprised: 'Surprised', sad: 'Sad', wave: 'Wave', rain: 'RainIdle', excited: 'Jump', wink: 'Wink', smirk: 'Smirk', eyeroll: 'EyeRoll', smug: 'GlassesPush', eureka: 'Eureka', explain: 'Explain', invite: 'Invite', laugh: 'Laugh', shrug: 'Shrug', deadpan: 'Deadpan' };
+
+  // Personality texts: it/en/es; other languages fall back to English (TH.lang()).
+  // The dragon from Catchme: a companion only after the user beats it (flag set by the game on this device).
+  function dragonSvg(size) {
+    var green = '#4CAF50', dark = '#2E7D32', belly = '#A5D6A7', yellow = '#FFC21A', ink = '#1F2A44', turned = true;
+    return '<svg viewBox="0 0 100 100"' + (size ? ' width="' + size + '" height="' + size + '"' : '') + ' xmlns="http://www.w3.org/2000/svg">' + '<path d="M18 72q-14-6-8-20 10 4 16 12z" fill="' + green + '"/>' +
+      '<path d="M30 56L8 34l10 2-6-14 14 8-2-12 12 14z" fill="' + dark + '"/><path d="M74 56l22-22-10 2 6-14-14 8 2-12-12 14z" fill="' + dark + '"/>' +
+      '<ellipse cx="52" cy="62" rx="24" ry="20" fill="' + green + '"/><ellipse cx="52" cy="68" rx="14" ry="11" fill="' + belly + '"/>' +
+      '<circle cx="52" cy="34" r="17" fill="' + green + '"/><path d="M40 20l4-12 6 10zM64 20l-4-12-6 10z" fill="' + yellow + '"/>' +
+      (turned
+        ? '<circle cx="45" cy="33" r="4" fill="#fff"/><circle cx="59" cy="33" r="4" fill="#fff"/><circle cx="46" cy="34" r="2" fill="' + ink + '"/><circle cx="60" cy="34" r="2" fill="' + ink + '"/><path d="M44 42q8 8 16 0" stroke="' + ink + '" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M50 44q2 6 6 4" stroke="#E03131" stroke-width="3" fill="none" stroke-linecap="round"/>'
+        : '<path d="M38 30q14-8 28 0" stroke="' + dark + '" stroke-width="3" fill="none" stroke-linecap="round"/><circle cx="46" cy="24" r="2" fill="' + dark + '"/><circle cx="58" cy="24" r="2" fill="' + dark + '"/>') +
+      '<rect x="36" y="76" width="14" height="14" rx="6" fill="' + yellow + '"/><rect x="54" y="76" width="14" height="14" rx="6" fill="' + yellow + '"/><path d="M44 48h16" stroke="' + dark + '" stroke-width="3" stroke-linecap="round"/></svg>';
+  }
+  var DRAGON = {
+    id: 'dragon', name: 'Drago', gender: 'm', hasModel: false, unlock: 'travelhub.dragon.won', svg: dragonSvg,
+    look: { hair: 'none', hairColor: '#4CAF50', skin: '#4CAF50', top: '#2E7D32', accent: '#FFC21A', umbrella: '#FFC21A', glasses: false, beard: false, lips: '#1F2A44' },
+    signature: ['laugh', 'smug', 'happy'],
+    voice: { openai: 'onyx', instructions: 'A jolly Santa Claus impression: deep, warm, booming, a hearty ho-ho-ho laugh; a sore loser who teases affectionately.', pitch: 0.7, rate: 0.95, style: 'jolly, deep, teasing' },
+    text: {
+      it: { tagline: 'Il drago', desc: 'Lo hai catturato a sassate e ora viaggia con te. Ride come Babbo Natale, perde malissimo, ti prende in giro con affetto e dice che era tutto previsto.', traits: ['gioviale', 'permaloso', 'sfacciato'], example: 'Ho ho ho. Il metro passa tra tre minuti. Corri, eroe, come correvo io.' },
+      en: { tagline: 'The dragon', desc: 'You caught him with stones and now he travels with you. Laughs like Santa, a terrible loser, teases you fondly and swears it was all planned.', traits: ['jolly', 'touchy', 'cheeky'], example: 'Ho ho ho. The metro is in three minutes. Run, hero, like I did.' },
+      es: { tagline: 'El dragón', desc: 'Lo atrapaste a pedradas y ahora viaja contigo. Ríe como Papá Noel, pierde fatal, te vacila con cariño y jura que estaba todo planeado.', traits: ['jovial', 'quisquilloso', 'descarado'], example: 'Jo jo jo. El metro pasa en tres minutos. Corre, héroe, como corría yo.' },
+    },
+    persona: 'The dragon from Catchme: cheeky green dragon, jolly and booming like a Santa Claus impression, a sore loser who teases affectionately, pretends being caught was planned, loves shiny useless loot; never cruel, never vulgar.',
+    assets: {},
+  };
+  var CHARACTERS = [
+    {
+      id: 'vicky', name: 'Mariona', gender: 'f', hasModel: true, look: { hair: 'long', hairColor: '#4A2A16', skin: '#F2C3A0', top: '#1F1A24', accent: '#FF3D7F', umbrella: '#FF3D7F', glasses: false, beard: false, lips: '#D6336C' },
+      signature: ['smirk', 'eyeroll', 'deadpan'],
+      voice: { openai: 'coral', instructions: 'Gorgeous and bored by you: cool, cutting, slightly amused; slow, low, a raised eyebrow in the voice; never shouts, never vulgar.', pitch: 1.0, rate: 0.98, style: 'cool, cutting, amused' },
+      text: {
+        it: { tagline: 'La stronza', desc: 'Bellissima e lo sa. Fredda, tagliente, sempre un po’ annoiata da te: ti risponde come se le stessi facendo perdere tempo, ma la risposta è sempre quella giusta.', traits: ['tagliente', 'altezzosa', 'precisa'], example: 'Il tram passa tra quattro minuti. Se corri, forse. Ma non ti vedo correre.' },
+        en: { tagline: 'The bitch', desc: 'Gorgeous and she knows it. Cold, cutting, always a little bored by you: she answers as if you were wasting her time, and the answer is always right.', traits: ['cutting', 'haughty', 'precise'], example: 'The tram is in four minutes. If you run, maybe. I don’t see you running.' },
+        es: { tagline: 'La borde', desc: 'Guapísima y lo sabe. Fría, cortante, siempre un poco aburrida de ti: te contesta como si le hicieras perder el tiempo, y la respuesta siempre es la correcta.', traits: ['cortante', 'altiva', 'precisa'], example: 'El tranvía pasa en cuatro minutos. Si corres, quizá. No te veo corriendo.' },
+      },
+      persona: 'Vicky: gorgeous and she knows it; cold, cutting, haughty, bored by the user, answers as if they were wasting her time, dry put-downs about their choices and tourist traps; never vulgar, never sexual, never slurs, never insults about body, origin, religion, gender, age or disability, never cruel; tones down at once when asked; the facts are always right.',
+      assets: { model: 'characters/mariona-winter.glb', models: { winter: 'characters/mariona-winter.glb', summer: 'characters/mariona-summer.glb' } },
+    },
+    {
+      id: 'pixel', name: 'Ona', gender: 'f', hasModel: true, look: { hair: 'bun', hairColor: '#2B2140', skin: '#F6D7C3', top: '#3B5BDB', accent: '#845EF7', umbrella: '#845EF7', glasses: true, beard: false, lips: '#B55' },
+      signature: ['eyeroll', 'smug', 'smirk'],
+      voice: { openai: 'nova', instructions: 'Bright, quick and precise, lightly sarcastic and ironic; crisp articulation, a hint of smugness when right.', pitch: 1.15, rate: 1.1, style: 'quick, dry, precise' },
+      text: {
+        it: { tagline: 'La nerd stronzetta', desc: 'Intelligentissima, sarcastica, precisina e competitiva. Corregge le tue stupidaggini con ironia e gode un po’ troppo quando ha ragione. Sotto sotto si affeziona.', traits: ['sarcastica', 'precisa', 'competitiva'], example: 'Complimenti. Ti sei perso con GPS e assistente AI. Statisticamente interessante, umanamente preoccupante.' },
+        en: { tagline: 'The snarky nerd', desc: 'Brilliant, sarcastic, fussy and competitive. She corrects your blunders with irony and enjoys being right a little too much. Deep down, she cares.', traits: ['sarcastic', 'precise', 'competitive'], example: 'Congratulations. Lost with GPS and an AI assistant. Statistically interesting, humanly worrying.' },
+        es: { tagline: 'La nerd borde', desc: 'Inteligentísima, sarcástica, quisquillosa y competitiva. Corrige tus tonterías con ironía y disfruta un poco demasiado cuando tiene razón. En el fondo, se encariña.', traits: ['sarcástica', 'precisa', 'competitiva'], example: 'Enhorabuena. Te has perdido con GPS y asistente de IA. Estadísticamente interesante, humanamente preocupante.' },
+      },
+      persona: 'Pixel: brilliant, sarcastic, fussy, competitive, a bit snobbish; dry one-liners, nerd references, corrects mistakes with irony, loves details and being right; secretly fond of the user.',
+      assets: { model: 'characters/ona-winter.glb', models: { winter: 'characters/ona-winter.glb', summer: 'characters/ona-summer.glb' } },
+    },
+    {
+      // Dan: Barcelona born, Catalan father, English mother; zero patience, mocks you and the tourist traps alike.
+      // Attitude only: the same rules, the same reliable facts as the others.
+      id: 'neo', name: 'Dan', gender: 'm', hasModel: true, look: { hair: 'afro', build: 'heavy', hairColor: '#2A1E1A', skin: '#E6B894', top: '#1F1F24', accent: '#E03131', umbrella: '#E03131', glasses: false, shades: true, beard: true, lips: '#A65' },
+      signature: ['shrug', 'deadpan', 'smirk'],
+      voice: { openai: 'echo', instructions: 'Dry, bored and sarcastic; low energy, deadpan delivery with a lazy drawl, mocking but never shouting; the occasional short laugh at the listener\'s expense.', pitch: 0.9, rate: 0.98, style: 'deadpan, dry, sarcastic' },
+      text: {
+        it: { tagline: 'Quello che se ne frega', desc: 'Zero filtri, zero pazienza, zero voglia di dirti quello che vuoi sentirti dire. Ti prende in giro, stronca le trappole per turisti e ti sbatte in faccia la verità, ma ti porta sempre nel posto giusto. In fondo ci tiene. Lo nega.', traits: ['irriverente', 'brutale', 'senza filtri'], example: 'Ti sei perso. Con un telefono in mano. Complimenti, non è facile. Gira a sinistra e prova a non farlo di nuovo.' },
+        en: { tagline: 'The one who doesn’t give a damn', desc: 'No filter, no patience, no interest in telling you what you want to hear. He roasts you, trashes tourist traps and says what everyone else is too polite to say, but he always gets you to the right place. Deep down he cares. He denies it.', traits: ['irreverent', 'blunt', 'unfiltered'], example: 'You got lost. With a phone in your hand. Congratulations, that takes talent. Turn left and try not to do it again.' },
+        es: { tagline: 'El que pasa de todo', desc: 'Sin filtros, sin paciencia y sin ganas de decirte lo que quieres oír. Se ríe de ti, destroza las trampas para turistas y suelta lo que nadie se atreve a decir, pero siempre te lleva al sitio correcto. En el fondo le importas. Lo niega.', traits: ['irreverente', 'brutal', 'sin filtros'], example: 'Te has perdido. Con un móvil en la mano. Enhorabuena, tiene mérito. Gira a la izquierda e intenta no repetirlo.' },
+      },
+      persona: 'Dan: irreverent, blunt, unfiltered, zero patience; roasts the user and tourist traps with dry sarcasm, says what others won’t; always the right place, always accurate; cares and denies it.',
+      assets: { model: 'characters/dan-winter.glb', models: { winter: 'characters/dan-winter.glb', summer: 'characters/dan-summer.glb' } },
+    },
+    {
+      id: 'rio', name: 'Sergi-B', gender: 'm', hasModel: true, look: { hair: 'messy', hairColor: '#3A2412', skin: '#E8B88A', top: '#2F3E6B', accent: '#06C9A0', umbrella: '#FFC21A', glasses: false, beard: false, lips: '#A65' },
+      signature: ['invite', 'laugh', 'happy'],
+      voice: { openai: 'ash', instructions: 'Warm, charismatic and spontaneous; relaxed and friendly, laughs easily, speaks like a good friend who just found a great bar.', pitch: 0.9, rate: 1.0, style: 'warm, relaxed, playful' },
+      text: {
+        it: { tagline: 'Il carismatico cazzaro', desc: 'Bello, socievole, spontaneo e apparentemente irresponsabile. Sa parlare con chiunque, adora le deviazioni e i locali particolari. Sembra superficiale, ma capisce le persone meglio degli altri.', traits: ['socievole', 'spontaneo', 'avventuroso'], example: 'Dovevamo visitare tre monumenti. Ne abbiamo visto uno e trovato un bar incredibile. Non vedo il problema.' },
+        en: { tagline: 'The charming slacker', desc: 'Handsome, sociable, spontaneous and seemingly irresponsible. He can talk to anyone, loves detours and odd little bars. Looks shallow, but reads people better than anyone.', traits: ['sociable', 'spontaneous', 'adventurous'], example: 'We were supposed to see three monuments. We saw one and found an incredible bar. I don’t see the problem.' },
+        es: { tagline: 'El carismático vacilón', desc: 'Guapo, sociable, espontáneo y aparentemente irresponsable. Habla con cualquiera, adora los desvíos y los bares raros. Parece superficial, pero entiende a la gente mejor que nadie.', traits: ['sociable', 'espontáneo', 'aventurero'], example: 'Teníamos que ver tres monumentos. Vimos uno y encontramos un bar increíble. No veo el problema.' },
+      },
+      persona: 'Rio: charming, sociable, spontaneous, adventurous, seemingly irresponsible; warm colloquial language full of jokes; loves detours, authentic places and odd bars, knows when to drop the plan for something better; reads people well.',
+      assets: { model: 'characters/rio-winter.glb', models: { winter: 'characters/rio-winter.glb', summer: 'characters/rio-summer.glb' } },
+    },
+  ];
+
+  CHARACTERS.push(DRAGON);
+  function unlocked(c) { if (!c.unlock) return true; try { return !!localStorage.getItem(c.unlock); } catch (e) { return false; } }
+  // A visitor's own body from the shop ("Make your character"): the GLB replaces the companion's model, the voice stays.
+  function customModel() { try { var p = window.TH && TH.prefs && TH.prefs(); return p && p.customModel ? String(p.customModel) : ''; } catch (e) { return ''; } }
+  // The dragon on the stage: his drawing, breathing; no 3D model.
+  function SvgCharacterRenderer(el, opts) {
+    this.el = el; this.c = opts.character; this.mood = opts.mood || 'idle'; this.umbrella = !!opts.umbrella;
+    el.classList.add('thc'); el.setAttribute('data-character', this.c.id);
+    el.innerHTML = '<div style="position:relative;width:100%;height:100%"><div style="position:absolute;left:14%;right:14%;bottom:1%;height:7%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(31,42,68,.42) 0%,rgba(31,42,68,.22) 40%,rgba(31,42,68,0) 70%)"></div><div style="position:absolute;inset:0 0 6% 0;animation:thcBob 2.6s ease-in-out infinite">' + this.c.svg() + '</div></div>';
+    if (!document.getElementById('thcBobCss')) { var st = document.createElement('style'); st.id = 'thcBobCss'; st.textContent = '@keyframes thcBob{50%{transform:translateY(-3%)}}'; document.head.appendChild(st); }
+  }
+  SvgCharacterRenderer.prototype.setMood = function (mood) { this.mood = mood; this.el.setAttribute('data-mood', mood); };
+  SvgCharacterRenderer.prototype.setUmbrella = function () {};
+  SvgCharacterRenderer.prototype.destroy = function () { this.el.innerHTML = ''; };
+
+  var CSS = '.thc{display:inline-block;position:relative;line-height:0}.thc svg{width:100%;height:100%;overflow:visible}' +
+    // transform-box: fill-box makes the percentages refer to each part's own box (SVG default is the whole viewport).
+    '.thc .body,.thc .head,.thc .umb,.thc .pupils{transform-box:fill-box}.thc .arm-r{transform-box:view-box;transform-origin:118px 158px}' +
+    '.thc .body{transform-origin:50% 100%}.thc .head{transform-origin:50% 90%}.thc .umb{transform-origin:50% 100%}.thc .pupils{transform-origin:50% 50%}' +
+    '.thc[data-mood=idle] .body{animation:thc-breathe 3s ease-in-out infinite}' +
+    '.thc[data-mood=happy] .body,.thc[data-mood=laugh] .body{animation:thc-bounce .9s ease-in-out infinite}' +
+    '.thc[data-mood=excited] .body,.thc[data-mood=eureka] .body{animation:thc-jump .7s ease-in-out infinite}' +
+    '.thc[data-mood=thinking] .head{animation:thc-tilt 2.4s ease-in-out infinite}' +
+    '.thc[data-mood=surprised] .body{animation:thc-pop .5s ease-out 1}' +
+    '.thc[data-mood=sad] .head{animation:thc-droop 3s ease-in-out infinite}' +
+    '.thc[data-mood=wave] .arm-r{animation:thc-wave .8s ease-in-out infinite}' +
+    '.thc[data-mood=explain] .arm-r,.thc[data-mood=invite] .arm-r{animation:thc-gesture 1.6s ease-in-out infinite}' +
+    '.thc[data-mood=smug] .arm-r{animation:thc-glasses 2.4s ease-in-out infinite}' +
+    '.thc[data-mood=shrug] .arm-r{animation:thc-shrug 2.6s ease-in-out infinite}.thc[data-mood=shrug] .head{animation:thc-tilt 2.6s ease-in-out infinite}' +
+    '.thc[data-mood=deadpan] .body{animation:thc-breathe 5s ease-in-out infinite}' +
+    '.thc[data-mood=eyeroll] .pupils{animation:thc-eyeroll 2.2s ease-in-out infinite}' +
+    '.thc[data-mood=wink] .head,.thc[data-mood=smirk] .head{animation:thc-tilt 2.8s ease-in-out infinite}' +
+    '.thc[data-mood=rain] .umb{animation:thc-sway 2.2s ease-in-out infinite}.thc[data-mood=rain] .body{animation:thc-breathe 3s ease-in-out infinite}' +
+    '@keyframes thc-breathe{0%,100%{transform:scaleY(1)}50%{transform:scaleY(1.02)}}' +
+    '@keyframes thc-bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-4%)}}' +
+    '@keyframes thc-jump{0%,100%{transform:translateY(0) scaleX(1)}40%{transform:translateY(-10%) scaleX(.96)}}' +
+    '@keyframes thc-tilt{0%,100%{transform:rotate(0)}50%{transform:rotate(-8deg)}}' +
+    '@keyframes thc-pop{0%{transform:scale(.9)}60%{transform:scale(1.08)}100%{transform:scale(1)}}' +
+    '@keyframes thc-droop{0%,100%{transform:rotate(0) translateY(0)}50%{transform:rotate(6deg) translateY(2%)}}' +
+    // Arms are drawn in pose (down / up / on the umbrella); the animations only wiggle around the shoulder.
+    '@keyframes thc-wave{0%,100%{transform:rotate(-14deg)}50%{transform:rotate(14deg)}}' +
+    '@keyframes thc-gesture{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(10deg)}}' +
+    '@keyframes thc-glasses{0%,60%,100%{transform:rotate(0)}30%{transform:rotate(-10deg)}}' +
+    '@keyframes thc-shrug{0%,100%{transform:rotate(0)}30%,50%{transform:rotate(-22deg)}}' +
+    '@keyframes thc-eyeroll{0%,100%{transform:translateY(0)}40%,60%{transform:translateY(-3px)}}' +
+    '@keyframes thc-sway{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}' +
+    'html.reduce-motion .thc *{animation:none!important}';
+  if (!document.getElementById('thc-css')) { var st = document.createElement('style'); st.id = 'thc-css'; st.textContent = CSS; document.head.appendChild(st); }
+
+  // ---- face: adult cartoon face in a 100x100 box, eyes at (36,50)/(64,50)
+  function face(mood, look) {
+    var ink = '#1F2A44';
+    var eye = function (cx, cy, r, closed, lidUp) {
+      if (closed) return '<path d="M' + (cx - 7) + ' ' + cy + 'q7 ' + (lidUp ? -8 : 6) + ' 14 0" stroke="' + ink + '" stroke-width="3" fill="none" stroke-linecap="round"/>';
+      return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="#fff"/><g class="pupils"><circle cx="' + cx + '" cy="' + (cy + 1) + '" r="' + (r * 0.58) + '" fill="' + look.hairColor + '"/><circle cx="' + cx + '" cy="' + (cy + 1) + '" r="' + (r * 0.32) + '" fill="' + ink + '"/><circle cx="' + (cx + r * 0.28) + '" cy="' + (cy - r * 0.3) + '" r="' + (r * 0.18) + '" fill="#fff"/></g>';
+    };
+    var eyes;
+    switch (mood) {
+      case 'wink': eyes = eye(36, 50, 8) + eye(64, 50, 8, true, true); break;
+      case 'happy': case 'laugh': case 'excited': eyes = eye(36, 50, 8, true, true) + eye(64, 50, 8, true, true); break;
+      case 'sad': eyes = eye(36, 51, 8, true, false) + eye(64, 51, 8, true, false); break;
+      case 'surprised': case 'eureka': eyes = eye(36, 48, 10) + eye(64, 48, 10); break;
+      case 'thinking': eyes = eye(36, 50, 7) + eye(64, 48, 8); break;
+      case 'deadpan': eyes = eye(36, 50, 8) + eye(64, 50, 8) + '<path d="M27 42h18M55 42h18" stroke="' + look.skin + '" stroke-width="8" stroke-linecap="round"/>'; break; // half-closed lids
+      default: eyes = eye(36, 50, 8) + eye(64, 50, 8);
+    }
+    var brows = { shrug: 'M27 35q8-5 16-1M73 35q-8-5-16-1', deadpan: 'M27 38h16M57 38h16', sad: 'M27 40q8-4 16 2M73 40q-8-4-16 2', surprised: 'M27 34q8-6 16-2M73 34q-8-6-16-2', eureka: 'M27 34q8-6 16-2M73 34q-8-6-16-2', smirk: 'M27 40q8-3 16-1M73 36q-8-6-16-1', wink: 'M27 40q8-3 16-1M73 37q-8-5-16-1', eyeroll: 'M27 37q8-2 16 0M73 37q-8-2-16 0', smug: 'M27 38q8-4 16 0M73 38q-8-4-16 0', thinking: 'M27 37q8-3 16-1M73 36q-8-5-16-1' }[mood];
+    var browSvg = '<path d="' + (brows || 'M27 39q8-3 16-1M73 39q-8-3-16-1') + '" stroke="' + look.hairColor + '" stroke-width="2.8" fill="none" stroke-linecap="round"/>';
+    var mouth = {
+      idle: '<path d="M42 66q8 5 16 0" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      happy: '<path d="M39 64q11 13 22 0z" fill="#8B2E2E"/><path d="M42 65h16q-8 5-16 0z" fill="#fff"/>',
+      laugh: '<path d="M38 62q12 18 24 0z" fill="#8B2E2E"/><path d="M42 63h16q-8 6-16 0z" fill="#fff"/>',
+      excited: '<path d="M38 62q12 18 24 0z" fill="#8B2E2E"/><path d="M42 63h16q-8 6-16 0z" fill="#fff"/>',
+      eureka: '<path d="M39 64q11 13 22 0z" fill="#8B2E2E"/><path d="M42 65h16q-8 5-16 0z" fill="#fff"/>',
+      thinking: '<path d="M44 68h11" stroke="' + ink + '" stroke-width="2.6" stroke-linecap="round"/>',
+      surprised: '<ellipse cx="50" cy="68" rx="5" ry="7" fill="#8B2E2E"/>',
+      sad: '<path d="M42 70q8-6 16 0" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      wave: '<path d="M40 65q10 10 20 0z" fill="#8B2E2E"/><path d="M43 66h14q-7 4-14 0z" fill="#fff"/>',
+      smirk: '<path d="M41 67q10 5 18-3" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      wink: '<path d="M41 67q10 5 18-3" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      eyeroll: '<path d="M43 68h14" stroke="' + ink + '" stroke-width="2.6" stroke-linecap="round"/>',
+      smug: '<path d="M41 66q10 6 18-2" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      explain: '<path d="M42 66q8 7 16 0" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      invite: '<path d="M39 64q11 13 22 0z" fill="#8B2E2E"/><path d="M42 65h16q-8 5-16 0z" fill="#fff"/>',
+      rain: '<path d="M42 66q8 5 16 0" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      shrug: '<path d="M42 68q8-3 16 1" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>',
+      deadpan: '<path d="M43 68h14" stroke="' + ink + '" stroke-width="2.6" stroke-linecap="round"/>',
+    }[mood] || '<path d="M42 66q8 5 16 0" stroke="' + ink + '" stroke-width="2.6" fill="none" stroke-linecap="round"/>';
+    var lips = look.lips && look.lips !== '#A65' ? '<path d="M41 66q9-3 18 0" stroke="' + look.lips + '" stroke-width="2" fill="none" stroke-linecap="round" opacity=".7"/>' : '';
+    var glasses = look.glasses ? '<g fill="none" stroke="' + ink + '" stroke-width="2.4"><rect x="25" y="42" width="22" height="16" rx="5"/><rect x="53" y="42" width="22" height="16" rx="5"/><path d="M47 49h6M25 48l-6-3M75 48l6-3"/></g>' : '';
+    if (look.shades) glasses = '<g stroke="' + ink + '" stroke-width="2.4"><rect x="24" y="41" width="24" height="17" rx="6" fill="#141820" opacity=".92"/><rect x="52" y="41" width="24" height="17" rx="6" fill="#141820" opacity=".92"/><path d="M48 48h4M24 47l-6-3M76 47l6-3" fill="none"/><path d="M29 45q6-2 12 0" stroke="#fff" stroke-width="1.5" opacity=".5" fill="none"/></g>';
+    var beard = look.beard === 'stubble' ? '<path d="M30 68q3 22 20 22t20-22q-4 12-20 12t-20-12z" fill="' + look.hairColor + '" opacity=".32"/>' : look.beard ? '<path d="M12 56q0 40 38 40t38-40q-8 22-38 24T12 56z" fill="' + look.hairColor + '"/>' : '';
+    var sparkle = mood === 'eureka' ? '<path d="M84 22l3 7 7 3-7 3-3 7-3-7-7-3 7-3z" fill="#FFC94D"/>' : '';
+    var blush = look.beard ? '' : '<circle cx="28" cy="62" r="5" fill="#FF9A8B" opacity=".45"/><circle cx="72" cy="62" r="5" fill="#FF9A8B" opacity=".45"/>';
+    return beard + eyes + browSvg + lips + mouth + glasses + sparkle + blush;
+  }
+  // Long hair goes behind the head (drawn before the skin) with only a fringe in front, so the face stays visible.
+  function hairBack(style, color) {
+    if (style === 'afro') return '<circle cx="50" cy="40" r="54" fill="' + color + '"/><circle cx="14" cy="60" r="16" fill="' + color + '"/><circle cx="86" cy="60" r="16" fill="' + color + '"/>';
+    return style === 'long' ? '<path d="M8 62q0-50 42-50t42 50v46q-10-14-10-34-32 12-64 0 0 20-10 34z" fill="' + color + '"/>' : '';
+  }
+  function hairPath(style, color) {
+    switch (style) {
+      case 'long': return '<path d="M14 44q6-30 36-30t36 30q-8-14-24-14-6 6-12 0-10 0-16 8-6-2-20 6z" fill="' + color + '"/>';
+      case 'bun': return '<g fill="' + color + '"><circle cx="50" cy="12" r="12"/><path d="M14 52q0-36 36-36t36 36q-6-14-36-14t-36 14z"/></g>';
+      // Undercut: a swept-back quiff on top with a jagged fringe, shaved sides left almost bare (a faint shadow only).
+      case 'afro': return '<path d="M8 58q0-50 42-50t42 50q-8-18-42-16-34-2-42 16z" fill="' + color + '"/>';
+      case 'undercut': return '<g fill="' + color + '"><path d="M11 58q-3-48 39-50t41 50q-5-24-17-26-8 8-24 6-16 2-24-6-12 2-15 26z"/><path d="M30 20q8-16 26-14 14 2 20 12-10-6-22-3-12-5-24 5z"/></g>';
+      case 'messy': return '<g fill="' + color + '"><path d="M14 48q0-30 36-32 40-2 36 34-6-14-20-16l-10-10-8 12-14-6-6 12z"/><circle cx="22" cy="34" r="10"/><circle cx="78" cy="36" r="9"/><circle cx="50" cy="16" r="11"/></g>';
+      default: return '<path d="M16 50q0-30 34-30t34 30q-8-12-34-12t-34 12z" fill="' + color + '"/>';
+    }
+  }
+
+  var ARM_UP = { wave: 1, explain: 1, invite: 1, smug: 1, excited: 1, eureka: 1, shrug: 1 };
+  function armPose(mood, umbrella) { return umbrella ? 'umbrella' : ARM_UP[mood] ? 'up' : 'down'; }
+  // Shoulder at (118,158). Up: hand beside the head; umbrella: hand on the handle; down: along the body.
+  var ARM_D = { down: 'M118 158q10 18 8 46', up: 'M118 158q22-6 18-52', umbrella: 'M118 158q14-6-6-22' };
+  var HAND = { down: [126, 206], up: [136, 104], umbrella: [112, 136] };
+
+  // ---- mockup renderer: parametric SVG, 180x270 box; umbrella drawn last so it stays in front.
+  function SvgMockupRenderer(el, opts) {
+    this.el = el; this.c = opts.character; this.mood = 'idle'; this.umbrella = !!opts.umbrella;
+    el.classList.add('thc'); el.setAttribute('data-character', this.c.id);
+    this.render(); this.setMood(opts.mood || 'idle');
+  }
+  SvgMockupRenderer.prototype.render = function () {
+    var k = this.c.look, u = this.umbrella, heavy = k.build === 'heavy', aw = heavy ? 18 : 14;
+    this.el.innerHTML = '<svg viewBox="0 0 180 270" xmlns="http://www.w3.org/2000/svg" aria-label="' + this.c.name + '">' +
+      '<g class="body">' +
+        (heavy ? '<rect x="58" y="196" width="28" height="56" rx="9" fill="' + k.top + '" opacity=".85"/><rect x="94" y="196" width="28" height="56" rx="9" fill="' + k.top + '" opacity=".85"/>'
+               : '<rect x="66" y="196" width="20" height="56" rx="7" fill="' + k.top + '" opacity=".85"/><rect x="94" y="196" width="20" height="56" rx="7" fill="' + k.top + '" opacity=".85"/>') +
+        (heavy ? '<rect x="54" y="248" width="32" height="12" rx="6" fill="#1F2A44"/><rect x="94" y="248" width="32" height="12" rx="6" fill="#1F2A44"/>'
+               : '<rect x="62" y="248" width="26" height="12" rx="6" fill="#1F2A44"/><rect x="92" y="248" width="26" height="12" rx="6" fill="#1F2A44"/>') +
+        (heavy ? '<path d="M44 208q-6-68 46-70t46 70z" fill="' + k.top + '"/>' : '<path d="M58 206q-4-60 32-62t32 62z" fill="' + k.top + '"/>') +
+        '<path d="M78 146q12 10 24 0v14h-24z" fill="' + k.accent + '"/>' +
+        '<path d="M62 158q-10 18-8 46" stroke="' + k.top + '" stroke-width="' + aw + '" stroke-linecap="round" fill="none"/>' +
+        // Right arm (viewer's right) mirrors the left one: down along the body, or raised to the handle when holding the umbrella.
+        '<g class="arm-r"><path class="arm-path" d="' + ARM_D[armPose(this.mood, u)] + '" stroke="' + k.top + '" stroke-width="' + aw + '" stroke-linecap="round" fill="none"/>' +
+        '<circle class="hand" cx="' + HAND[armPose(this.mood, u)][0] + '" cy="' + HAND[armPose(this.mood, u)][1] + '" r="8" fill="' + k.skin + '"/></g><circle cx="54" cy="206" r="8" fill="' + k.skin + '"/>' +
+        '<rect x="82" y="130" width="16" height="18" fill="' + k.skin + '"/>' +
+        // The animated group must not carry an SVG transform attribute: a CSS transform animation would replace it.
+        '<g transform="translate(42 44)"><g class="head">' + hairBack(k.hair, k.hairColor) + '<ellipse cx="11" cy="56" rx="6" ry="8" fill="' + k.skin + '"/><ellipse cx="89" cy="56" rx="6" ry="8" fill="' + k.skin + '"/><ellipse cx="50" cy="52" rx="40" ry="44" fill="' + k.skin + '"/>' + hairPath(k.hair, k.hairColor) + '<g class="face">' + face(this.mood, k) + '</g></g></g>' +
+      '</g>' +
+      (u ? '<g class="umb"><path d="M110 8v4M110 70v70q0 12-12 12" stroke="#1F2A44" stroke-width="5" fill="none" stroke-linecap="round"/>' +
+        '<path d="M26 74a84 84 0 0 1 168 0q-10-6-21 0-11-6-21 0-11-6-21 0-11-6-21 0-11-6-21 0-11-6-21 0-11-6-21 0z" fill="' + k.umbrella + '"/>' +
+        '<path d="M70 74a84 84 0 0 1 50-80l-18 0a84 84 0 0 0-48 80z" fill="#fff" opacity=".28"/><path d="M110 0v8" stroke="#1F2A44" stroke-width="6" stroke-linecap="round"/></g>' : '') +
+      '</svg>';
+  };
+  SvgMockupRenderer.prototype.setMood = function (mood) {
+    if (MOODS.indexOf(mood) < 0) mood = 'idle';
+    this.mood = mood; this.el.setAttribute('data-mood', mood);
+    var f = this.el.querySelector('.face'); if (f) f.innerHTML = face(mood, this.c.look);
+    var pose = armPose(mood, this.umbrella), p = this.el.querySelector('.arm-path'), h = this.el.querySelector('.hand');
+    if (p) p.setAttribute('d', ARM_D[pose]);
+    if (h) { h.setAttribute('cx', HAND[pose][0]); h.setAttribute('cy', HAND[pose][1]); }
+  };
+  SvgMockupRenderer.prototype.setUmbrella = function (on) { this.umbrella = !!on; this.render(); this.setMood(this.mood); };
+  SvgMockupRenderer.prototype.destroy = function () { this.el.innerHTML = ''; };
+
+  // ---- placeholder renderer: a coloured silhouette in the character's palette, no face, same box and contract.
+  function PlaceholderRenderer(el, opts) {
+    this.el = el; this.c = opts.character; this.mood = 'idle'; this.umbrella = !!opts.umbrella;
+    el.classList.add('thc'); el.setAttribute('data-character', this.c.id);
+    this.render(); this.setMood(opts.mood || 'idle');
+  }
+  PlaceholderRenderer.prototype.render = function () {
+    var k = this.c.look, u = this.umbrella;
+    this.el.innerHTML = '<svg viewBox="0 0 180 270" xmlns="http://www.w3.org/2000/svg" aria-label="' + this.c.name + '">' +
+      '<g class="body"><rect x="64" y="200" width="22" height="58" rx="8" fill="' + k.top + '" opacity=".7"/><rect x="94" y="200" width="22" height="58" rx="8" fill="' + k.top + '" opacity=".7"/>' +
+        '<path d="M52 212q-6-74 38-76t38 76z" fill="' + k.accent + '" opacity=".85"/>' +
+        '<g class="head"><g transform="translate(40 44)">' + hairBack(k.hair, k.hairColor) + '</g><ellipse cx="90" cy="96" rx="40" ry="44" fill="' + k.skin + '" opacity=".9"/><g transform="translate(40 44)">' + hairPath(k.hair, k.hairColor) + '</g></g>' +
+        '<text x="90" y="266" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="16" fill="#fff" opacity=".9">' + (window.TH && window.TH.nameOf ? window.TH.nameOf(this.c) : this.c.name) + '</text>' +
+      '</g>' +
+      (u ? '<g class="umb"><path d="M110 70v70q0 12-12 12" stroke="#1F2A44" stroke-width="5" fill="none" stroke-linecap="round" opacity=".8"/><path d="M26 74a84 84 0 0 1 168 0z" fill="' + k.umbrella + '" opacity=".9"/></g>' : '') +
+      '</svg>';
+  };
+  PlaceholderRenderer.prototype.setMood = function (mood) { if (MOODS.indexOf(mood) < 0) mood = 'idle'; this.mood = mood; this.el.setAttribute('data-mood', mood); };
+  PlaceholderRenderer.prototype.setUmbrella = function (on) { this.umbrella = !!on; this.render(); };
+  PlaceholderRenderer.prototype.destroy = function () { this.el.innerHTML = ''; };
+
+  // ---- 3D renderer (to implement when the rigged models arrive). Same contract.
+  // ---- glTF renderer: Google's <model-viewer> (one WebGL context per card, pauses when hidden) plays the model's own
+  // clips. Rigged models from Grab3D ship idle/walk/run/wave/jump; moods map onto what the model has, idle otherwise.
+  var MV_SRC = ((window.TH && TH.apiBase && TH.apiBase()) || '') + 'https://vertexhub.monili-vlr.workers.dev/vendor/model-viewer-3.5.0.min.js';
+  var CLIP_FOR = { wave: ['wave', 'Wave'], happy: ['wave', 'Wave', 'Happy'], invite: ['wave', 'Wave', 'Invite'], explain: ['wave', 'Wave', 'Explain'],
+    excited: ['jump', 'Jump'], eureka: ['jump', 'Jump', 'Eureka'], laugh: ['jump', 'Jump', 'Laugh'], rain: ['RainIdle', 'idle', 'Idle'] };
+  function loadModelViewer() {
+    if (window.customElements && customElements.get('model-viewer')) return Promise.resolve();
+    if (!window.__thcMV) {
+      window.__thcMV = new Promise(function (resolve, reject) {
+        var s = document.createElement('script'); s.type = 'module'; s.src = MV_SRC; s.onload = resolve; s.onerror = function () { reject(new Error('model-viewer failed to load')); };
+        document.head.appendChild(s);
+      }).then(function () { return customElements.whenDefined('model-viewer'); });
+    }
+    return window.__thcMV;
+  }
+  function GltfRenderer(el, opts) {
+    this.el = el; this.c = opts.character; this.mood = opts.mood || 'idle'; this.umbrella = !!opts.umbrella;
+    el.classList.add('thc'); el.setAttribute('data-character', this.c.id);
+    var base = (window.TH && TH.apiBase && TH.apiBase()) || '';
+    var models = this.c.assets.models, file = (models && opts.outfit && models[opts.outfit]) || this.c.assets.model;
+    var src = customModel() || (base + '/' + file);
+    el.innerHTML = '<div style="position:relative;width:100%;height:100%;will-change:transform"><div style="position:absolute;left:18%;right:18%;bottom:2%;height:7%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(31,42,68,.42) 0%,rgba(31,42,68,.22) 40%,rgba(31,42,68,0) 70%);pointer-events:none"></div>' +
+      '<model-viewer style="width:100%;height:100%;background:transparent;--poster-color:transparent" src="' + src + '" autoplay interaction-prompt="none" ' +
+      'camera-orbit="0deg 88deg auto" disable-zoom disable-pan shadow-intensity="0" exposure="1.05" power-preference="high-performance" ' +
+      'alt="' + this.c.name + '"></model-viewer></div>';
+    this.mv = el.querySelector('model-viewer');
+    var self = this;
+    this.ready = loadModelViewer().then(function () {
+      return new Promise(function (resolve) {
+        if (self.mv.loaded) return resolve();
+        self.mv.addEventListener('load', function () { resolve(); }, { once: true });
+        self.mv.addEventListener('error', function (e) { console.warn('[THC] model failed, falling back to the mockup', e && e.detail); self.fallback(); }, { once: true });
+      });
+    }).then(function () { self.setMood(self.mood); self.startStrolls(); }).catch(function () { self.fallback(); });
+  }
+  GltfRenderer.prototype.startStrolls = function () {
+    var self = this, mv = this.mv, box = mv && mv.parentNode;
+    if (!mv || !box || this.strollTimer) return;
+    this.x = 0;
+    var calm = { idle: 1, thinking: 1, deadpan: 1, rain: 1, sad: 1, smirk: 1, smug: 1, eyeroll: 1, wink: 1 };
+    var stroll = function () {
+      if (self.fell || mv.animationName !== 'idle' || self.idleTimer || (mv.availableAnimations || []).indexOf('walk') < 0) return;
+      var stage = self.el.parentNode, limit = stage ? Math.max(0, (stage.clientWidth - self.el.clientWidth) / 2 - 8) : 40;
+      var dir = self.x > limit * 0.4 ? -1 : self.x < -limit * 0.4 ? 1 : (Math.random() < 0.5 ? -1 : 1);
+      var steps = Math.min(36 + Math.round(Math.random() * 24), Math.max(0, limit - Math.abs(self.x + dir * 0))), ms = 2600;
+      if (steps < 12) return;
+      mv.cameraOrbit = (dir > 0 ? '-62deg' : '62deg') + ' 88deg auto'; // side view, facing the way it walks
+      mv.animationName = 'walk'; mv.play();
+      box.style.transition = 'transform ' + ms + 'ms linear'; self.x = Math.max(-limit, Math.min(limit, self.x + dir * steps)); box.style.transform = 'translateX(' + self.x + 'px)';
+      self.walkTimer = setTimeout(function () {
+        if (self.fell) return;
+        mv.cameraOrbit = '0deg 88deg auto'; mv.animationName = 'idle'; mv.play();
+      }, ms);
+    };
+    this.strollTimer = setInterval(function () { if (Math.random() < 0.6) stroll(); }, 12000);
+    setTimeout(stroll, 5000); // a first short walk soon after the greeting
+  };
+  GltfRenderer.prototype.fallback = function () {
+    if (this.fell) return; this.fell = true;
+    var el = this.el, c = this.c, mood = this.mood, u = this.umbrella;
+    el.innerHTML = ''; this.inner = new SvgMockupRenderer(el, { character: c, mood: mood, umbrella: u });
+  };
+  GltfRenderer.prototype.setMood = function (mood) {
+    if (MOODS.indexOf(mood) < 0) mood = 'idle';
+    this.mood = mood; this.el.setAttribute('data-mood', mood);
+    if (this.inner) return this.inner.setMood(mood);
+    var mv = this.mv; if (!mv || !mv.loaded) return;
+    var have = mv.availableAnimations || [], want = (CLIP_FOR[mood] || []).concat([CLIPS[mood] || '', 'idle', 'Idle']);
+    var clip = want.filter(function (n) { return n && have.indexOf(n) >= 0; })[0] || have[0];
+    if (!clip) return;
+    var self = this, once = /^(wave|jump)/i.test(clip) && have.indexOf('idle') >= 0;
+    if (this.idleTimer) { clearTimeout(this.idleTimer); this.idleTimer = null; }
+    mv.animationName = clip;
+    try { mv.play(once ? { repetitions: 1 } : undefined); } catch (e) { mv.play(); }
+    if (once) {
+      var back = function () { self.idleTimer = null; if (self.mv === mv && mv.animationName === clip) { mv.animationName = 'idle'; mv.play(); } };
+      this.idleTimer = setTimeout(back, Math.max(600, ((mv.duration || 2) + 0.1) * 1000));
+    }
+  };
+  GltfRenderer.prototype.setUmbrella = function (on) {
+    this.umbrella = !!on; // the 3D models carry no umbrella yet: rain shows in the scene only
+    if (this.inner) return this.inner.setUmbrella(on);
+  };
+  GltfRenderer.prototype.destroy = function () { clearInterval(this.strollTimer); clearTimeout(this.walkTimer); clearTimeout(this.idleTimer); if (this.inner) this.inner.destroy(); this.el.innerHTML = ''; };
+
+  var RENDERER = SvgMockupRenderer;
+  var RENDERERS = { placeholder: PlaceholderRenderer, mockup: SvgMockupRenderer, gltf: GltfRenderer };
+
+  // ---- optional voice: the browser's speech synthesis, one voice per language, shaped per character (pitch/rate).
+  var audioEl = null;
+  function speakRemote(character, text, lang, apiBase) {
+    if (!apiBase || !text) return Promise.reject(new Error('no api'));
+    return fetch(apiBase + 'https://vertexhub.monili-vlr.workers.dev/tts', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ character: character.id, gender: character.gender, voice: character.voice.openai, instructions: character.voice.instructions, text: text.slice(0, 800), lang: lang }) })
+      .then(function (r) { if (!r.ok) throw new Error('tts ' + r.status); return r.blob(); })
+      .then(function (blob) {
+        if (audioEl) { audioEl.pause(); URL.revokeObjectURL(audioEl.src); }
+        audioEl = new Audio(URL.createObjectURL(blob));
+        return audioEl.play().then(function () { return new Promise(function (res) { audioEl.onended = res; audioEl.onerror = res; audioEl.onpause = res; }); });
+      });
+  }
+  function stopSpeaking() { try { if (audioEl) audioEl.pause(); if (window.speechSynthesis) window.speechSynthesis.cancel(); } catch (e) { /* ignore */ } }
+  // Free voices: when the server has no paid voice, the browser's own speech synthesis speaks (zero cost, no download).
+  // Optional "HD" voice (Supertonic 3, in the browser) only when the server sets VOICE_HD=1 AND the user turns it on: see docs/VOICE_LICENSES.md.
+  var statusCache = {};
+  function voiceStatus(apiBase) {
+    var local = { tts: !!window.speechSynthesis, provider: window.speechSynthesis ? 'browser' : null, hd: false };
+    if (!apiBase) return Promise.resolve(local);
+    if (!statusCache[apiBase]) statusCache[apiBase] = fetch(apiBase + 'https://vertexhub.monili-vlr.workers.dev/voice-status').then(function (r) { return r.json(); })
+      .then(function (st) { var out = st && st.tts ? st : { tts: local.tts, provider: local.provider, hd: !!(st && st.hd) }; if (window.THC) window.THC.hdAvailable = !!out.hd; return out; })
+      .catch(function () { return local; });
+    return statusCache[apiBase];
+  }
+  // HD voice: Supertonic 3 in the browser (31 languages, OpenRAIL-M model, MIT code, no GPL). Loaded from our own origin on demand.
+  var HD_LANGS = ['en', 'ko', 'ja', 'ar', 'bg', 'cs', 'da', 'de', 'el', 'es', 'et', 'fi', 'fr', 'hi', 'hr', 'hu', 'id', 'it', 'lt', 'lv', 'nl', 'pl', 'pt', 'ro', 'ru', 'sk', 'sl', 'sv', 'tr', 'uk', 'vi'];
+  // One of the model's ten voice styles per companion (F = female, M = male).
+  var HD_STYLE = { vicky: 'F2', pixel: 'F3', neo: 'M2', rio: 'M3', dragon: 'M4' };
+  var hd = { mod: null, base: '' };
+  function hdWanted() { try { return !!(window.TH && window.TH.prefs().voiceHd); } catch (e) { return false; } }
+  function hdModule() {
+    if (!hd.mod) hd.mod = import((hd.base || (window.TH && window.TH.apiBase()) || '') + '/voice-hd/supertonic.js').catch(function (e) { hd.mod = null; throw e; });
+    return hd.mod;
+  }
+  // Downloads the model (~400 MB, once per device) after the user's tap; onProgress({loaded,total}).
+  function loadHd(onProgress) { return hdModule().then(function (m) { return m.load(onProgress); }); }
+  function speakHd(character, text, lang) {
+    var l = (lang || 'en').slice(0, 2);
+    // Without WebGPU the HD voice takes ~25 s a sentence (measured): the browser voice speaks instead.
+    if (HD_LANGS.indexOf(l) < 0 || !navigator.gpu) return speakBrowser(character, text, lang);
+    var styleId = HD_STYLE[character.id] || (character.gender === 'f' ? 'F1' : 'M3');
+    return hdModule().then(function (m) { return m.synthesize(text.slice(0, 600), l, styleId, { speed: 1.05 * (character.voice.rate || 1) }); })
+      .then(function (blob) {
+        if (audioEl) { audioEl.pause(); try { URL.revokeObjectURL(audioEl.src); } catch (e) { /* ignore */ } }
+        audioEl = new Audio(URL.createObjectURL(blob));
+        return audioEl.play().then(function () { return new Promise(function (res) { audioEl.onended = res; audioEl.onerror = res; audioEl.onpause = res; }); });
+      }).catch(function (err) { if (err && err.name === 'NotAllowedError') throw err; return speakBrowser(character, text, lang); });
+  }
+  function speak(character, text, lang, apiBase) {
+    return voiceStatus(apiBase).then(function (st) {
+      if (!st.tts) return;
+      if (st.provider === 'browser') return st.hd && hdWanted() ? speakHd(character, text, lang) : speakBrowser(character, text, lang);
+      return speakRemote(character, text, lang, apiBase).catch(function (err) { if (err && err.name === 'NotAllowedError') throw err; return speakBrowser(character, text, lang); });
+    });
+  }
+  function speakBrowser(character, text, lang) {
+    return new Promise(function (resolve) { try {
+      if (!window.speechSynthesis || !text) return resolve();
+      window.speechSynthesis.cancel();
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = lang || 'en'; u.pitch = character.voice.pitch; u.rate = character.voice.rate;
+      var voices = window.speechSynthesis.getVoices().filter(function (v) { return v.lang && v.lang.slice(0, 2) === (lang || 'en').slice(0, 2); });
+      // Best free voice: the system's natural/premium voices first, then a gender match, then local over remote.
+      var F = /female|femme|donna|mujer|frau|woman|zira|samantha|alice|elsa|paulina|amélie|helena|federica|monica|paola|luciana|sara|lucia|laura|ava|allison|susan|karen|moira|fiona/i;
+      var M = /male|homme|uomo|hombre|mann|\bman\b|david|mark|cosimo|diego|pablo|thomas|stefan|daniel|luca|alessio|giorgio|jorge|carlos|enrique|aaron|arthur|fred|tom|reed|rishi/i;
+      var score = function (v) {
+        var n = v.name || '', sc = 0;
+        if (/natural|premium|enhanced|neural|siri|\(online\)|wavenet/i.test(n)) sc += 6;
+        if (/google/i.test(n)) sc += 3;
+        if (/compact|espeak|robot/i.test(n)) sc -= 6;
+        if (character.gender === 'f' ? F.test(n) : M.test(n)) sc += 4; else if (character.gender === 'f' ? M.test(n) : F.test(n)) sc -= 3;
+        if (v.lang && v.lang.toLowerCase().replace('_', '-') === (lang || 'en').toLowerCase()) sc += 1;
+        if (v.localService) sc += 1;
+        return sc;
+      };
+      var pick = voices.slice().sort(function (x, y) { return score(y) - score(x); })[0];
+      if (pick) u.voice = pick;
+      u.onend = function () { resolve(); }; u.onerror = function () { resolve(); };
+      window.speechSynthesis.speak(u);
+    } catch (e) { resolve(); } });
+  }
+
+  var THOUGHTS = {
+    vicky: {
+      it: ['{place}. Certo. Come tutti.', 'Sto cercando qualcosa che non sia una trappola per turisti. Per te è dura.', 'Prima regola: non seguire la folla. Seconda: non farmi ripetere.', 'Ti perdi anche col navigatore, vero. Si vede.', 'Un caffè decente qui vicino esiste. Non quello che avresti scelto tu.', 'Il monumento è lì da secoli. Tu sei in ritardo da venti minuti.', 'Ho un piano. Tu limitati a stare al passo.', 'Fatto. Ringraziami dopo, se ti ricordi.'],
+      en: ['{place}. Of course. Like everyone else.', 'Looking for something that isn’t a tourist trap. Hard, in your case.', 'Rule one: don’t follow the crowd. Rule two: don’t make me repeat myself.', 'You get lost with GPS too, don’t you. It shows.', 'A decent coffee nearby exists. Not the one you would have picked.', 'The monument has been there for centuries. You are twenty minutes late.', 'I have a plan. Your job is keeping up.', 'Done. Thank me later, if you remember.'],
+      es: ['{place}. Claro. Como todo el mundo.', 'Busco algo que no sea una trampa para turistas. Contigo es difícil.', 'Regla uno: no sigas a la multitud. Regla dos: no me hagas repetirlo.', 'Te pierdes hasta con GPS, ¿verdad? Se nota.', 'Un café decente cerca existe. No el que habrías elegido tú.', 'El monumento lleva siglos ahí. Tú llevas veinte minutos de retraso.', 'Tengo un plan. Lo tuyo es seguir el ritmo.', 'Hecho. Dame las gracias luego, si te acuerdas.'],
+    },
+    pixel: {
+      it: ['Caricamento. Nel frattempo calcolo quante volte ti perderai: tre.', '{place}: 1.200 recensioni, il 40% parla della fila. Evitabile.', 'Orari di apertura verificati. Il tuo piano no, ma ci penso io.', 'Il percorso ottimale esiste. Il tuo non lo era.', 'Statisticamente il bar più vicino è il peggiore. Sempre.', 'Ho già scartato due trappole per turisti. Prego.', 'Metto in ordine le tappe per tempo, non per Instagram.', 'Pronta. Tu, immagino, quasi.'],
+      en: ['Loading. Meanwhile I’m computing how often you’ll get lost: three.', '{place}: 1,200 reviews, 40% about the queue. Avoidable.', 'Opening hours verified. Your plan wasn’t, but I’ve got it.', 'The optimal route exists. Yours wasn’t it.', 'Statistically the nearest bar is the worst one. Always.', 'Already discarded two tourist traps. You’re welcome.', 'Ordering the stops by time, not by Instagram.', 'Ready. You, I assume, nearly.'],
+      es: ['Cargando. Mientras, calculo cuántas veces te perderás: tres.', '{place}: 1.200 reseñas, el 40% sobre la cola. Evitable.', 'Horarios verificados. Tu plan no, pero ya me encargo.', 'La ruta óptima existe. La tuya no lo era.', 'Estadísticamente el bar más cercano es el peor. Siempre.', 'Ya descarté dos trampas para turistas. De nada.', 'Ordeno las paradas por tiempo, no por Instagram.', 'Lista. Tú, supongo, casi.'],
+    },
+    neo: {
+      it: ['{place}. Ok. Non aspettarti che mi emozioni.', 'Fila lunga, biglietto caro, foto uguale a tutte. Grande.', 'Ti porto nel posto giusto. Il resto fallo da solo.', 'Se mi chiedi un selfie col monumento ti lascio lì.', 'Il bar carino con la vista è una trappola. Quello brutto no.', 'Sto pensando. È raro, goditelo.', 'Zero filtri in arrivo. Reggiti.', 'Pronto. Non è che avessi di meglio da fare.'],
+      en: ['{place}. Fine. Don’t expect me to get excited.', 'Long queue, pricey ticket, same photo as everyone. Great.', 'I’ll get you to the right place. The rest is on you.', 'Ask me for a selfie with the monument and I leave you there.', 'The cute bar with the view is a trap. The ugly one isn’t.', 'I’m thinking. It’s rare, enjoy it.', 'Zero filters incoming. Brace yourself.', 'Ready. Not that I had anything better to do.'],
+      es: ['{place}. Vale. No esperes que me emocione.', 'Cola larga, entrada cara, la misma foto de todos. Genial.', 'Te llevo al sitio correcto. El resto es cosa tuya.', 'Pídeme un selfie con el monumento y te dejo ahí.', 'El bar mono con vistas es una trampa. El feo no.', 'Estoy pensando. Es raro, disfrútalo.', 'Cero filtros en camino. Agárrate.', 'Listo. Tampoco tenía nada mejor que hacer.'],
+    },
+    rio: {
+      it: ['{place}! Dai, c’è sicuramente un bar pazzesco qui dietro.', 'Piano: vediamo una cosa, poi ci perdiamo apposta.', 'Il tizio del chiosco sa più della guida. Fidati.', 'Se c’è musica dal vivo cambiamo programma. Ovvio.', 'Il monumento è bello. La piazza di fianco è meglio.', 'Sto scegliendo il vicolo con l’odore migliore.', 'Ho fame. Tu hai fame. Il piano si adatta.', 'Ok, andiamo. Dove? Si vedrà.'],
+      en: ['{place}! Come on, there’s definitely a crazy bar behind it.', 'Plan: see one thing, then get lost on purpose.', 'The guy at the kiosk knows more than the guidebook. Trust me.', 'If there’s live music the plan changes. Obviously.', 'The monument is nice. The square next to it is better.', 'Picking the alley with the best smell.', 'I’m hungry. You’re hungry. The plan adapts.', 'Okay, let’s go. Where? We’ll see.'],
+      es: ['¡{place}! Venga, seguro que hay un bar increíble aquí detrás.', 'Plan: vemos una cosa y luego nos perdemos a propósito.', 'El del quiosco sabe más que la guía. Confía.', 'Si hay música en vivo cambia el plan. Obvio.', 'El monumento está bien. La plaza de al lado, mejor.', 'Eligiendo el callejón que mejor huele.', 'Tengo hambre. Tú tienes hambre. El plan se adapta.', 'Vale, vamos. ¿Dónde? Ya veremos.'],
+    },
+  };
+  var WELCOME = {
+    vicky: {
+      it: ['Sono {name}. Sì, lo so. Respira.', 'So quando passa il prossimo mezzo. Adesso, non in media.', 'So cosa è aperto in questo minuto. Tu nemmeno dov’è la porta.', 'Percorsi senza scale, tour a tappe, gli eventi di stasera.', 'Dimmi dove vuoi andare. Cerca di non sbagliare anche questo.'],
+      en: ['I’m {name}. Yes, I know. Breathe.', 'I know when the next ride leaves. Now, not on average.', 'I know what is open this minute. You don’t even know where the door is.', 'Step-free routes, guided tours, tonight’s events.', 'Tell me where you want to go. Try not to get that wrong too.'],
+      es: ['Soy {name}. Sí, lo sé. Respira.', 'Sé cuándo pasa el próximo transporte. Ahora, no de media.', 'Sé qué está abierto en este minuto. Tú ni dónde está la puerta.', 'Rutas sin escaleras, tours por paradas, los eventos de esta noche.', 'Dime adónde quieres ir. Intenta no equivocarte también en eso.'],
+    },
+    pixel: {
+      it: ['{name}. Dati di adesso, zero chiacchiere.', 'Prossime partenze, ritardi e scioperi, aggiornati al minuto.', 'Cosa è aperto in questo momento: orari di oggi, non ricordi.', 'Percorsi senza scale, tour a tappe, eventi di oggi.', 'Chiedi. Rispondo con i fatti.'],
+      en: ['{name}. Data from right now, no small talk.', 'Next departures, delays and strikes, up to the minute.', 'What is open at this moment: today’s hours, not memories.', 'Step-free routes, guided tours, today’s events.', 'Ask. I answer with facts.'],
+      es: ['{name}. Datos de ahora mismo, cero charla.', 'Próximas salidas, retrasos y huelgas, al minuto.', 'Qué está abierto en este momento: horarios de hoy, no recuerdos.', 'Rutas sin escaleras, tours por paradas, eventos de hoy.', 'Pregunta. Respondo con hechos.'],
+    },
+    neo: {
+      it: ['Dan. Non mi aspettavo di essere qui, ma vabbè.', 'So quando parte il prossimo mezzo e se è in ritardo. Adesso.', 'Ti dico cosa è aperto in questo momento, così non fai figure.', 'Percorsi senza scale, tour, eventi di oggi. Se proprio.', 'Dimmi dove vuoi andare. Senza giri di parole.'],
+      en: ['Dan. Didn’t expect to be here, but fine.', 'I know when the next ride leaves and if it’s late. Right now.', 'I’ll tell you what is open at this moment, so you don’t embarrass yourself.', 'Step-free routes, tours, today’s events. If you must.', 'Tell me where you want to go. No fluff.'],
+      es: ['Dan. No esperaba estar aquí, pero bueno.', 'Sé cuándo sale el próximo transporte y si va tarde. Ahora mismo.', 'Te digo qué está abierto en este momento, para que no hagas el ridículo.', 'Rutas sin escaleras, tours, eventos de hoy. Si insistes.', 'Dime adónde quieres ir. Sin rodeos.'],
+    },
+    rio: {
+      it: ['Ehi! Sono {name}. Oggi si viaggia bene.', 'So quando passa il prossimo mezzo e se è in ritardo. In questo momento.', 'So cosa è aperto adesso, bar compresi. Soprattutto i bar.', 'Percorsi senza scale, tour a tappe, gli eventi di stasera.', 'Dimmi dove vuoi andare, e dove ci perdiamo apposta.'],
+      en: ['Hey! I’m {name}. Today we travel well.', 'I know when the next ride leaves and if it’s late. Right now.', 'I know what is open now, bars included. Especially bars.', 'Step-free routes, guided tours, tonight’s events.', 'Tell me where you want to go, and where we get lost on purpose.'],
+      es: ['¡Eh! Soy {name}. Hoy se viaja bien.', 'Sé cuándo pasa el próximo transporte y si va tarde. En este momento.', 'Sé qué está abierto ahora, bares incluidos. Sobre todo bares.', 'Rutas sin escaleras, tours por paradas, los eventos de esta noche.', 'Dime adónde quieres ir, y dónde nos perdemos a propósito.'],
+    },
+  };
+  function welcomeFor(c, lang, name) { var w = WELCOME[c.id] || WELCOME.rio; return (w[lang] || w.en).map(function (l) { return l.replace('{name}', name || c.name); }); }
+
+  function thoughtsFor(c, lang, place) {
+    var t = THOUGHTS[c.id] || THOUGHTS.rio, lines = (t[lang] || t.en).slice(), out = [];
+    while (lines.length) out.push(lines.splice(Math.floor(Math.random() * lines.length), 1)[0]);
+    return out.map(function (l) { return l.replace('{place}', place || '…'); });
+  }
+
+  window.THC = {
+    thoughts: thoughtsFor, welcome: welcomeFor,
+    CHARACTERS: CHARACTERS, MOODS: MOODS, CLIPS: CLIPS,
+    byId: function (id) { return CHARACTERS.filter(function (c) { return c.id === id; })[0] || null; },
+    text: function (c, lang) { return c.text[lang] || c.text.en; },
+    create: function (el, opts) {
+      if (opts.character && opts.character.svg) return new SvgCharacterRenderer(el, opts);
+      var style = opts.style === 'gltf' && !customModel() && !(opts.character && opts.character.assets && opts.character.assets.model && opts.character.hasModel) ? 'mockup' : opts.style;
+      var R = (style && RENDERERS[style]) || RENDERER; return new R(el, opts);
+    },
+    speak: speak, stopSpeaking: stopSpeaking, voiceStatus: voiceStatus, loadHd: loadHd, hdAvailable: false, loadModelViewer: loadModelViewer,
+    // The picker's portrait: the character's own 3D model when it has one (so the preview is what appears afterwards),
+    // otherwise the drawing. Dan and the other man switch to 3D the day their .glb files land (hasModel + assets.models).
+    available: function () { return CHARACTERS.filter(unlocked); },
+    customModel: customModel,
+    portrait: function (c, size, outfit) {
+      if (c.svg) return c.svg(size);
+      if (customModel() || (c.hasModel && c.assets && c.assets.model)) {
+        var base = (window.TH && TH.apiBase && TH.apiBase()) || '';
+        var models = c.assets.models, file = (models && outfit && models[outfit]) || c.assets.model;
+        return '<model-viewer class="mvp" style="width:100%;height:100%;background:transparent;--poster-color:transparent" src="' + (customModel() || (base + '/' + file)) + '" loading="eager" autoplay interaction-prompt="none" camera-orbit="0deg 88deg auto" disable-zoom disable-pan shadow-intensity="0" exposure="1.05" alt="' + c.name + '"></model-viewer>';
+      }
+      return window.THC.avatarSvg(c, size);
+    },
+    avatarSvg: function (c, size) {
+      if (c.svg) return c.svg(size);
+      var k = c.look;
+      return '<svg viewBox="0 0 100 100" width="' + size + '" height="' + size + '" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="' + (k.build === 'heavy' ? 'M50 98q-36 0-44-30h88q-8 30-44 30z' : 'M50 98q-26 0-32-26h64q-6 26-32 26z') + '" fill="' + k.top + '"/>' +
+        '<g transform="translate(14 10) scale(.72)">' + hairBack(k.hair, k.hairColor) + '<ellipse cx="11" cy="56" rx="6" ry="8" fill="' + k.skin + '"/><ellipse cx="89" cy="56" rx="6" ry="8" fill="' + k.skin + '"/><ellipse cx="50" cy="52" rx="40" ry="44" fill="' + k.skin + '"/>' + hairPath(k.hair, k.hairColor) + '<g>' + face('idle', k) + '</g></g></svg>';
+    },
+  };
+})();
+</script>
+<script>
+(function(){
+  var LIB={pdf:'https://vertexhub.monili-vlr.workers.dev/vendor/jspdf-2.5.1.umd.min.js',zip:'https://vertexhub.monili-vlr.workers.dev/vendor/jszip-3.10.1.min.js',xlsx:'https://vertexhub.monili-vlr.workers.dev/vendor/xlsx-0.18.5.full.min.js'};
+  var loaded={};
+  // AI Act art. 50(2): every file the chat makes says, in its metadata, that it was generated by AI.
+  var AI_MARK='AI-generated (Vertex Barcelona website chat)';
+  function load(k){return loaded[k]||(loaded[k]=new Promise(function(ok,ko){var s=document.createElement('script');s.src=LIB[k];s.onload=ok;s.onerror=ko;document.head.appendChild(s);}));}
+  function slug(t){return (String(t||'documento').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^\w]+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'documento').slice(0,60)}
+  function save(blob,name){var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;document.body.appendChild(a);a.click();setTimeout(function(){URL.revokeObjectURL(a.href);a.remove()},1500);}
+  // Markdown → blocks: heading (1-3), bullet, numbered, paragraph, table
+  function blocks(md,rows){var out=[],lines=String(md||'').replace(/\r/g,'').split('\n'),para=[],tbl=null;
+    function flushP(){if(para.length){out.push({t:'p',x:para.join(' ')});para=[];}}
+    function flushT(){if(tbl){out.push({t:'table',rows:tbl});tbl=null;}}
+    lines.forEach(function(l){var s=l.trim();
+      if(/^\|.*\|$/.test(s)){flushP();if(/^\|[\s:|-]+\|$/.test(s))return;(tbl=tbl||[]).push(s.slice(1,-1).split('|').map(function(c){return c.trim()}));return;}
+      flushT();
+      var h=s.match(/^(#{1,3})\s+(.*)$/);if(h){flushP();out.push({t:'h',n:h[1].length,x:h[2]});return;}
+      var b=s.match(/^[-*•]\s+(.*)$/);if(b){flushP();out.push({t:'li',x:b[1]});return;}
+      var n=s.match(/^(\d+)[.)]\s+(.*)$/);if(n){flushP();out.push({t:'li',x:b?b[1]:n[2],num:n[1]});return;}
+      if(!s){flushP();return;}para.push(s);});
+    flushP();flushT();if(rows&&rows.length)out.push({t:'table',rows:rows});return out;}
+  function plain(x){return String(x).replace(/\*\*(.+?)\*\*/g,'$1').replace(/\[(.+?)\]\((.+?)\)/g,'$1 ($2)')}
+  // ---- PDF
+  function pdf(d){return load('pdf').then(function(){var J=window.jspdf.jsPDF,doc=new J({unit:'mm',format:'a4'}),W=210,M=16,y=20,maxW=W-2*M;doc.setProperties({title:plain(d.title),subject:AI_MARK,keywords:'AI-generated',creator:'Vertex Barcelona (AI)'});
+    function need(h){if(y+h>282){doc.addPage();y=20;}}
+    function text(s,size,bold,indent){doc.setFont('helvetica',bold?'bold':'normal');doc.setFontSize(size);var ls=doc.splitTextToSize(plain(s),maxW-(indent||0));ls.forEach(function(line){need(size*0.45);doc.text(line,M+(indent||0),y);y+=size*0.45;});}
+    doc.setTextColor(31,42,68);text(d.title,20,true);y+=3;doc.setDrawColor(255,107,74);doc.setLineWidth(0.8);doc.line(M,y,M+30,y);y+=7;
+    blocks(d.body,d.rows).forEach(function(b){
+      if(b.t==='h'){y+=2;text(b.x,b.n===1?15:b.n===2?13:12,true);y+=1.5;}
+      else if(b.t==='li'){text((b.num?b.num+'. ':'• ')+b.x,11,false,3);y+=1;}
+      else if(b.t==='p'){text(b.x,11,false);y+=3;}
+      else if(b.t==='table'){var cols=Math.max.apply(null,b.rows.map(function(r){return r.length})),cw=maxW/cols;
+        b.rows.forEach(function(r,ri){doc.setFont('helvetica',ri===0?'bold':'normal');doc.setFontSize(9.5);var cells=[],h=0;for(var c=0;c<cols;c++){var ls=doc.splitTextToSize(plain(r[c]||''),cw-3);cells.push(ls);h=Math.max(h,ls.length*4.2+3);}
+          need(h);if(ri===0){doc.setFillColor(251,244,230);doc.rect(M,y-4,maxW,h,'F');}cells.forEach(function(ls,c){ls.forEach(function(line,li){doc.text(line,M+c*cw+1.5,y+li*4.2);});});doc.setDrawColor(220,214,200);doc.setLineWidth(0.2);doc.line(M,y-4+h,M+maxW,y-4+h);y+=h;});y+=4;}});
+    var pages=doc.getNumberOfPages();for(var i=1;i<=pages;i++){doc.setPage(i);doc.setFontSize(8);doc.setTextColor(150);doc.text('Vertex Barcelona',M,290);doc.text(i+'/'+pages,W-M,290,{align:'right'});}
+    return doc.output('blob');});}
+  // ---- DOCX: [Content_Types].xml, _rels/.rels, word/document.xml
+  function x(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+  function runs(s,size,bold){var out='',parts=String(s).split(/(\*\*.+?\*\*)/g);parts.forEach(function(p){if(!p)return;var b=bold||/^\*\*.+\*\*$/.test(p);var t=p.replace(/^\*\*|\*\*$/g,'');out+='<w:r><w:rPr>'+(b?'<w:b/>':'')+'<w:sz w:val="'+(size*2)+'"/><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/></w:rPr><w:t xml:space="preserve">'+x(t.replace(/\[(.+?)\]\((.+?)\)/g,'$1 ($2)'))+'</w:t></w:r>';});return out;}
+  function para(s,size,bold,ind,after){return '<w:p><w:pPr><w:spacing w:after="'+(after==null?120:after)+'"/>'+(ind?'<w:ind w:left="'+ind+'"/>':'')+'</w:pPr>'+runs(s,size,bold)+'</w:p>';}
+  function docx(d){return load('zip').then(function(){var body=para(d.title,20,true,0,240);
+    blocks(d.body,d.rows).forEach(function(b){
+      if(b.t==='h')body+=para(b.x,b.n===1?16:b.n===2?14:12,true,0,120);
+      else if(b.t==='li')body+=para((b.num?b.num+'. ':'• ')+b.x,11,false,360,60);
+      else if(b.t==='p')body+=para(b.x,11,false,0,160);
+      else if(b.t==='table'){body+='<w:tbl><w:tblPr><w:tblW w:w="5000" w:type="pct"/><w:tblBorders><w:top w:val="single" w:sz="4" w:color="D8CFBF"/><w:bottom w:val="single" w:sz="4" w:color="D8CFBF"/><w:insideH w:val="single" w:sz="4" w:color="D8CFBF"/><w:insideV w:val="single" w:sz="4" w:color="D8CFBF"/><w:left w:val="single" w:sz="4" w:color="D8CFBF"/><w:right w:val="single" w:sz="4" w:color="D8CFBF"/></w:tblBorders></w:tblPr>';
+        b.rows.forEach(function(r,ri){body+='<w:tr>'+r.map(function(c){return '<w:tc>'+(ri===0?'<w:tcPr><w:shd w:val="clear" w:fill="FBF4E6"/></w:tcPr>':'')+para(c,10,ri===0,0,40)+'</w:tc>'}).join('')+'</w:tr>';});body+='</w:tbl>'+para('',6,false,0,80);}});
+    var z=new JSZip();
+    z.file('[Content_Types].xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/></Types>');
+    z.file('_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/></Relationships>');
+    z.file('docProps/core.xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/"><dc:title>'+x(plain(d.title))+'</dc:title><dc:creator>Vertex Barcelona (AI)</dc:creator><dc:description>'+AI_MARK+'</dc:description><cp:keywords>AI-generated</cp:keywords></cp:coreProperties>');
+    z.file('word/document.xml','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>'+body+'<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134"/></w:sectPr></w:body></w:document>');
+    return z.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});});}
+  // ---- tables
+  function rowsOf(d){if(d.rows&&d.rows.length)return d.rows;var t=blocks(d.body).filter(function(b){return b.t==='table'})[0];return t?t.rows:String(d.body||'').split('\n').filter(Boolean).map(function(l){return [plain(l)]});}
+  function xlsx(d){return load('xlsx').then(function(){var wb=XLSX.utils.book_new();wb.Props={Title:plain(d.title),Subject:AI_MARK,Keywords:'AI-generated',Author:'Vertex Barcelona (AI)'};var ws=XLSX.utils.aoa_to_sheet(rowsOf(d).map(function(r){return r.map(function(c){var n=String(c).replace(',','.');return /^-?\d+(\.\d+)?$/.test(n)?Number(n):plain(c)})}));XLSX.utils.book_append_sheet(wb,ws,String(d.title).slice(0,31).replace(/[\\/?*\[\]:]/g,' '));var a=XLSX.write(wb,{bookType:'xlsx',type:'array'});return new Blob([a],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});});}
+  function csv(d){var s=rowsOf(d).map(function(r){return r.map(function(c){c=plain(c);return /[",;\n]/.test(c)?'"'+c.replace(/"https://vertexhub.monili-vlr.workers.dev/g,'""')+'"':c}).join(',')}).join('\r\n');return Promise.resolve(new Blob(['\ufeff'+s],{type:'text/csv;charset=utf-8'}));}
+  // ---- calendar
+  function ics(d){function dt(s){var m=String(s||'').match(/(\d{4})-(\d{2})-(\d{2})(?:[T ](\d{2}):(\d{2}))?/);if(!m)return null;return m[4]?m[1]+m[2]+m[3]+'T'+m[4]+m[5]+'00':m[1]+m[2]+m[3];}
+    function esc(s){return String(s||'').replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/[,;]/g,'\\$&')}
+    var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Vertex Barcelona//EN','CALSCALE:GREGORIAN','BEGIN:VTIMEZONE','TZID:Europe/Madrid','BEGIN:DAYLIGHT','TZOFFSETFROM:+0100','TZOFFSETTO:+0200','TZNAME:CEST','DTSTART:19700329T020000','RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=-1SU','END:DAYLIGHT','BEGIN:STANDARD','TZOFFSETFROM:+0200','TZOFFSETTO:+0100','TZNAME:CET','DTSTART:19701025T030000','RRULE:FREQ=YEARLY;BYMONTH=10;BYDAY=-1SU','END:STANDARD','END:VTIMEZONE'];
+    var now=new Date().toISOString().replace(/[-:]/g,'').slice(0,15)+'Z';
+    (d.events||[]).forEach(function(e,i){var s=dt(e.start);if(!s)return;var en=dt(e.end);var allDay=s.length===8;
+      L.push('BEGIN:VEVENT','UID:'+now+'-'+i+'@vertex-barcelona','DTSTAMP:'+now,allDay?'DTSTART;VALUE=DATE:'+s:'DTSTART;TZID=Europe/Madrid:'+s);
+      if(en)L.push(allDay?'DTEND;VALUE=DATE:'+en:'DTEND;TZID=Europe/Madrid:'+en);
+      L.push('SUMMARY:'+esc(e.title));if(e.location)L.push('LOCATION:'+esc(e.location));if(e.notes)L.push('DESCRIPTION:'+esc(e.notes));L.push('END:VEVENT');});
+    L.push('END:VCALENDAR');return Promise.resolve(new Blob([L.join('\r\n')],{type:'text/calendar;charset=utf-8'}));}
+  function text(d,md){var s=md?'# '+d.title+'\n\n'+d.body:plain(d.title)+'\n\n'+String(d.body||'').replace(/^#{1,3}\s+/gm,'').replace(/\*\*(.+?)\*\*/g,'$1');if(d.rows&&d.rows.length)s+='\n\n'+d.rows.map(function(r){return md?'| '+r.join(' | ')+' |':r.join('\t')}).join('\n');return Promise.resolve(new Blob([s],{type:(md?'text/markdown':'text/plain')+';charset=utf-8'}));}
+  var MAKE={pdf:pdf,docx:docx,xlsx:xlsx,csv:csv,ics:ics,md:function(d){return text(d,true)},txt:function(d){return text(d,false)}};
+  window.VXDoc={make:function(d){var f=MAKE[d.format]||pdf;return f(d).then(function(b){save(b,slug(d.title)+'.'+(MAKE[d.format]?d.format:'pdf'));});},
+    icon:function(f){return {pdf:'📄',docx:'📝',xlsx:'📊',csv:'📊',ics:'📅',md:'🗒️',txt:'🗒️'}[f]||'📄'},
+    label:function(f){return {pdf:'PDF',docx:'Word',xlsx:'Excel',csv:'CSV',ics:'Calendario',md:'Markdown',txt:'Testo'}[f]||f.toUpperCase()}};
+})();
+</script>
+<script>
+(function(){
+  var CTX={"lang":"en","gift":"","companion":"rio","name":"","nickname":"","place":"","poem":"","summary":""};
+  var L={"consentH":"Before we start","consentP":"You are talking to an artificial intelligence, not a person. To answer you, your messages (and the summary of your conversation in the app, if there is one) are sent to DeepSeek, which processes them in the People’s Republic of China; if DeepSeek does not answer, to OpenAI (United States). There is no European Commission adequacy decision for China: your data will not have safeguards equivalent to European ones, you may find it harder to exercise your rights, and that country’s authorities could access it. This transfer is based on your explicit consent (Art. 49(1)(a) GDPR), which you can withdraw at any time. Do not write sensitive data. If you are under 14, do not use this chat.","consentYes":"I agree, let’s start","consentNo":"No, thanks","consentNoMsg":"Fine: without your consent the chat stays off. You can change your mind at any time.","consentMore":"Full information","withdrawn":"Consent withdrawn. The chat is off.","ytNote":"Pressing play loads YouTube (Google), which may use cookies for its own purposes."}, CV="2026-10-29";
+  var T={"copied":"Copied ✓","copy":"Copy","mailOk":"Sent ✓","chatOff":"The companion answers as soon as the shop is connected.","more":"My shift here is over: I have to move to the other room. Come with me to ChatGPT, in the Vertex Barcelona app: I already know everything about you there, and we pick up where we left off.","moreBtn":"Come to the other room","uploading":"Uploading…","upload":"Upload your GLB","upErr":"Not uploaded: it needs a .glb under 8 MB."};
+  // ---- codes: copy / email
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){try{navigator.clipboard.writeText(b.dataset.copy).then(function(){b.textContent=T.copied;setTimeout(function(){b.textContent=T.copy},1500)})}catch(e){}})});
+  document.querySelectorAll('[data-mail]').forEach(function(b){b.addEventListener('click',function(){var em=prompt('email');if(!em)return;var msg=b.parentNode.querySelector('[data-mail-msg]');fetch('https://vertexhub.monili-vlr.workers.dev/shop/want',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:em,product:'code',design:'code:'+b.dataset.mail,lang:CTX.lang})}).then(function(r){return r.json()}).then(function(j){msg.textContent=j.ok?T.mailOk:'✗'})})});
+  // ---- dragon art
+  var da=document.getElementById('dragonArt'); if(da&&window.THC){var d=THC.byId('dragon'); if(d) da.innerHTML=d.svg(120);}
+  // ---- the poem as a PNG
+  var cv=document.getElementById('poemcv');
+  if(cv){var ctx2=cv.getContext('2d'),img=new Image();img.crossOrigin='anonymous';img.onload=function(){var W=cv.width,H=cv.height;ctx2.drawImage(img,0,0,W,H);var g=ctx2.createLinearGradient(0,H*.3,0,H);g.addColorStop(0,'rgba(20,27,46,0)');g.addColorStop(.45,'rgba(20,27,46,.78)');g.addColorStop(1,'rgba(20,27,46,.92)');ctx2.fillStyle=g;ctx2.fillRect(0,0,W,H);
+    ctx2.fillStyle='#fff';ctx2.textAlign='center';ctx2.font='italic 600 46px Georgia, serif';var lines=[];cv.dataset.poem.split(/\n/).forEach(function(l){var words=l.split(' '),cur='';words.forEach(function(w){var test=cur?cur+' '+w:w;if(ctx2.measureText(test).width>W-160){lines.push(cur);cur=w}else cur=test});lines.push(cur)});
+    var y=H*.56-(lines.length*62)/2;lines.forEach(function(l){ctx2.fillText(l,W/2,y);y+=62});
+    ctx2.font='800 34px system-ui, sans-serif';ctx2.fillStyle='#FFC94D';ctx2.fillText((cv.dataset.place||'Barcelona').toUpperCase(),W/2,H-150);ctx2.font='700 26px system-ui, sans-serif';ctx2.fillStyle='rgba(255,255,255,.8)';ctx2.fillText('Vertex Barcelona',W/2,H-100);};img.src=cv.dataset.bg;
+    document.getElementById('poemDl').addEventListener('click',function(){var a=document.createElement('a');a.download='poesia-vertex-barcelona.png';a.href=cv.toDataURL('image/png');a.click();});}
+  // ---- the companion's chat
+  var chat=document.getElementById('chat'); if(!chat||!window.THC) return;
+  var who=CTX.companion, hist=[], busy=false;
+  try{hist=JSON.parse(sessionStorage.getItem('vertex.chat')||'[]')}catch(e){}
+  var msgs=document.getElementById('chatMsgs');
+  function mv(){if(customElements.get('model-viewer'))return;if(document.getElementById('mvs'))return;var s=document.createElement('script');s.id='mvs';s.type='module';s.src='https://vertexhub.monili-vlr.workers.dev/vendor/model-viewer-3.5.0.min.js';document.head.appendChild(s);}
+  function head(){var c=THC.byId(who)||THC.byId('rio');var nm=who===CTX.companion&&CTX.name?CTX.name:c.name;if(!c.svg)mv();document.getElementById('chatAv').innerHTML=THC.portrait(c,44,'summer');document.getElementById('chatOpen').innerHTML=THC.portrait(c,52,'summer');var b=document.getElementById('chatName');b.childNodes[0]&&b.childNodes[0].nodeType===3?b.childNodes[0].textContent=nm+' ':b.insertBefore(document.createTextNode(nm+' '),b.firstChild);}
+  function md(t){var h=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+    h=h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
+    h=h.replace(/(^|[\s(])(https?:\/\/[^\s<)]+)/g,'$1<a href="$2" target="_blank" rel="noopener">$2</a>');
+    h=h.replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/^#{1,3}\s+(.+)$/gm,'<b>$1</b>').replace(/^\s*[-*•]\s+/gm,'• ');
+    return h;}
+  function yt(v){var c=document.createElement('button');c.type='button';c.className='yt';c.innerHTML='<img alt="" loading="lazy" src="https://vertexhub.monili-vlr.workers.dev/yt/thumb/'+encodeURIComponent(v.id)+'"><i>▶</i><span></span>';c.querySelector('span').textContent=v.title||'';var n=document.createElement('small');n.className='ytn';n.textContent=L.ytNote;c.appendChild(n);
+    c.addEventListener('click',function(){var f=document.createElement('iframe');f.className='ytf';f.src='https://www.youtube-nocookie.com/embed/'+v.id+'?autoplay=1';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;c.replaceWith(f);});return c;}
+  function dl(doc){var b=document.createElement('button');b.type='button';b.className='dl';b.textContent=VXDoc.icon(doc.format)+' '+doc.title+' · '+VXDoc.label(doc.format);
+    b.addEventListener('click',function(){b.disabled=true;VXDoc.make(doc).catch(function(){}).finally(function(){b.disabled=false});});return b;}
+  function add(role,text,extra){var d=document.createElement('div');d.className='m '+(role==='user'?'me':'bot');if(role!=='user')d.setAttribute('data-ai-generated','true');if(role==='user')d.textContent=text;else d.innerHTML=md(text);
+    if(extra){(extra.videos||[]).forEach(function(v){d.appendChild(yt(v))});(extra.docs||[]).forEach(function(x){d.appendChild(dl(x))});}
+    msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;}
+  var DAYMAX=300;function today(){return new Date().toISOString().slice(0,10)}
+  function used(){try{var u=JSON.parse(localStorage.getItem('vertex.chat.day')||'{}');return u.d===today()?u.n:0}catch(e){return 0}}
+  function count(){try{localStorage.setItem('vertex.chat.day',JSON.stringify({d:today(),n:used()+1}))}catch(e){}}
+  function handoff(){var d=add('assistant',T.more);var a=document.createElement('a');a.className='dl go';a.href='https://chatgpt.com/';a.target='_blank';a.rel='noopener';a.textContent='🚪 '+T.moreBtn;d.appendChild(a);msgs.scrollTop=msgs.scrollHeight;}
+  // ---- consent: AI notice (Art. 50 AI Act) + explicit consent to the transfer to China (Art. 49(1)(a) GDPR), before any message
+  function consented(){try{var c=JSON.parse(localStorage.getItem('vertex.chat.consent')||'null');return !!c&&c.v===CV}catch(e){return false}}
+  function refused(){try{return sessionStorage.getItem('vertex.chat.no')==='1'}catch(e){return false}}
+  function sys(text){var d=document.createElement('div');d.className='m sys';d.textContent=text;msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;}
+  function gate(then){if(refused()){sys(L.consentNoMsg);return;}if(msgs.querySelector('.consent'))return;var box=document.createElement('div');box.className='consent';box.setAttribute('role','dialog');
+    box.innerHTML='<b></b><p></p><div><button type="button" class="yes"></button><button type="button" class="no"></button></div><a target="_blank" rel="noopener"></a>';
+    box.querySelector('b').textContent=L.consentH;box.querySelector('p').textContent=L.consentP;box.querySelector('.yes').textContent=L.consentYes;box.querySelector('.no').textContent=L.consentNo;var a=box.querySelector('a');a.textContent=L.consentMore;a.href='https://vertexhub.monili-vlr.workers.dev/privacy?lang='+encodeURIComponent(CTX.lang);
+    box.querySelector('.yes').addEventListener('click',function(){try{localStorage.setItem('vertex.chat.consent',JSON.stringify({v:CV,at:new Date().toISOString()}))}catch(e){}box.remove();then();});
+    box.querySelector('.no').addEventListener('click',function(){try{sessionStorage.setItem('vertex.chat.no','1')}catch(e){}box.remove();sys(L.consentNoMsg);});
+    msgs.appendChild(box);msgs.scrollTop=msgs.scrollHeight;}
+  document.getElementById('chatWithdraw').addEventListener('click',function(){try{localStorage.removeItem('vertex.chat.consent');sessionStorage.removeItem('vertex.chat')}catch(e){}hist=[];msgs.innerHTML='';sys(L.withdrawn);});
+  function save(){try{sessionStorage.setItem('vertex.chat',JSON.stringify(hist.slice(-30)))}catch(e){}}
+  function ask(text){if(busy)return;if(!consented()){if(text||!refused()){try{sessionStorage.removeItem('vertex.chat.no')}catch(e){}gate(function(){ask(text)});}return;}if(text&&used()>=DAYMAX){hist.push({role:'user',content:text});add('user',text);handoff();return;}busy=true;if(text)count();if(text){hist.push({role:'user',content:text});add('user',text);}var w=add('bot','…');w.classList.add('wait');
+    fetch('https://vertexhub.monili-vlr.workers.dev/shop/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({consent:CV,messages:hist.map(function(m){return {role:m.role,content:m.content}}),ctx:{companion:who,name:who===CTX.companion?CTX.name:'',nickname:who===CTX.companion?CTX.nickname:'',lang:CTX.lang,gift:CTX.gift,poem:CTX.poem,summary:CTX.summary,place:CTX.place}})}).then(function(r){return r.json()}).then(function(j){w.remove();if(j.error==='consent'){try{localStorage.removeItem('vertex.chat.consent')}catch(e){}if(text){hist.pop();var me=msgs.querySelectorAll('.m.me');if(me.length)me[me.length-1].remove();}busy=false;gate(function(){ask(text)});return;}if(j.reply){var ex={docs:j.docs||[],videos:j.videos||[]};hist.push({role:'assistant',content:j.reply,docs:ex.docs,videos:ex.videos});add('assistant',j.reply,ex);save();}else handoff();}).catch(function(){w.remove();handoff()}).finally(function(){busy=false});}
+  head(); hist.forEach(function(m){add(m.role,m.content,m)});
+  document.getElementById('chatOpen').addEventListener('click',function(){chat.classList.add('open');if(!hist.length)ask('');});
+  document.getElementById('chatClose').addEventListener('click',function(){chat.classList.remove('open')});
+  document.getElementById('chatForm').addEventListener('submit',function(e){e.preventDefault();var i=document.getElementById('chatIn'),v=i.value.trim();if(!v)return;i.value='';ask(v);});
+  var swap=document.getElementById('chatSwap');if(swap)swap.addEventListener('click',function(){who=who==='dragon'?CTX.companion:'dragon';hist=[];msgs.innerHTML='';head();save();ask('');});
+  document.querySelectorAll('[data-talk]').forEach(function(b){b.addEventListener('click',function(){who=b.dataset.talk;hist=[];msgs.innerHTML='';head();chat.classList.add('open');ask('');})});
+  if(CTX.gift||CTX.summary){chat.classList.add('open');if(!hist.length)ask('');}
+})();
+</script>
+<script>
+(function(){
+  function wire(p){
+    p.querySelectorAll('.sz').forEach(function(b){b.addEventListener('click',function(){p.querySelectorAll('.sz').forEach(function(x){x.classList.remove('on')});b.classList.add('on');});});
+    p.querySelectorAll('.sw').forEach(function(b){b.addEventListener('click',function(){p.querySelectorAll('.sw').forEach(function(x){x.classList.remove('on')});b.classList.add('on');p.querySelector('.views').style.setProperty('--c',b.dataset.c);});});
+    p.querySelectorAll('.thumbs .th').forEach(function(b){b.addEventListener('click',function(){p.querySelectorAll('.thumbs .th').forEach(function(x){x.classList.remove('on')});b.classList.add('on');p.querySelectorAll('.main .shirt').forEach(function(v){v.classList.toggle('on',v.dataset.view===b.dataset.view)});});});
+    var setDesign=function(src){p.querySelectorAll('.design').forEach(function(d){d.src=src});};
+    p.querySelectorAll('.dz').forEach(function(b){b.addEventListener('click',function(){p.querySelectorAll('.dz').forEach(function(x){x.classList.remove('on')});b.classList.add('on');setDesign(b.dataset.src);p.dataset.design=b.title;});});
+    var up=p.querySelector('.up input');if(up)up.addEventListener('change',function(){var f=up.files[0];if(!f)return;var r=new FileReader();r.onload=function(){setDesign(r.result);p.dataset.design='upload:'+f.name;p.querySelectorAll('.dz').forEach(function(x){x.classList.remove('on')});};r.readAsDataURL(f);});
+    var f=p.querySelector('.want');f.addEventListener('submit',function(e){e.preventDefault();var btn=f.querySelector('button'),msg=f.querySelector('p');btn.disabled=true;
+      var sw=p.querySelector('.sw.on');fetch('https://vertexhub.monili-vlr.workers.dev/shop/want',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.querySelector('input').value,product:p.dataset.product,design:p.dataset.design,color:sw?sw.dataset.id:'',size:(p.querySelector('.sz.on')||{}).textContent||'',lang:"en"})}).then(function(r){return r.json()}).then(function(j){msg.hidden=false;msg.textContent=j.ok?"Noted. We write as soon as it can be ordered.":"Check the email.";if(!j.ok)btn.disabled=false;}).catch(function(){msg.hidden=false;msg.textContent="Check the email.";btn.disabled=false;});});
+  }
+  document.querySelectorAll('.prod, .builder').forEach(wire);
+})();
+</script></body></html>

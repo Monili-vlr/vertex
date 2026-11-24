@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4CC9F0"/>
+      <stop offset="1" stop-color="#FFF3C4"/>
+    </linearGradient>
+    <linearGradient id="canopy" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF7A59"/>
+      <stop offset="1" stop-color="#FF5A3C"/>
+    </linearGradient>
+    <clipPath id="round"><rect width="512" height="512" rx="112"/></clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <rect width="512" height="512" fill="url(#sky)"/>
+    <!-- sun -->
+    <circle cx="400" cy="112" r="58" fill="#FFC94D"/>
+    <g stroke="#FFC94D" stroke-width="14" stroke-linecap="round">
+      <line x1="400" y1="22" x2="400" y2="40"/><line x1="400" y1="184" x2="400" y2="202"/>
+      <line x1="310" y1="112" x2="328" y2="112"/><line x1="472" y1="112" x2="490" y2="112"/>
+      <line x1="336" y1="48" x2="349" y2="61"/><line x1="451" y1="163" x2="464" y2="176"/>
+      <line x1="336" y1="176" x2="349" y2="163"/><line x1="451" y1="61" x2="464" y2="48"/>
+    </g>
+    <!-- clouds -->
+    <g fill="#FFFFFF" opacity=".95">
+      <ellipse cx="120" cy="140" rx="62" ry="30"/><circle cx="92" cy="128" r="30"/><circle cx="140" cy="118" r="38"/>
+    </g>
+    <!-- falling words (the umbrella game) -->
+    <g font-family="system-ui, 'Segoe UI', sans-serif" font-weight="700" fill="#1F2A44" opacity=".55">
+      <text x="62" y="250" font-size="26" transform="rotate(-8 62 250)">ciao</text>
+      <text x="420" y="250" font-size="24" transform="rotate(10 420 250)">sol</text>
+      <text x="40" y="330" font-size="22" transform="rotate(6 40 330)">viaje</text>
+      <text x="440" y="330" font-size="22" transform="rotate(-6 440 330)">rue</text>
+    </g>
+    <!-- ground -->
+    <ellipse cx="256" cy="520" rx="330" ry="90" fill="#06C9A0" opacity=".9"/>
+    <!-- mascot -->
+    <g transform="translate(256 300)">
+      <!-- body -->
+      <path d="M-46 150 C-46 90 -28 60 0 60 C28 60 46 90 46 150 Z" fill="#4C6FFF"/>
+      <!-- backpack -->
+      <rect x="-70" y="86" width="34" height="54" rx="14" fill="#FFC94D"/>
+      <!-- head -->
+      <circle cx="0" cy="22" r="46" fill="#FFE1BF"/>
+      <!-- cheeks -->
+      <circle cx="-22" cy="34" r="8" fill="#FF9A8B" opacity=".8"/><circle cx="22" cy="34" r="8" fill="#FF9A8B" opacity=".8"/>
+      <!-- eyes -->
+      <circle cx="-16" cy="18" r="6" fill="#1F2A44"/><circle cx="16" cy="18" r="6" fill="#1F2A44"/>
+      <!-- smile -->
+      <path d="M-16 38 Q0 52 16 38" stroke="#1F2A44" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <!-- arm + handle -->
+      <path d="M40 90 L72 60" stroke="#FFE1BF" stroke-width="16" stroke-linecap="round"/>
+      <path d="M78 -80 L78 70 Q78 92 58 92" stroke="#1F2A44" stroke-width="10" fill="none" stroke-linecap="round"/>
+      <!-- umbrella canopy -->
+      <path d="M-62 -80 A140 140 0 0 1 218 -80 Q190 -96 162 -80 Q134 -96 106 -80 Q78 -96 50 -80 Q22 -96 -6 -80 Q-34 -96 -62 -80 Z" fill="url(#canopy)"/>
+      <path d="M22 -80 A140 140 0 0 1 134 -214 L78 -218 Z" fill="#FFFFFF" opacity=".35"/>
+      <circle cx="78" cy="-222" r="8" fill="#1F2A44"/>
+    </g>
+  </g>
+</svg>

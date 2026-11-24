@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vertex · Travel apps for ChatGPT</title>
+<meta name="description" content="Vertex makes three apps for ChatGPT: VertexHub for any city, Vertex Barcelona for Barcelona, and Vertex Bistro, a virtual waiter for restaurants.">
+<meta property="og:title" content="Vertex · Travel apps for ChatGPT">
+<meta property="og:description" content="Live transport, open now, day plans, group rooms and a virtual waiter, inside ChatGPT.">
+<meta property="og:image" content="img/bcn-sagrada.webp">
+<meta name="theme-color" content="#FFF8EC">
+<link rel="icon" href="img/logo.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,800&display=swap">
+<style>
+/* Layout: a sunny editorial landing page. Full-bleed bands, a 1160px inner column, three app chapters in the same
+   rhythm (story, real screens, facts), then measurements, privacy and the legal footer. */
+:root{
+  --bg:#FFF8EC; --surface:#FFFFFF; --ink:#1F2A44; --muted:#5B6478; --line:#EADFCB;
+  --coral:#FF6B4A; --brand:#D9480F; --teal:#06A97F; --blue:#4C6FFF; --violet:#845EF7; --sun:#FFC21A;
+  --band:#FFEFD9; --night:#141B2E;
+  --head:'Unbounded','Arial Black',system-ui,sans-serif; --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#141B2E;--surface:#1E2840;--ink:#F4EFE6;--muted:#AEB6C8;--line:#2F3A58;--band:#1A2338;--brand:#FF8C42;--night:#0C1120;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141B2E;--surface:#1E2840;--ink:#F4EFE6;--muted:#AEB6C8;--line:#2F3A58;--band:#1A2338;--brand:#FF8C42;--night:#0C1120;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body)}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--head);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:800}
+h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:800}
+h3{font-size:1.25rem;font-weight:800}
+p{margin:0}
+.eyebrow{font:800 .78rem/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.lead{font-size:1.18rem;color:var(--muted);max-width:60ch}
+.chip{display:inline-flex;align-items:center;gap:6px;font:800 .85rem/1 var(--body);padding:8px 14px;border-radius:999px;background:var(--ink);color:var(--bg);white-space:nowrap}
+.tag{font:800 .7rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:5px 9px;border-radius:6px;display:inline-block}
+.btn{display:inline-flex;align-items:center;gap:8px;font:800 1rem/1 var(--body);padding:14px 22px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn-primary{background:var(--coral);color:#fff;box-shadow:0 10px 26px rgba(255,107,74,.35)}
+.btn-ghost{background:var(--surface);color:var(--ink);border:2px solid var(--line)}
+.btn:hover{transform:translateY(-2px)}.btn{transition:transform .2s}
+/* header */
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--bg)}
+.nav{display:flex;align-items:center;gap:18px;padding-block:12px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.1rem var(--head)}
+.brand img{width:36px;height:36px;border-radius:9px}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0 0 0 auto;padding:0;flex-wrap:wrap}
+.nav a.l{text-decoration:none;font-weight:700;padding:8px 12px;border-radius:999px;font-size:.95rem}
+.nav a.l:hover{background:var(--band)}
+@media (max-width:760px){.nav ul{display:none}}
+/* hero */
+.hero{position:relative;overflow:hidden;padding-block:72px 40px}
+.hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.stack{position:relative;height:540px}
+.stack figure{position:absolute;margin:0;width:250px;border-radius:30px;padding:9px;background:var(--night);box-shadow:0 30px 70px rgba(31,42,68,.3)}
+.stack figure img{border-radius:22px;height:440px;object-fit:cover;object-position:top}
+.stack figure:nth-child(1){left:0;top:60px;transform:rotate(-7deg);animation:floaty 7s ease-in-out infinite}
+.stack figure:nth-child(2){left:170px;top:0;z-index:2;animation:floaty 7s ease-in-out -2s infinite}
+.stack figure:nth-child(3){left:330px;top:80px;transform:rotate(7deg);animation:floaty 7s ease-in-out -4s infinite}
+@keyframes floaty{50%{translate:0 -12px}}
+.rays{position:absolute;right:-300px;top:-300px;width:1100px;height:1100px;background:repeating-conic-gradient(rgba(255,107,74,.07) 0 9deg,transparent 9deg 18deg);border-radius:50%;animation:spin 80s linear infinite;z-index:-1}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media (max-width:900px){.hero .grid{grid-template-columns:1fr}.stack{height:470px;max-width:560px;margin:0 auto;width:100%}.stack figure{width:200px}.stack figure img{height:360px}.stack figure:nth-child(2){left:30%}.stack figure:nth-child(3){left:auto;right:0}}
+/* trio */
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:8px}
+.trio a{display:grid;grid-template-rows:170px auto;border-radius:24px;overflow:hidden;background:var(--surface);border:1px solid var(--line);text-decoration:none;transition:transform .25s,box-shadow .25s}
+.trio a:hover{transform:translateY(-4px);box-shadow:0 20px 44px rgba(31,42,68,.14)}
+.trio .pic{background-size:cover;background-position:center}
+.trio .txt{padding:18px 20px 22px;display:grid;gap:8px}
+@media (max-width:860px){.trio{grid-template-columns:1fr}}
+/* chapters */
+section{padding-block:84px}
+.band{background:var(--band)}
+.chapter{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.chapter.flip .story{order:2}
+.story{display:grid;gap:18px;min-width:0}
+.feat{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:6px}
+.feat div{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;min-width:0}
+.feat b{display:block;font-size:1rem}
+.feat span{color:var(--muted);font-size:.93rem}
+.screens{display:flex;gap:16px;justify-content:center;align-items:flex-start}
+.phone{flex:0 0 auto;width:220px;border-radius:30px;padding:8px;background:var(--night);box-shadow:0 24px 56px rgba(31,42,68,.28)}
+.phone img{border-radius:22px;height:430px;width:100%;object-fit:cover;object-position:top}
+.phone:nth-child(2){margin-top:46px}
+.cap{text-align:center;font-size:.85rem;color:var(--muted);margin-top:10px}
+@media (max-width:900px){.chapter{grid-template-columns:1fr}.chapter.flip .story{order:0}.feat{grid-template-columns:1fr}.phone{width:46%}.phone img{height:auto;aspect-ratio:440/860}}
+.sources{display:flex;flex-wrap:wrap;gap:8px}
+.sources span{font:700 .88rem var(--body);padding:8px 12px;border-radius:10px;background:var(--surface);border:1px solid var(--line)}
+.sources span i{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;background:var(--coral)}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.duo>div{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;display:grid;gap:10px;align-content:start}
+.duo ol{margin:0;padding-left:20px;display:grid;gap:6px}
+.link-card{margin-top:18px;border-radius:22px;padding:22px 24px;background:var(--night);color:#F4EFE6;display:grid;gap:8px}
+.link-card b{font:800 1.2rem var(--head);color:var(--sun)}
+@media (max-width:760px){.duo{grid-template-columns:1fr}}
+/* videos */
+.videos{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.vid{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/10;background-size:cover;background-position:center;display:flex;align-items:flex-end;text-decoration:none;color:#fff}
+.vid::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,27,46,0) 30%,rgba(20,27,46,.85))}
+.vid .play{position:absolute;left:50%;top:44%;translate:-50% -50%;width:74px;height:74px;border-radius:50%;background:var(--coral);display:grid;place-items:center;font-size:28px;box-shadow:0 14px 34px rgba(0,0,0,.35);transition:transform .25s}
+.vid:hover .play{transform:scale(1.1)}
+.vid .t{position:relative;padding:18px 20px;display:grid;gap:4px}
+.vid .t b{font:800 1.15rem var(--head)}
+@media (max-width:860px){.videos{grid-template-columns:1fr}}
+/* measurements */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px}
+.kpi b{display:block;font:800 2.1rem/1 var(--head);font-variant-numeric:tabular-nums}
+.kpi span{color:var(--muted);font-size:.92rem}
+@media (max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:18px;background:var(--surface);margin-top:18px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:12px 16px;border-bottom:1px solid var(--line);font-size:.95rem}
+th{font:800 .75rem var(--body);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+.bar{height:10px;border-radius:5px;background:var(--line);min-width:120px}
+.bar i{display:block;height:100%;border-radius:5px;background:var(--teal)}
+.note{font-size:.88rem;color:var(--muted);margin-top:12px;max-width:80ch}
+/* privacy */
+.privacy{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.privacy div{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;display:grid;gap:6px;align-content:start}
+.privacy div b{font:800 1rem var(--head)}
+.privacy div span{color:var(--muted);font-size:.93rem}
+@media (max-width:860px){.privacy{grid-template-columns:1fr}}
+.retention td:last-child{font-weight:800}
+/* footer */
+footer{background:var(--night);color:#C9D1E6;padding-block:56px 40px;font-size:.92rem}
+footer .cols{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+footer a{color:#fff}
+footer h3{color:#fff;font-size:1rem;margin-bottom:10px}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+@media (max-width:760px){footer .cols{grid-template-columns:1fr}}
+/* reveal */
+.rv{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1)}
+.js .rv.pre{opacity:0;transform:translateY(28px)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv.pre{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<header class="top">
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top"><img src="img/logo.svg" alt="" width="36" height="36">Vertex</a>
+    <ul>
+      <li><a class="l" href="#vertexhub">VertexHub</a></li>
+      <li><a class="l" href="#barcelona">Barcelona</a></li>
+      <li><a class="l" href="#bistro">Bistro</a></li>
+      <li><a class="l" href="#videos">Videos</a></li>
+      <li><a class="l" href="shop/index.html">Shop</a></li>
+      <li><a class="l" href="#measurements">Measurements</a></li>
+      <li><a class="l" href="#privacy">Privacy</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="rays" aria-hidden="true"></div>
+  <div class="wrap grid">
+    <div class="rv">
+      <p class="eyebrow">Apps for ChatGPT</p>
+      <h1 style="margin-top:14px">Your city, <span style="color:var(--brand)">live</span>, inside ChatGPT.</h1>
+      <p class="lead" style="margin-top:20px">Vertex makes three apps for ChatGPT. Two help travellers move around a city with live data. The third gives restaurants a virtual waiter. Every answer comes from real sources, with the source and the time of the data.</p>
+      <div class="ctas"><a class="btn btn-primary" href="#videos">▶ Watch the demos</a><a class="btn btn-ghost" href="#measurements">See the measurements</a></div>
+    </div>
+    <div class="stack rv" aria-label="Real screens of the apps">
+      <figure><img src="img/map.png" alt="VertexHub map card with three stops in Tokyo" width="440" height="900"></figure>
+      <figure><img src="img/companion.png" alt="VertexHub companion card in front of the Eiffel Tower" width="440" height="900"></figure>
+      <figure><img src="img/waiter-order.png" alt="Vertex Bistro order card ready to send on WhatsApp" width="440" height="900"></figure>
+    </div>
+  </div>
+  <div class="wrap" style="margin-top:48px">
+    <div class="trio">
+      <a class="rv" href="#vertexhub"><div class="pic" style="background-image:url(img/city-tokyo.webp)"></div><div class="txt"><span class="eyebrow">Any city</span><h3>VertexHub</h3><p style="color:var(--muted)">Live transport, open now, day plans and group rooms, wherever you land.</p></div></a>
+      <a class="rv" href="#barcelona"><div class="pic" style="background-image:url(img/bcn-sagrada.webp)"></div><div class="txt"><span class="eyebrow">Barcelona edition</span><h3>Vertex Barcelona</h3><p style="color:var(--muted)">The services of Barcelona in one chat: TMB, Bicing, the beaches and the city agenda.</p></div></a>
+      <a class="rv" href="#bistro"><div class="pic" style="background-image:url(img/restaurant.webp)"></div><div class="txt"><span class="eyebrow">For restaurants</span><h3>Vertex Bistro</h3><p style="color:var(--muted)">A free virtual waiter from a photo of the menu, and a search to find where to eat.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section id="vertexhub" class="band">
+  <div class="wrap chapter">
+    <div class="story rv">
+      <p class="eyebrow">VertexHub · any city</p>
+      <h2>One travel companion for every city.</h2>
+      <p class="lead">Ask in your own language. VertexHub answers with official timetables, live data where operators publish it, and opening hours checked against local time.</p>
+      <div class="feat">
+        <div><b>Live journeys</b><span>Line, stop, change and next departure. Scheduled and live are always labelled.</span></div>
+        <div><b>Strikes and alerts</b><span>From the official feeds of the operators.</span></div>
+        <div><b>Reachable in N minutes</b><span>Every stop you can reach, on a map.</span></div>
+        <div><b>Step-free routes</b><span>For wheelchairs, strollers and heavy suitcases.</span></div>
+        <div><b>Open now</b><span>Pharmacies, meals and toilets open at local time.</span></div>
+        <div><b>Day plans and guided tours</b><span>Best order on walking times, stop by stop.</span></div>
+        <div><b>UrbanFlow</b><span>Live vehicles, shared bikes and scooters, EV chargers.</span></div>
+        <div><b>Group rooms</b><span>Six-letter code, personal PIN, votes and shared bills.</span></div>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="screens">
+        <div class="phone"><img src="img/tour.png" alt="Guided tour card: Rome in a day, walking directions to the next stop" loading="lazy" width="440" height="900"></div>
+        <div class="phone"><img src="img/group.png" alt="Group room card: code, map with members, meeting point and stops" loading="lazy" width="440" height="900"></div>
+      </div>
+      <p class="cap">Real cards of the app, with example data.</p>
+    </div>
+  </div>
+</section>
+
+<section id="barcelona">
+  <div class="wrap chapter flip">
+    <div class="story rv">
+      <p class="eyebrow">Vertex Barcelona</p>
+      <h2>Barcelona, plugged into the chat.</h2>
+      <p class="lead">The Barcelona edition brings the local services of the city into the conversation, with four companions who know the city: Mariona, Ona, Dan and Sergi-B.</p>
+      <div class="sources" aria-label="Local sources">
+        <span><i></i>TMB metro and bus, live arrivals</span>
+        <span><i></i>TMB journey planner</span>
+        <span><i style="background:var(--sun)"></i>FGC, Rodalies and tram</span>
+        <span><i style="background:#E2001A"></i>Bicing bikes and docks</span>
+        <span><i style="background:var(--ink)"></i>City Council agenda</span>
+        <span><i style="background:var(--violet)"></i>Concerts and matches</span>
+        <span><i style="background:var(--blue)"></i>Sea temperature, waves, UV</span>
+        <span><i style="background:var(--teal)"></i>Local holidays, open now</span>
+      </div>
+      <p style="color:var(--muted)">Plus two games for dead moments: Catchme, and the umbrella word game that turns falling words into a poem about the place.</p>
+    </div>
+    <div class="rv">
+      <div class="screens">
+        <div class="phone"><img src="img/game.png" alt="Umbrella word game: catch the words of a poem" loading="lazy" width="440" height="900"></div>
+        <div class="phone"><img src="img/companion.png" alt="Companion card" loading="lazy" width="440" height="900"></div>
+      </div>
+      <p class="cap">Real cards of the app, with example data.</p>
+    </div>
+  </div>
+</section>
+
+<section id="bistro" class="band">
+  <div class="wrap">
+    <div class="chapter">
+      <div class="story rv">
+        <p class="eyebrow">Vertex Bistro</p>
+        <h2>One app, two sides.</h2>
+        <p class="lead">For restaurants, a virtual waiter in ChatGPT, free to start. For travellers, a search to find where to eat. Each side feeds the other.</p>
+        <div class="duo">
+          <div><span class="tag" style="background:var(--coral);color:#fff;justify-self:start">1 · Restaurants</span><h3>The virtual waiter</h3>
+            <ol><li>Photograph the menu, up to eight photos.</li><li>Check the transcription; fix it in plain words.</li><li>Answer at most ten questions about the house.</li><li>Print one QR code per table.</li><li>Guests ask in their own language and order on WhatsApp.</li></ol></div>
+          <div><span class="tag" style="background:var(--blue);color:#fff;justify-self:start">2 · Travellers</span><h3>Find where to eat <span class="tag" style="background:var(--violet);color:#fff;vertical-align:middle">being designed</span></h3>
+            <ol><li>Ask where to eat, in any language.</li><li>See what is open now, near you.</li><li>For venues with the waiter: the real menu, prices and allergens.</li><li>Walk in, scan the QR, order.</li></ol></div>
+        </div>
+        <div class="link-card"><b>Use the waiter, get found.</b><span>Every venue that uses the virtual waiter will be recommended first to the people who search for a restaurant in Vertex Bistro. This part is being designed.</span></div>
+      </div>
+      <div class="rv">
+        <div class="screens">
+          <div class="phone"><img src="img/waiter-menu.png" alt="Owner page: check your menu, dishes and prices" loading="lazy" width="440" height="1300"></div>
+          <div class="phone"><img src="img/waiter-bridge.png" alt="Table page: Casa Lola, open in ChatGPT" loading="lazy" width="440" height="900"></div>
+        </div>
+        <p class="cap">Real pages of the waiter, with an example venue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="shop">
+  <div class="wrap chapter">
+    <div class="story rv">
+      <p class="eyebrow">The shop</p>
+      <h2>Wear the trip.</h2>
+      <p class="lead">Nothing is sold inside the apps. The Shop button opens our own website: T-shirts printed one by one when you order, with designs from the city or your own, made in the tee editor.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="shop/index.html">Open the shop</a><a class="btn btn-ghost" href="shop/make.html">Design your tee</a><a class="btn btn-ghost" href="shop/character.html">Make your character</a></div>
+    </div>
+    <div class="rv"><div class="screens"><div class="phone" style="width:300px"><img src="img/shop.png" alt="The shop page" loading="lazy" width="440" height="900"></div></div></div>
+  </div>
+</section>
+
+<section id="videos" class="band">
+  <div class="wrap">
+    <p class="eyebrow rv">Demos</p>
+    <h2 class="rv" style="margin:12px 0 28px">Three minutes each, with voice.</h2>
+    <div class="videos">
+      <a class="vid rv" href="videos/vertexhub.html" style="background-image:url(img/city-paris.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>VertexHub</b><span>Every city, live, inside ChatGPT</span></span></a>
+      <a class="vid rv" href="videos/vertex-barcelona.html" style="background-image:url(img/bcn-sagrada.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>Vertex Barcelona</b><span>Barcelona, plugged into the chat</span></span></a>
+      <a class="vid rv" href="videos/vertex-bistro.html" style="background-image:url(img/restaurant.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>Vertex Bistro</b><span>The waiter and the restaurant search</span></span></a>
+    </div>
+    <p class="note">Each demo opens in its own page. Press “Play with voice”; Space pauses, F goes full screen.</p>
+  </div>
+</section>
+
+<section id="measurements">
+  <div class="wrap">
+    <p class="eyebrow rv">Measurements</p>
+    <h2 class="rv" style="margin:12px 0 10px">Measured, not claimed.</h2>
+    <p class="lead rv">Numbers taken on 24 November 2026 from the code and from the live VertexHub server on Cloudflare Workers. Nothing here is an estimate.</p>
+    <div class="kpis rv" style="margin-top:28px">
+      <div class="kpi"><b>81/81</b><span>automated tests passing (45 VertexHub, 36 Vertex Barcelona)</span></div>
+      <div class="kpi"><b>37</b><span>tools exposed to ChatGPT by the live VertexHub server</span></div>
+      <div class="kpi"><b>0.29 s</b><span>median server health check, 5 requests</span></div>
+      <div class="kpi"><b>2,808</b><span>timetable feeds in the UrbanFlow catalogue</span></div>
+    </div>
+    <h3 class="rv" style="margin-top:40px">Benchmark: response time of the live tools</h3>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th scope="col">Tool and request</th><th scope="col">First call</th><th scope="col">Next calls</th><th scope="col">Next calls, scale to 1 s</th></tr></thead>
+        <tbody>
+          <tr><td>get_departures · Plaça de Catalunya</td><td>0.31 s</td><td>0.26 – 0.36 s</td><td><div class="bar"><i style="width:31%"></i></div></td></tr>
+          <tr><td>get_weather · Rome</td><td>1.16 s</td><td>0.27 – 0.58 s</td><td><div class="bar"><i style="width:43%"></i></div></td></tr>
+          <tr><td>mobility_get_coverage · Helsinki</td><td>0.67 s</td><td>0.52 – 0.54 s</td><td><div class="bar"><i style="width:53%"></i></div></td></tr>
+          <tr><td>find_nearby · pharmacy open now</td><td>16.4 s</td><td>0.31 – 0.33 s</td><td><div class="bar"><i style="width:32%"></i></div></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Three calls per tool from Barcelona over a home connection. The first call fetches open data from the source; the next ones are served from the server cache. Place searches depend on public OpenStreetMap servers, which can be slow at busy times.</p>
+    <h3 class="rv" style="margin-top:40px">Open data coverage (UrbanFlow catalogue, 15 November 2026)</h3>
+    <div class="tablewrap rv">
+      <table>
+        <thead><tr><th scope="col">Feed type</th><th scope="col">Feeds</th><th scope="col">Example cities</th></tr></thead>
+        <tbody>
+          <tr><td>Timetables (GTFS)</td><td>2,808</td><td>Tirana, and almost every city with public transport</td></tr>
+          <tr><td>Live updates (GTFS-Realtime)</td><td>1,773</td><td>Barcelona, Helsinki, Boston, Cagliari</td></tr>
+          <tr><td>Shared bikes and scooters (GBFS)</td><td>1,279</td><td>Bicing, Blue Bikes, scooter and moped operators</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="wrap">
+    <p class="eyebrow rv">Privacy and GDPR</p>
+    <h2 class="rv" style="margin:12px 0 10px">Only what the answer needs.</h2>
+    <p class="lead rv">The apps follow the EU General Data Protection Regulation and Spanish data protection law. This page is a summary; the full privacy policy, legal notice and cookie policy are linked below.</p>
+    <div class="privacy rv" style="margin-top:28px">
+      <div><b>No tracking</b><span>No profiling, no advertising, no analytics. This website sets no cookies and loads no trackers.</span></div>
+      <div><b>No chat logs</b><span>The apps receive only what ChatGPT sends to a tool: the place you ask about, the language, the travel mode. Conversations are not stored.</span></div>
+      <div><b>Location on your terms</b><span>Your precise position is used only if you turn it on in the card, and it is deleted after use.</span></div>
+      <div><b>AI, said plainly</b><span>Answers and voices are generated by AI and labelled as such, as the EU AI Act requires.</span></div>
+      <div><b>Photos never stored</b><span>Menu photos for the virtual waiter are read once and discarded; only the text of the menu is kept.</span></div>
+      <div><b>Your rights</b><span>Access, rectification, erasure, objection, restriction and portability, and a complaint to the Spanish data protection authority (AEPD).</span></div>
+    </div>
+    <h3 class="rv" style="margin-top:40px">How long data is kept</h3>
+    <div class="tablewrap rv">
+      <table class="retention">
+        <thead><tr><th scope="col">Data</th><th scope="col">Why</th><th scope="col">Deleted after</th></tr></thead>
+        <tbody>
+          <tr><td>Precise position code</td><td>To pass your position from your phone to the card</td><td>1 hour at most</td></tr>
+          <tr><td>Group room (names, votes, expenses, shared positions)</td><td>To run the room for your trip</td><td>30 days</td></tr>
+          <tr><td>Virtual waiter orders (dishes, quantities, table, time; no name or phone)</td><td>Statistics for the venue</td><td>30 days, then only totals per dish and day</td></tr>
+          <tr><td>Email for a waiting list or a gift</td><td>To write to you about it</td><td>12 months</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Deletion runs automatically every day. Providers: Cloudflare (hosting), Supabase (database), and the AI providers named in the privacy policy.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px" class="rv">
+      <a class="btn btn-ghost" href="https://vertexhub.monili-vlr.workers.dev/privacy" rel="noopener">Privacy policy</a>
+      <a class="btn btn-ghost" href="https://vertexhub.monili-vlr.workers.dev/legal" rel="noopener">Legal notice and terms</a>
+      <a class="btn btn-ghost" href="https://vertexhub.monili-vlr.workers.dev/cookies" rel="noopener">Cookie policy</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap cols">
+    <div><a class="brand" href="#top" style="color:#fff"><img src="img/logo.svg" alt="" width="36" height="36">Vertex</a>
+      <p style="margin-top:14px;max-width:52ch">Apps for ChatGPT. Not made or endorsed by OpenAI. Timetables, opening hours and menus come from third parties and can change: check critical details with the official source.</p>
+      <p style="margin-top:14px">© 2026 Valerio Scorretti. All rights reserved.</p></div>
+    <div><h3>Apps</h3><ul><li><a href="#vertexhub">VertexHub</a></li><li><a href="#barcelona">Vertex Barcelona</a></li><li><a href="#bistro">Vertex Bistro</a></li><li><a href="#videos">Demos</a></li></ul></div>
+    <div><h3>Data and licences</h3><ul><li>Maps © <a href="https://www.openstreetmap.org/copyright" rel="noopener">OpenStreetMap contributors</a> (ODbL)</li><li>Texts from Wikipedia and Wikivoyage (CC BY-SA)</li><li>Transport data: TMB and the operators’ open feeds</li><li><a href="https://vertexhub.monili-vlr.workers.dev/legal" rel="noopener">Legal notice</a> · <a href="https://vertexhub.monili-vlr.workers.dev/privacy" rel="noopener">Privacy</a></li></ul></div>
+  </div>
+</footer>
+<script>
+// Sections fade in as they come into view; without JS or with reduced motion everything is simply visible.
+document.documentElement.classList.add('js');
+const els = document.querySelectorAll('.rv');
+if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.remove('pre'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -8% 0px' });
+  els.forEach((el) => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); } });
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Make your tee · Vertex Barcelona</title>
+<link rel="stylesheet" href="https://vertexhub.monili-vlr.workers.dev/fonts/fonts.css">
+<style>
+:root{--ink:#1F2A44;--accent:#FF6B4A;--bg:#FFF8EC;--card:#fff;--line:#E7E1D6;--soft:#FBF4E6;--ok:#0A8F6A;--warn:#B54708}
+*{box-sizing:border-box}[hidden]{display:none!important}html,body{height:100%}body{margin:0;font:15px/1.4 system-ui,sans-serif;background:var(--bg);color:var(--ink);display:flex;flex-direction:column;min-height:100vh}
+button{font:inherit;color:inherit}
+.top{display:flex;align-items:center;gap:12px;padding:10px 16px;background:#fff;border-bottom:1px solid var(--line)}.top a{color:var(--ink);text-decoration:none;font-weight:800}.top .name{display:flex;flex-direction:column;min-width:0}.top .name b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.top .name small{color:#6b6458}
+.top .sp{flex:1}.ic{border:0;background:none;font-size:18px;width:36px;height:36px;border-radius:10px;cursor:pointer}.ic:disabled{opacity:.3;cursor:default}.ic:hover:not(:disabled){background:var(--soft)}
+.mode{display:flex;background:var(--soft);border-radius:999px;padding:3px}.mode button{border:0;background:none;font-weight:800;padding:7px 14px;border-radius:999px;cursor:pointer}.mode button.on{background:var(--ink);color:#fff}
+.wrap{display:grid;grid-template-columns:76px 300px 1fr;flex:1;min-height:0}
+.rail{background:#fff;border-right:1px solid var(--line);display:flex;flex-direction:column;padding-top:8px}
+.rail button{border:0;background:none;font-size:.72rem;font-weight:700;color:#6b6458;padding:10px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:4px;border-radius:12px;margin:2px 8px}.rail button i{font-style:normal;font-size:20px;line-height:1}.rail button.on{background:var(--ink);color:#fff}
+.panel{background:#fff;border-right:1px solid var(--line);overflow:auto;padding:16px}.pane{display:none}.pane.on{display:block}
+.panel h3{margin:0 0 8px;font-size:.95rem}.hint{color:#6b6458;font-size:.83rem;margin:6px 0 12px}.sec{margin:0 0 18px}
+.colors{display:flex;gap:8px;flex-wrap:wrap}.sw{width:30px;height:30px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1px #c9c1b3;cursor:pointer;padding:0}.sw.on{box-shadow:0 0 0 2px var(--accent)}
+.sizes{display:flex;gap:6px;flex-wrap:wrap}.sz{font-weight:800;border:2px solid var(--line);background:#fff;border-radius:999px;padding:5px 13px;cursor:pointer}.sz.on{border-color:var(--accent);color:var(--accent)}
+.upbtn{display:flex;align-items:center;justify-content:center;gap:8px;border:2px dashed var(--accent);color:var(--accent);border-radius:14px;padding:14px;font-weight:800;cursor:pointer;background:#fff}.upbtn input{display:none}
+.thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(64px,1fr));gap:8px}.thumbs button{aspect-ratio:1;border:2px solid var(--line);border-radius:12px;background:#fff;padding:6px;cursor:pointer;font-size:24px;color:var(--ink)}.thumbs button img{width:100%;height:100%;object-fit:contain}.thumbs button:hover{border-color:var(--accent)}
+.field{display:flex;flex-direction:column;gap:8px}.field input,.field select{padding:10px 12px;border:2px solid var(--line);border-radius:12px;background:#fff}.field .row{display:flex;gap:8px;align-items:center}
+.btn{font-weight:800;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:11px 16px;cursor:pointer}
+.layer{display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;padding:8px;margin-bottom:6px;background:#fff}.layer.sel{border-color:var(--accent)}.layer img{width:40px;height:40px;object-fit:contain;background:var(--soft);border-radius:8px}.layer span{flex:1;font-size:.85rem;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.layer button{border:0;background:var(--soft);border-radius:8px;padding:5px 8px;cursor:pointer;font-size:.78rem;font-weight:700}
+.q{font-size:.75rem;font-weight:800}.q.low{color:var(--warn)}.q.good{color:var(--ok)}
+.empty{text-align:center;color:#6b6458;padding:28px 8px}.empty b{display:block;color:var(--ink);margin-bottom:4px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}.seg button{border:2px solid var(--line);background:#fff;border-radius:12px;padding:10px;font-weight:800;cursor:pointer}.seg button.on{border-color:var(--accent);color:var(--accent)}.seg button:disabled{opacity:.4;cursor:not-allowed}
+.tpls{display:grid;grid-template-columns:1fr 1fr;gap:8px}.tpl{border:2px solid var(--line);border-radius:12px;background:#fff;padding:8px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.8rem}.tpl.on{border-color:var(--accent)}.tplart{width:100%;aspect-ratio:1;display:block;background:var(--soft);border-radius:8px;overflow:hidden}.tplart svg{width:100%;height:100%;display:block}
+.warn{background:#FFF1E0;color:var(--warn);border-radius:10px;padding:8px 10px;font-size:.82rem;font-weight:700}
+.stage{display:flex;flex-direction:column;min-width:0;min-height:0;padding:14px 18px 96px;overflow:auto}
+.canvas,.view{display:none;position:relative;flex:none;width:min(100%,560px,calc((100vh - 290px) * var(--r,.877)));margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 8px 24px rgba(31,42,68,.08)}.canvas.on,.view.on{display:block}
+.base{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;user-select:none}
+.tint{position:absolute;inset:0;background:var(--c,#fff);mix-blend-mode:multiply;-webkit-mask:var(--mask) center/100% 100% no-repeat;mask:var(--mask) center/100% 100% no-repeat;pointer-events:none}
+[data-area=sleeveL] .base,[data-area=sleeveR] .base{object-fit:cover;object-position:center 9%}[data-area=sleeveL] .tint,[data-area=sleeveR] .tint{-webkit-mask-size:cover;mask-size:cover;-webkit-mask-position:center 9%;mask-position:center 9%}
+.collar{position:absolute;inset:0;background:#fff url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png) 50% 0/250% auto no-repeat}.collar-tint{-webkit-mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png) 50% 0/250% auto no-repeat;mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png) 50% 0/250% auto no-repeat}.minitee{position:absolute;left:10px;bottom:10px;width:56px;height:50px;background:rgba(255,255,255,.8);border-radius:8px;padding:3px}
+.area{position:absolute;outline:2px dashed rgba(31,42,68,.55);outline-offset:0}.view .area{outline:0}.canvas.dark .area{outline-color:rgba(255,255,255,.7)}
+.drop{position:absolute;left:50%;top:50%;width:min(64%,170px);aspect-ratio:1;overflow:hidden;line-height:1.2;transform:translate(-50%,-50%);border-radius:50%;background:#E3F1FF;box-shadow:0 0 0 8px rgba(227,241,255,.6);color:#1D5FD1;font-weight:800;font-size:.8rem;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px;gap:4px;cursor:pointer}.drop span{font-size:18px}
+.area.full .drop,.area.nodrop .drop{display:none}.canvas.over .drop{background:#cfe6ff}
+.labelart,.layers{position:absolute;inset:0}.labelart svg{width:100%;height:100%;display:block}
+.lay{position:absolute;cursor:move;touch-action:none}.lay img{width:100%;height:auto;display:block;pointer-events:none;filter:url(#print);opacity:.97}.view .lay{cursor:default}
+.lay.sel{outline:2px solid var(--accent);outline-offset:2px}.lay .h{position:absolute;right:-9px;bottom:-9px;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid var(--accent);cursor:nwse-resize;display:none}.lay.sel .h{display:block}
+.tools{display:none;position:absolute;left:50%;top:8px;transform:translateX(-50%);background:#fff;border-radius:999px;box-shadow:0 6px 18px rgba(31,42,68,.18);padding:4px;gap:2px;z-index:3}.tools.on{display:flex}.tools button{border:0;background:none;border-radius:999px;padding:6px 10px;font-size:.78rem;font-weight:800;cursor:pointer}.tools button:hover{background:var(--soft)}
+.asize{text-align:center;color:#6b6458;font-size:.8rem;margin:8px 0 0}body.pv .asize{display:none}.lay .dim{position:absolute;left:50%;top:100%;transform:translate(-50%,6px);background:var(--ink);color:#fff;font:700 .7rem/1 system-ui;padding:4px 7px;border-radius:999px;white-space:nowrap;font-style:normal;display:none;pointer-events:none}.lay.sel .dim{display:block}
+.areas{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px auto 0;max-width:640px}
+.ar{position:relative;border:2px solid var(--line);background:#fff;border-radius:14px;padding:8px 10px 6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-width:92px}.ar svg{width:40px;height:36px}.ar b{font-size:.8rem}.ar small{font-size:.7rem;color:#6b6458}.ar.on{border-color:var(--accent)}.ar .dot{position:absolute;top:6px;right:6px;width:9px;height:9px;border-radius:50%;background:transparent}.ar.has .dot{background:var(--ok)}
+.vws{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:14px auto 0}.vw{border:2px solid var(--line);background:#fff;border-radius:12px;padding:4px;cursor:pointer;width:76px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:.72rem;font-weight:700}.vw img,.vw svg{width:64px;height:64px;object-fit:cover;border-radius:8px}.vw.on{border-color:var(--accent)}
+body.pv .rail,body.pv .panel{display:none}body.pv .wrap{grid-template-columns:1fr}body.pv .areas,body:not(.pv) .vws,body:not(.pv) .view,body.pv .canvas{display:none!important}
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);display:flex;align-items:center;gap:12px;padding:10px 16px;z-index:5}.bar .sum{flex:1;min-width:0;font-size:.82rem;color:#6b6458;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.bar .tot{font-weight:900;font-size:1.15rem;white-space:nowrap}.bar .btn{white-space:nowrap}
+.modal{position:fixed;inset:0;background:rgba(31,42,68,.45);display:none;align-items:center;justify-content:center;padding:16px;z-index:9}.modal.on{display:flex}.modal form{background:#fff;border-radius:18px;padding:20px;max-width:420px;width:100%;display:grid;gap:10px}.modal input{padding:11px 12px;border:2px solid var(--line);border-radius:12px}.modal .ok{color:var(--ok);font-weight:800;margin:0}.modal small{color:#6b6458}
+@media(max-width:860px){
+  .wrap{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr}body{overflow-x:hidden}.stage{grid-row:1;padding:10px 10px 8px;overflow:visible}
+  .rail{position:fixed;left:0;right:0;bottom:58px;flex-direction:row;justify-content:space-around;border-right:0;border-top:1px solid var(--line);padding:4px;z-index:4}.rail button{margin:0;padding:6px 8px;flex:1}
+  .panel{grid-row:2;border-right:0;border-top:1px solid var(--line);padding:14px 14px 140px}
+  .canvas,.view{width:min(100%,calc(58vh * var(--r,.877)))}
+  .areas{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding-bottom:4px;max-width:100%}.ar{min-width:84px;flex:none}
+  .top .name{display:none}.bar .sum{display:none}.bar .btn{white-space:normal;font-size:.82rem;line-height:1.15;padding:9px 14px;text-align:center}.drop{font-size:.7rem;padding:10px}
+  body.pv .stage{padding-bottom:80px}
+}
+
+/* ===== Sole: tokens and base ===== */
+:root{--ink:#1A1A1A;--paper:#FFFFFF;--sun:#FFB703;--grey:#4D4D4D;--soft:#F5F5F2;--hair:#E6E6E6;--accent:#FFB703;--bg:#FFFFFF;--card:#FFFFFF;--line:#E6E6E6;--tee-shadow:drop-shadow(0 18px 24px rgba(0,0,0,.18)) drop-shadow(0 2px 4px rgba(0,0,0,.08))}
+body{font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;background:var(--paper);color:var(--ink)}
+button,input,select,textarea{font-family:inherit}
+h1,h2{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;letter-spacing:-.01em;line-height:1.08;text-transform:none}
+a{color:var(--ink)}a:hover{color:#8A5A00}
+:focus-visible{outline:3px solid var(--sun);outline-offset:2px}
+/* primary action: sun yellow pill with ink text; secondary: ink pill with white text */
+.cta a,.go,.pbtn.main,.want button,.btn,.bar .btn,.save .btn,.chat form button,.gift button[type=submit]{background:var(--sun)!important;color:var(--ink)!important;border:0!important;border-radius:999px!important;box-shadow:none!important;clip-path:none;font-weight:700;text-transform:none;letter-spacing:0}
+.cta a.ghost{background:var(--ink)!important;color:#fff!important;backdrop-filter:none}
+input,select,textarea{border-radius:14px!important;border:1.5px solid var(--hair)!important;background:#fff}
+
+.ds-shop{
+header{position:static;color:var(--ink);background:#fff}
+header b{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:0;text-transform:none;text-shadow:none;white-space:nowrap}
+header nav a{color:var(--ink);text-shadow:none;font-weight:700;font-size:.9rem}
+@media(max-width:520px){header nav{display:none}}
+.hero{min-height:0;background:#fff;color:var(--ink);align-items:stretch}
+.hero::before{display:none}
+.hero .in{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:28px;align-items:center;padding:12px 20px 28px}
+@media(max-width:760px){.hero .in{grid-template-columns:minmax(0,1fr);gap:14px;padding:4px 16px 20px}.hero .pic{order:-1}}
+.hero h1{font-size:clamp(2rem,6vw,3.6rem);text-shadow:none}
+.hero p{text-shadow:none;color:var(--grey)}
+.hero .kicker{display:inline-block;margin:0 0 10px;font-size:.8rem;font-weight:700;background:var(--soft);border-radius:999px;padding:5px 12px;color:var(--ink)}
+.hero .pic{margin:0;aspect-ratio:16/10;border-radius:24px;overflow:hidden;background:var(--soft)}
+.hero .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.cta a{padding:15px 24px}
+main h2{font-size:clamp(1.3rem,4vw,1.9rem);margin:36px 0 14px}
+.lead{color:var(--grey)}
+.prod{border-radius:0;box-shadow:none;padding:0;background:#fff}
+.photo{border-radius:20px;background:#fff}
+.photo img{object-fit:contain;filter:var(--tee-shadow);padding:6%}
+.prod h3{font-size:1rem}
+.sz{border:1.5px solid var(--hair);border-radius:999px;background:#fff}.sz.on{border-color:var(--ink);color:var(--ink);background:var(--soft)}
+.sw{border-radius:50%;border:0;box-shadow:0 0 0 1px var(--hair)}.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--sun)}
+.gift .card{border-radius:22px;box-shadow:none;background:var(--soft)}
+.ship{color:var(--grey)}
+footer{color:var(--grey);font-size:.8rem}
+.prize{border-radius:22px;box-shadow:none;background:var(--soft)}
+.prize .art{border-radius:16px;background:#fff}
+.code{border-radius:14px;background:#fff;border:2px dashed var(--sun)}
+.pbtn{border:0!important;background:var(--soft);border-radius:999px!important;font-weight:700}
+.poemcv{border-radius:18px;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.creator{border-radius:22px;box-shadow:none;background:var(--soft)}
+.creator .prev{border-radius:18px;background:#fff}
+.chat .bubble{border-radius:50%;box-shadow:0 10px 28px rgba(0,0,0,.18);border:0;background:#fff}
+.chat .panel{border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.2);border:0}
+.chat .head{background:#fff;border-bottom:1px solid var(--hair)}
+.chat .head .av{border-radius:14px;background:var(--soft)}
+.chat .head b{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;font-size:.95rem}
+.chat .msgs{background:#fff}
+.chat .m{border-radius:16px!important;box-shadow:none!important}
+.chat .m.bot{background:var(--soft);border:0}
+.chat .m.me{background:var(--ink)!important;color:#fff!important}
+.chat .m a{color:#8A5A00}
+.chat form{border-top:1px solid var(--hair)}
+.chat input{border-radius:999px!important}
+.chat .yt,.chat .ytf{border-radius:14px}
+.chat .dl{border-radius:14px;border:0;background:var(--soft);color:var(--ink)}
+.chat a.dl.go{background:var(--sun);color:var(--ink)}
+}
+
+.ds-make{
+.top{border-bottom:1px solid var(--hair)}
+.top .name b{font-family:'Unbounded', system-ui, sans-serif;font-weight:700;font-size:.95rem}
+.top .name small{color:var(--grey)}
+.ic{border-radius:50%}
+.mode{border-radius:999px;background:var(--soft);padding:3px;border:0}
+.mode button{border-radius:999px}
+.mode button.on{background:var(--ink);color:#fff}
+.rail{border-right:1px solid var(--hair)}
+.rail button{border-radius:12px;color:var(--grey)}
+.rail button.on{background:var(--ink);color:#fff}
+.panel{border-right:1px solid var(--hair)}
+.upbtn{border-radius:16px;border:2px dashed var(--hair);color:var(--ink);background:var(--soft)}
+.thumbs button{border-radius:14px;border:1.5px solid var(--hair)}
+.layer{border-radius:14px;border:1.5px solid var(--hair)}.layer.sel{border-color:var(--ink)}
+.seg button{border-radius:14px;border:1.5px solid var(--hair)}.seg button.on{border-color:var(--ink);color:var(--ink);background:var(--soft)}
+.tpl{border-radius:14px;border:1.5px solid var(--hair)}.tpl.on{border-color:var(--ink)}.tplart{border-radius:10px}
+.sw{border-radius:50%!important;border:0!important;box-shadow:0 0 0 1px var(--hair)!important}.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--sun)!important}
+.stage{background:#fff}
+.canvas,.view{border-radius:24px;box-shadow:none;border:0;background:#fff}
+.canvas .base,.view .base{filter:var(--tee-shadow)}
+.drop{background:var(--sun);color:var(--ink);box-shadow:0 0 0 8px rgba(255,183,3,.18)}
+.ar{border-radius:16px;border:0;background:var(--soft)}.ar.on{background:var(--ink);color:#fff}.ar.on small{color:#ddd}.ar.has .dot{background:var(--sun)}
+.vw{border-radius:14px;border:1.5px solid var(--hair)}.vw.on{border-color:var(--ink)}
+.tools{border-radius:999px;box-shadow:0 8px 24px rgba(0,0,0,.16);border:0}
+.lay .dim{border-radius:999px;background:var(--ink)}
+.bar{border-top:1px solid var(--hair)}
+.bar .tot{font-family:'Unbounded', system-ui, sans-serif;font-weight:700}
+.modal form{border-radius:22px}
+}
+
+.ds-char{
+.stage{border-radius:24px;box-shadow:none;border:0;background:var(--soft)}
+.chip{background:#fff;border:0;border-radius:999px;font-weight:700}
+.tabs{gap:6px}
+.tab{border:0;border-radius:999px;background:var(--soft);color:var(--ink)}
+.tab.on{background:var(--ink);color:#fff}
+.var{border-radius:16px;border:2px solid transparent;background:var(--soft)}.var.on{border-color:var(--sun);box-shadow:none}
+.sw{border-radius:50%;border:0;box-shadow:0 0 0 1px var(--hair)}.sw.on{box-shadow:0 0 0 2px #fff,0 0 0 4px var(--sun)}
+.panel{border-radius:24px;box-shadow:none;border:0}
+.save{border-top:1px solid var(--hair)}
+.result .box{border-radius:24px}
+.result .code{border-radius:14px;border:2px dashed var(--sun);background:#fff}
+}
+
+.fn{display:block;flex-basis:100%;font-size:.72rem;line-height:1.35;color:#4D4D4D;margin-top:6px}.fn a{color:#8A5A00}
+.lgl{font-size:.75rem;color:#4D4D4D;margin:18px 0 6px}.lgl a{color:#4D4D4D}
+</style></head><body class="ds-make">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><filter id="print" x="0" y="0" width="1" height="1"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="3" result="n"/><feColorMatrix in="n" type="saturate" values="0" result="g"/><feComponentTransfer in="g" result="m"><feFuncA type="table" tableValues="0 .22"/></feComponentTransfer><feComposite in="SourceGraphic" in2="m" operator="out"/></filter></svg>
+<div class="top"><a href="index.html" aria-label="Shop">←</a><div class="name"><b>Unisex tee Gildan 5000</b><small>100% heavy cotton · 180 g/m² · unisex fit</small></div><span class="sp"></span>
+<button type="button" class="ic" id="undo" title="Undo" aria-label="Undo" disabled>↶</button><button type="button" class="ic" id="redo" title="Redo" aria-label="Redo" disabled>↷</button>
+<div class="mode"><button type="button" class="on" data-mode="edit">Edit</button><button type="button" data-mode="pv">Preview</button></div></div>
+<div class="wrap">
+<nav class="rail"><button type="button" data-pane="product" class="on"><i>👕</i>Product</button><button type="button" data-pane="upload" class=""><i>⬆</i>Upload</button><button type="button" data-pane="text" class=""><i>T</i>Text</button><button type="button" data-pane="graphics" class=""><i>✦</i>Graphics</button><button type="button" data-pane="layers" class=""><i>◧</i>Layers</button></nav>
+<aside class="panel">
+<div class="pane on" data-pane="product">
+<div class="sec"><h3>Colour</h3><div class="colors"><button type="button" class="sw on" data-c="#ffffff" data-id="white" title="White" aria-label="White" style="background:#ffffff"></button><button type="button" class="sw" data-c="#222222" data-id="black" title="Black" aria-label="Black" style="background:#222222"></button><button type="button" class="sw" data-c="#1f2a44" data-id="navy" title="Navy" aria-label="Navy" style="background:#1f2a44"></button><button type="button" class="sw" data-c="#b5b5b5" data-id="sport-grey" title="Sport grey" aria-label="Sport grey" style="background:#b5b5b5"></button><button type="button" class="sw" data-c="#c8102e" data-id="red" title="Red" aria-label="Red" style="background:#c8102e"></button><button type="button" class="sw" data-c="#2457c5" data-id="royal" title="Royal" aria-label="Royal" style="background:#2457c5"></button><button type="button" class="sw" data-c="#1f4d2c" data-id="forest" title="Forest" aria-label="Forest" style="background:#1f4d2c"></button><button type="button" class="sw" data-c="#6b1f2e" data-id="maroon" title="Maroon" aria-label="Maroon" style="background:#6b1f2e"></button><button type="button" class="sw" data-c="#d9c7a7" data-id="sand" title="Sand" aria-label="Sand" style="background:#d9c7a7"></button><button type="button" class="sw" data-c="#a7c7e7" data-id="light-blue" title="Light blue" aria-label="Light blue" style="background:#a7c7e7"></button><button type="button" class="sw" data-c="#4a4a4a" data-id="charcoal" title="Charcoal" aria-label="Charcoal" style="background:#4a4a4a"></button><button type="button" class="sw" data-c="#4f5a3c" data-id="military" title="Military green" aria-label="Military green" style="background:#4f5a3c"></button></div></div>
+<div class="sec"><h3>Size</h3><div class="sizes"><button type="button" class="sz">S</button><button type="button" class="sz on">M</button><button type="button" class="sz">L</button><button type="button" class="sz">XL</button><button type="button" class="sz">2XL</button></div><p class="hint">S 46 cm · M 51 · L 56 · XL 61 · 2XL 66 (chest width, laid flat)</p></div>
+<p class="lgl"><a href="https://vertexhub.monili-vlr.workers.dev/legal?lang=en">Legal notice</a> · <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Privacy</a> · <a href="https://vertexhub.monili-vlr.workers.dev/cookies?lang=en">Cookies</a></p>
+<p class="hint">100% heavy cotton · 180 g/m² · unisex fit</p></div>
+<div class="pane" data-pane="upload"><label class="upbtn"><input type="file" id="file" accept="image/png,image/svg+xml,image/webp,image/jpeg" multiple>⬆ Upload a file</label><p class="hint">PNG with a transparent background (or SVG, JPG). The large print needs at least 1800 px on a side.</p><h3>Your files</h3><div class="thumbs" id="uploads"></div></div>
+<div class="pane" data-pane="text"><div class="field"><input id="txt" placeholder="Type your text" maxlength="60"><div class="row"><select id="font" aria-label="Font"><option>Arial Black</option><option>Georgia</option><option>Impact</option><option>Courier New</option><option>Trebuchet MS</option><option>Brush Script MT</option></select><input type="color" id="tcol" value="#1F2A44" aria-label="Text colour"></div><button type="button" class="btn" id="addText">Add text</button></div></div>
+<div class="pane" data-pane="graphics"><div class="sec"><h3>Our designs</h3><div class="thumbs"><button type="button" class="dz" data-src="https://vertexhub.monili-vlr.workers.dev/shop/designs/Vertex%20Barcelona.svg" title="Vertex Barcelona"><img src="https://vertexhub.monili-vlr.workers.dev/shop/designs/Vertex%20Barcelona.svg" alt="Vertex Barcelona"></button></div></div><div class="sec"><h3>Symbols</h3><div class="thumbs"><button type="button" class="sym" data-c="★">★</button><button type="button" class="sym" data-c="♥">♥</button><button type="button" class="sym" data-c="☀">☀</button><button type="button" class="sym" data-c="☾">☾</button><button type="button" class="sym" data-c="⚡">⚡</button><button type="button" class="sym" data-c="✈">✈</button><button type="button" class="sym" data-c="⚓">⚓</button><button type="button" class="sym" data-c="☕">☕</button><button type="button" class="sym" data-c="♫">♫</button><button type="button" class="sym" data-c="✌">✌</button><button type="button" class="sym" data-c="☮">☮</button><button type="button" class="sym" data-c="♛">♛</button></div></div></div>
+<div class="pane" data-pane="layers"><div id="layerList"></div></div>
+<div class="pane" data-pane="label">
+<h3>Where the label goes</h3><div class="seg"><button type="button" class="on" data-kind="in">Inside</button><button type="button" data-kind="out">Outside</button></div>
+<p class="hint" id="kindHint">Printed inside, under the collar, instead of the factory tag. Size, fabric and care fill in by themselves.</p><p class="warn" id="outWarn" hidden>With a back print the outside label is not possible: use the inside one.</p>
+<div class="tpls" id="tpls"><button type="button" class="tpl on" data-tpl="brand"><span class="tplart" data-tpl-art="brand"></span><b>Vertex Barcelona</b></button><button type="button" class="tpl" data-tpl="logo"><span class="tplart" data-tpl-art="logo"></span><b>Your logo</b></button><button type="button" class="tpl" data-tpl="info"><span class="tplart" data-tpl-art="info"></span><b>Info only</b></button><button type="button" class="tpl" data-tpl="none"><span class="tplart" data-tpl-art="none"></span><b>No label</b></button></div>
+<label class="upbtn" id="logoUp" style="margin-top:12px" hidden><input type="file" id="logoFile" accept="image/png,image/svg+xml,image/webp">⬆ Upload your logo</label></div>
+</aside>
+<section class="stage"><div style="position:relative"><div class="canvas" data-area="front" style="aspect-ratio:922/1051;--r:0.877;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:29%;top:17%;width:42%;height:52%"><div class="drop"><span>⬆</span>Upload or drop your design here</div><div class="labelart"></div><div class="layers"></div></div></div><div class="canvas" data-area="back" style="aspect-ratio:922/1051;--r:0.877;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:29%;top:14%;width:42%;height:52%"><div class="drop"><span>⬆</span>Upload or drop your design here</div><div class="labelart"></div><div class="layers"></div></div></div><div class="canvas" data-area="sleeveL" style="aspect-ratio:4/3;--r:1.333;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-left.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-left.png" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:37%;top:30%;width:26%;height:35%"><div class="drop"><span>⬆</span>Upload or drop your design here</div><div class="labelart"></div><div class="layers"></div></div></div><div class="canvas" data-area="sleeveR" style="aspect-ratio:4/3;--r:1.333;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-right.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-right.png" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:37%;top:30%;width:26%;height:35%"><div class="drop"><span>⬆</span>Upload or drop your design here</div><div class="labelart"></div><div class="layers"></div></div></div><div class="canvas" data-area="label" style="aspect-ratio:4/3;--r:1.333">
+<div class="collar"></div><div class="tint collar-tint"></div><svg class="minitee" viewBox="0 0 40 36"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><g fill="#D7141A"><rect x="17.5" y="6" width="5" height="4" rx=".6"/></g></svg>
+<div class="area" style="left:36.5%;top:29%;width:27%;height:36%"><div class="drop"><span>⬆</span>Upload or drop your design here</div><div class="labelart"></div><div class="layers"></div></div></div><div class="view" data-area="wornF" style="aspect-ratio:1049/1500;--r:0.699;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-front-mask.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-front.webp" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:34%;top:28%;width:32%;height:34%"><div class="labelart"></div><div class="layers"></div></div></div><div class="view" data-area="wornB" style="aspect-ratio:1049/1500;--r:0.699;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-back-mask.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-back.webp" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:33%;top:28%;width:34%;height:36%"><div class="labelart"></div><div class="layers"></div></div></div><div class="view" data-area="wornS" style="aspect-ratio:1049/1500;--r:0.699;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-side-mask.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-side.webp" alt="" draggable="false"><div class="tint"></div>
+</div><div class="view" data-area="flatF" style="aspect-ratio:922/1051;--r:0.877;--mask:url(https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png)">
+<img class="base" src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png" alt="" draggable="false"><div class="tint"></div>
+<div class="area" style="left:29%;top:17%;width:42%;height:52%"><div class="labelart"></div><div class="layers"></div></div></div><div class="view" data-area="label" style="aspect-ratio:4/3;--r:1.333">
+<div class="collar"></div><div class="tint collar-tint"></div><svg class="minitee" viewBox="0 0 40 36"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><g fill="#D7141A"><rect x="17.5" y="6" width="5" height="4" rx=".6"/></g></svg>
+<div class="area" style="left:36.5%;top:29%;width:27%;height:36%"><div class="labelart"></div><div class="layers"></div></div></div><div class="tools" id="tools"><button type="button" data-t="center">Centre</button><button type="button" data-t="up">Forward</button><button type="button" data-t="down">Backward</button><button type="button" data-t="dup">Duplicate</button><button type="button" data-t="del">Delete</button></div></div>
+<p class="asize" id="asize"></p><div class="areas"><button type="button" class="ar on" data-area="front"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><path d="M13 3c1 3 4 4 7 4s6-1 7-4" fill="none" stroke="#1F2A44" stroke-width="1.4"/><g fill="#D7141A"><rect x="15" y="12" width="10" height="13" rx="1"/></g></svg><b>Front</b><small data-price="6">+6.00 EUR</small><i class="dot"></i></button><button type="button" class="ar" data-area="back"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><g fill="#D7141A"><rect x="15" y="11" width="10" height="13" rx="1"/></g></svg><b>Back</b><small data-price="6">+6.00 EUR</small><i class="dot"></i></button><button type="button" class="ar" data-area="sleeveL"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><path d="M13 3c1 3 4 4 7 4s6-1 7-4" fill="none" stroke="#1F2A44" stroke-width="1.4"/><g fill="#D7141A"><rect x="4" y="9" width="6" height="6" rx="1"/></g></svg><b>Left sleeve</b><small data-price="3.5">+3.50 EUR</small><i class="dot"></i></button><button type="button" class="ar" data-area="sleeveR"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><path d="M13 3c1 3 4 4 7 4s6-1 7-4" fill="none" stroke="#1F2A44" stroke-width="1.4"/><g fill="#D7141A"><rect x="30" y="9" width="6" height="6" rx="1"/></g></svg><b>Right sleeve</b><small data-price="3.5">+3.50 EUR</small><i class="dot"></i></button><button type="button" class="ar" data-area="label"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><g fill="#D7141A"><rect x="17.5" y="6" width="5" height="4" rx=".6"/></g></svg><b>Label</b><small data-price="2.5">+2.50 EUR</small><i class="dot"></i></button></div><div class="vws"><button type="button" class="vw on" data-view="wornF"><img src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-front.webp" alt="" loading="lazy"><span>Worn</span></button><button type="button" class="vw" data-view="wornB"><img src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-back.webp" alt="" loading="lazy"><span>Back</span></button><button type="button" class="vw" data-view="wornS"><img src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/model-side.webp" alt="" loading="lazy"><span>Side</span></button><button type="button" class="vw" data-view="flatF"><img src="https://vertexhub.monili-vlr.workers.dev/shop/mockups/tee-back.png" alt="" loading="lazy"><span>Flat</span></button><button type="button" class="vw" data-view="label"><svg viewBox="0 0 40 36" aria-hidden="true"><path d="M13 3l-9 4-3 9 7 2v16h24V18l7-2-3-9-9-4c-1 3-4 4-7 4s-6-1-7-4z" fill="#fff" stroke="#1F2A44" stroke-width="1.4" stroke-linejoin="round"/><g fill="#D7141A"><rect x="17.5" y="6" width="5" height="4" rx=".6"/></g></svg><span>Label</span></button></div></section>
+</div>
+<div class="bar"><span class="sum" id="sum"></span><span class="tot" id="tot"></span><button type="button" class="btn" id="cart">Tell me when I can order</button></div>
+<div class="modal" id="modal"><form id="wantf"><p>Orders are not open yet. Leave your email: we write as soon as you can order this tee, exactly as it is.</p><input type="email" required placeholder="email" autocomplete="email"><button type="submit" class="btn">Notify me</button><p class="ok" hidden></p><small>Shipping and availability per country are checked at checkout.</small><small class="fn">Controller: VertexHub. Purpose: to notify you or send you what you ask for. Rights: access, rectification, erasure and the others, at monili.vlr@gmail.com. More in the privacy policy.</small><small class="fn"><a href="https://vertexhub.monili-vlr.workers.dev/legal?lang=en">Legal notice</a> · <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Privacy</a> · <a href="https://vertexhub.monili-vlr.workers.dev/cookies?lang=en">Cookies</a></small></form></div>
+<script>
+(function(){
+  var LANG="en", I={"printArea":"Print area","printed":"printed","lowDpi":"Low quality: make it smaller or use a bigger file","okDpi":"Good print quality","del":"Delete","dup":"Duplicate","center":"Centre","up":"Forward","down":"Backward","layersEmpty":"No layers on this area.","layersHint":"Upload a file, type a text or pick a graphic.","ok":"Done: we write as soon as it can be ordered.","err":"Check the email.","areas":{"front":"Front","back":"Back","sleeveL":"Left sleeve","sleeveR":"Right sleeve","label":"Label"},"included":"included","summaryNone":"No print yet","fibre":"100% cotton","madeIn":"Country: per batch","tapToAdd":"Tap to put it on","outsideNoBack":"With a back print the outside label is not possible: use the inside one."}, BASE=24.9, CUR="EUR", EXTRA={"front":6,"back":6,"sleeveL":3.5,"sleeveR":3.5,"label":2.5};
+  var INCH={"front":[12,16],"back":[12,16],"sleeveL":[3.5,3.5],"sleeveR":[3.5,3.5],"label":[3,3]};
+  var ORDER=['front','back','sleeveL','sleeveR','label'];
+  // state: layers per area ({src,name,x,y,w,ar,px} in % of the print area; px = the file's width in pixels), the label
+  var S={color:'white',hex:'#ffffff',size:'M',cur:'front',areas:{front:[],back:[],sleeveL:[],sleeveR:[],label:[]},label:{kind:'in',tpl:'brand',logo:null},sel:null};
+  var hist=[],fut=[];
+  function snap(){hist.push(JSON.stringify({areas:S.areas,label:S.label}));if(hist.length>60)hist.shift();fut=[];btns();}
+  function btns(){document.getElementById('undo').disabled=!hist.length;document.getElementById('redo').disabled=!fut.length;}
+  function restore(s){var o=JSON.parse(s);S.areas=o.areas;S.label=o.label;S.sel=null;all();}
+  document.getElementById('undo').onclick=function(){if(!hist.length)return;fut.push(JSON.stringify({areas:S.areas,label:S.label}));restore(hist.pop());btns();};
+  document.getElementById('redo').onclick=function(){if(!fut.length)return;hist.push(JSON.stringify({areas:S.areas,label:S.label}));restore(fut.pop());btns();};
+  function $(q,r){return (r||document).querySelector(q)} function $$(q,r){return [].slice.call((r||document).querySelectorAll(q))}
+  function money(n){return n.toFixed(2)+' '+CUR}
+  // ink that reads on the tee: dark on light colours, light on dark ones
+  function lum(h){var n=parseInt(h.slice(1),16),r=n>>16&255,g=n>>8&255,b=n&255;return (0.299*r+0.587*g+0.114*b)/255}
+  function ink(){return lum(S.hex)>0.55?'#1F2A44':'#F4EFE6'}
+  // ---- the label art (inside: required garment info + branding; outside: logo only)
+  function care(c){return '<g fill="none" stroke="'+c+'" stroke-width="3" stroke-linejoin="round">'+
+    '<path d="M8 6l4 18h22l4-18"/><path d="M6 6c4 4 8 4 12 0s8-4 12 0 8 4 12 0" /><text x="23" y="20" font-size="9" font-family="Arial" font-weight="700" text-anchor="middle" fill="'+c+'" stroke="none">30</text>'+
+    '<g transform="translate(52 0)"><path d="M18 4L4 26h28z"/><path d="M6 4l24 24M30 4L6 28"/></g>'+
+    '<g transform="translate(100 0)"><path d="M4 26h28l-2-10c-1-5-5-8-10-8H12"/><circle cx="18" cy="19" r="2" fill="'+c+'"/></g>'+
+    '<g transform="translate(148 0)"><circle cx="16" cy="15" r="12"/><path d="M6 5l20 20M26 5L6 25"/></g>'+
+    '<g transform="translate(196 0)"><rect x="3" y="3" width="26" height="26" rx="2"/><circle cx="16" cy="16" r="9"/><circle cx="16" cy="16" r="2" fill="'+c+'"/></g></g>';}
+  function labelSvg(tpl,c,logo,kind,size){
+    var out=kind==='out';
+    var top='';
+    if(tpl==='brand')top='<text x="150" y="'+(out?160:78)+'" font-family="Arial Black,Arial" font-weight="900" font-size="'+(out?52:40)+'" letter-spacing="3" text-anchor="middle" fill="'+c+'">VERTEX</text><text x="150" y="'+(out?196:104)+'" font-family="Arial" font-size="'+(out?20:15)+'" letter-spacing="'+(out?9:7)+'" text-anchor="middle" fill="'+c+'">BARCELONA</text>';
+    else if(tpl==='logo')top=logo?'<image href="'+logo+'" x="'+(out?40:70)+'" y="'+(out?40:22)+'" width="'+(out?220:160)+'" height="'+(out?220:96)+'" preserveAspectRatio="xMidYMid meet"/>':'<rect x="'+(out?40:70)+'" y="'+(out?40:22)+'" width="'+(out?220:160)+'" height="'+(out?220:96)+'" rx="10" fill="none" stroke="'+c+'" stroke-width="2" stroke-dasharray="7 6" opacity=".6"/><text x="150" y="'+(out?156:76)+'" font-family="Arial" font-size="15" font-weight="700" text-anchor="middle" fill="'+c+'" opacity=".7">LOGO</text>';
+    if(out)return '<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">'+(tpl==='none'||tpl==='info'?'':top)+'</svg>';
+    if(tpl==='none')return '<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"></svg>';
+    var y=tpl==='info'?40:132;
+    return '<svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">'+top+
+      '<line x1="24" x2="276" y1="'+y+'" y2="'+y+'" stroke="'+c+'" stroke-width="2"/>'+
+      '<text x="30" y="'+(y+44)+'" font-family="Arial Black,Arial" font-weight="900" font-size="38" fill="'+c+'">'+size+'</text>'+
+      '<text x="270" y="'+(y+26)+'" font-family="Arial" font-size="15" font-weight="700" text-anchor="end" fill="'+c+'">'+I.fibre+'</text>'+
+      '<text x="270" y="'+(y+46)+'" font-family="Arial" font-size="13" text-anchor="end" fill="'+c+'">'+I.madeIn+'</text>'+
+      '<line x1="24" x2="276" y1="'+(y+62)+'" y2="'+(y+62)+'" stroke="'+c+'" stroke-width="2"/>'+
+      '<g transform="translate(24 '+(y+76)+') scale(1.02)">'+care(c)+'</g></svg>';}
+  function paintLabel(){
+    var c=ink(), L=S.label, svg=labelSvg(L.tpl,c,L.logo,L.kind,S.size);
+    $$('[data-area=label] .labelart').forEach(function(el){el.innerHTML=svg});
+    $$('[data-tpl-art]').forEach(function(el){var k=el.getAttribute('data-tpl-art');el.style.background=S.hex;el.innerHTML=labelSvg(k,c,L.logo,L.kind,S.size)});
+    // the outside label sits on the back: draw the mini tee from behind with the zone lit; hide the inside-only templates
+    $$('.tpl[data-tpl=info]').forEach(function(b){b.hidden=L.kind==='out'});
+    $('#logoUp').hidden=L.tpl!=='logo';
+    var filled=L.tpl!=='none';
+    $$('.canvas[data-area=label] .area').forEach(function(a){a.classList.toggle('nodrop',true)});
+    $('.ar[data-area=label]').classList.toggle('has',filled);
+  }
+  // ---- print areas and preview views
+  function surf(a){return $('.canvas[data-area='+a+']')}
+  function cm(inch){return (inch*2.54).toFixed(1).replace('.',LANG==='en'?'.':',')}
+  function dimText(l,a){var w=INCH[a][0]*l.w/100;return cm(w)+' × '+cm(w*(l.ar||1))+' cm'}
+  function showSize(a){var i=INCH[a];document.getElementById('asize').textContent=I.printArea+': '+cm(i[0])+' × '+cm(i[1])+' cm';}
+  function showArea(a){S.cur=a;S.sel=null;showSize(a);$$('.ar').forEach(function(b){b.classList.toggle('on',b.dataset.area===a)});$$('.canvas').forEach(function(c){c.classList.toggle('on',c.dataset.area===a)});
+    if(a==='label'){showPane('label')}else if($('.pane.on').dataset.pane==='label'){showPane('upload')}
+    tools();renderLayers();}
+  $$('.ar').forEach(function(b){b.addEventListener('click',function(){showArea(b.dataset.area)})});
+  function showView(v){$$('.vw').forEach(function(b){b.classList.toggle('on',b.dataset.view===v)});$$('.view').forEach(function(c){c.classList.toggle('on',c.dataset.area===v)});}
+  $$('.vw').forEach(function(b){b.addEventListener('click',function(){showView(b.dataset.view)})});
+  $$('.mode button').forEach(function(b){b.addEventListener('click',function(){$$('.mode button').forEach(function(x){x.classList.toggle('on',x===b)});document.body.classList.toggle('pv',b.dataset.mode==='pv');if(b.dataset.mode==='pv'){S.sel=null;tools();all();var first=S.areas.back.length&&!S.areas.front.length?'wornB':'wornF';showView(first);}})});
+  // ---- rail / panes
+  function showPane(k){$$('.rail button').forEach(function(x){x.classList.toggle('on',x.dataset.pane===k)});$$('.pane').forEach(function(p){p.classList.toggle('on',p.dataset.pane===k)});if(k==='layers')renderLayers();}
+  $$('.rail button').forEach(function(b){b.addEventListener('click',function(){if(S.cur==='label'&&b.dataset.pane!=='product')showArea('front');showPane(b.dataset.pane)})});
+  // ---- product
+  $$('.sw').forEach(function(b){b.addEventListener('click',function(){$$('.sw').forEach(function(x){x.classList.remove('on')});b.classList.add('on');S.color=b.dataset.id;S.cname=b.title;S.hex=b.dataset.c;
+    $$('.canvas,.view').forEach(function(c){c.style.setProperty('--c',S.hex);c.classList.toggle('dark',lum(S.hex)<0.45)});paintLabel();summary();})});
+  $$('.sz').forEach(function(b){b.addEventListener('click',function(){$$('.sz').forEach(function(x){x.classList.remove('on')});b.classList.add('on');S.size=b.textContent;paintLabel();summary();})});
+  // ---- layers
+  function dpi(l,a){var inch=INCH[a][0]*l.w/100;return l.px?Math.round(l.px/inch):999}
+  function add(src,name,px,ar){var a=S.cur==='label'?'front':S.cur;snap();var l={src:src,name:name,x:15,y:8,w:70,ar:ar||1,px:px||0};
+    if(a==='back'&&S.label.kind==='out'){S.label.kind='in';}
+    S.areas[a].push(l);S.sel={a:a,i:S.areas[a].length-1};if(S.cur!==a)showArea(a);all();}
+  function paintArea(a){
+    var targets=[surf(a)].concat($$('.view').filter(function(v){return VFROM[v.dataset.area]===a}));
+    targets.forEach(function(c){if(!c)return;var box=c.querySelector('.layers'),area=c.querySelector('.area');if(!box)return;box.innerHTML='';
+      if(a!=='label')area.classList.toggle('full',S.areas[a].length>0);
+      S.areas[a].forEach(function(l,i){var d=document.createElement('div');d.className='lay';d.style.left=l.x+'%';d.style.top=l.y+'%';d.style.width=l.w+'%';d.innerHTML='<img src="'+l.src+'" alt=""><i class="h"></i><i class="dim">'+dimText(l,a)+'</i>';
+        if(c.classList.contains('canvas')){if(S.sel&&S.sel.a===a&&S.sel.i===i)d.classList.add('sel');wire(d,l,a,i);}box.appendChild(d);});});
+    var b=$('.ar[data-area='+a+']');if(b&&a!=='label')b.classList.toggle('has',S.areas[a].length>0);}
+  var VFROM={"wornF":"front","wornB":"back","wornS":null,"flatF":"front","label":"label"};
+  function wire(d,l,a,i){d.addEventListener('pointerdown',function(e){e.preventDefault();e.stopPropagation();S.sel={a:a,i:i};$$('.lay').forEach(function(x){x.classList.remove('sel')});d.classList.add('sel');tools();
+      var box=d.parentNode.getBoundingClientRect(),sx=e.clientX,sy=e.clientY,ox=l.x,oy=l.y,ow=l.w,resize=e.target.classList.contains('h'),moved=false;d.setPointerCapture(e.pointerId);
+      var mv=function(ev){var dx=(ev.clientX-sx)/box.width*100,dy=(ev.clientY-sy)/box.height*100;if(!moved){snap();moved=true;}
+        if(resize){l.w=Math.max(6,Math.min(100-l.x,ow+dx));d.style.width=l.w+'%';var dm=d.querySelector('.dim');if(dm)dm.textContent=dimText(l,a);}else{l.x=Math.max(-10,Math.min(100-l.w+10,ox+dx));l.y=Math.max(-10,Math.min(100,oy+dy));d.style.left=l.x+'%';d.style.top=l.y+'%';}};
+      var up=function(){d.removeEventListener('pointermove',mv);d.removeEventListener('pointerup',up);if(moved){paintArea(a);renderLayers();}};
+      d.addEventListener('pointermove',mv);d.addEventListener('pointerup',up);});}
+  // the floating toolbar on the selected layer
+  function tools(){var tb=$('#tools');tb.classList.toggle('on',!!S.sel&&S.cur===S.sel.a&&!document.body.classList.contains('pv'));}
+  $$('#tools button').forEach(function(b){b.addEventListener('click',function(){if(!S.sel)return;var a=S.sel.a,ls=S.areas[a],i=S.sel.i,l=ls[i];if(!l)return;snap();
+    var k=b.dataset.t;if(k==='center'){l.x=(100-l.w)/2;}if(k==='del'){ls.splice(i,1);S.sel=null;}if(k==='dup'){var c=JSON.parse(JSON.stringify(l));c.x+=4;c.y+=4;ls.push(c);S.sel={a:a,i:ls.length-1};}
+    if(k==='up'&&i<ls.length-1){ls.splice(i,1);ls.splice(i+1,0,l);S.sel.i=i+1;}if(k==='down'&&i>0){ls.splice(i,1);ls.splice(i-1,0,l);S.sel.i=i-1;}all();})});
+  document.addEventListener('keydown',function(e){if((e.key==='Delete'||e.key==='Backspace')&&S.sel&&!/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName)){e.preventDefault();$('#tools [data-t=del]').click();}
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();(e.shiftKey?$('#redo'):$('#undo')).click();}});
+  $$('.canvas').forEach(function(c){c.addEventListener('pointerdown',function(e){if(!e.target.closest('.lay')&&!e.target.closest('#tools')){S.sel=null;$$('.lay').forEach(function(x){x.classList.remove('sel')});tools();}})});
+  function renderLayers(){var a=S.cur,list=$('#layerList');if(!list)return;var ls=a==='label'?[]:S.areas[a];
+    if(!ls.length){list.innerHTML='<div class="empty"><b>'+I.layersEmpty+'</b>'+I.layersHint+'</div>';return;}
+    list.innerHTML=ls.map(function(l,i){var d=dpi(l,a),q=d<150?'<span class="q low">⚠ '+I.lowDpi+'</span>':'<span class="q good">✓ '+I.okDpi+'</span>';
+      return '<div class="layer'+(S.sel&&S.sel.a===a&&S.sel.i===i?' sel':'')+'"><img src="'+l.src+'" alt=""><span>'+l.name.replace(/</g,'&lt;')+'<br><small>'+I.printed+' '+dimText(l,a)+'</small><br>'+(l.px?q:'')+'</span><button type="button" data-i="'+i+'">'+I.del+'</button></div>'}).reverse().join('');
+    $$('button',list).forEach(function(b){b.addEventListener('click',function(){snap();ls.splice(+b.dataset.i,1);S.sel=null;all();})});}
+  // ---- sources: upload, drop, text, our designs, symbols
+  function readFile(f,cb){var r=new FileReader();r.onload=function(){var im=new Image();im.onload=function(){cb(r.result,im.naturalWidth||1000,(im.naturalHeight||1)/(im.naturalWidth||1))};im.onerror=function(){cb(r.result,0,1)};im.src=r.result;};r.readAsDataURL(f);}
+  var uploads=$('#uploads');
+  function addUpload(f){readFile(f,function(src,px,ar){var b=document.createElement('button');b.type='button';b.innerHTML='<img src="'+src+'" alt="">';b.title=I.tapToAdd;b.addEventListener('click',function(){add(src,f.name,px,ar)});uploads.appendChild(b);add(src,f.name,px,ar);});}
+  $('#file').addEventListener('change',function(e){[].forEach.call(e.target.files,addUpload);e.target.value='';});
+  $$('.canvas').forEach(function(c){c.addEventListener('dragover',function(e){e.preventDefault();c.classList.add('over')});c.addEventListener('dragleave',function(){c.classList.remove('over')});
+    c.addEventListener('drop',function(e){e.preventDefault();c.classList.remove('over');[].forEach.call(e.dataTransfer.files,addUpload);});
+    var dr=c.querySelector('.drop');if(dr)dr.addEventListener('click',function(){showPane('upload');$('#file').click();});});
+  function svgText(txt,font,color){var w=Math.max(300,txt.length*64+40);var s='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 '+w+' 120" width="'+w+'" height="120"><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-family="'+font+'" font-size="90" fill="'+color+'">'+txt.replace(/[<&]/g,'')+'</text></svg>';return 'data:image/svg+xml;utf8,'+encodeURIComponent(s);}
+  $('#addText').addEventListener('click',function(){var v=$('#txt').value.trim();if(!v)return;var w=Math.max(300,v.length*64+40);add(svgText(v,$('#font').value,$('#tcol').value),'T · '+v,0,120/w);$('#txt').value='';});
+  $$('.sym').forEach(function(b){b.addEventListener('click',function(){add(svgText(b.dataset.c,'Arial',$('#tcol').value),b.dataset.c,0,0.4)})});
+  $$('.dz').forEach(function(b){b.addEventListener('click',function(){var im=b.querySelector('img');add(b.dataset.src,b.title,0,im&&im.naturalWidth?im.naturalHeight/im.naturalWidth:1)})});
+  // ---- the label
+  $$('.seg button').forEach(function(b){b.addEventListener('click',function(){if(b.disabled)return;snap();S.label.kind=b.dataset.kind;if(S.label.kind==='out'&&S.label.tpl==='info')S.label.tpl='brand';all();})});
+  $$('.tpl').forEach(function(b){b.addEventListener('click',function(){snap();S.label.tpl=b.dataset.tpl;all();if(b.dataset.tpl==='logo'&&!S.label.logo)$('#logoFile').click();})});
+  $('#logoFile').addEventListener('change',function(e){var f=e.target.files[0];if(!f)return;readFile(f,function(src){snap();S.label.logo=src;S.label.tpl='logo';all();});e.target.value='';});
+  function paintLabelUi(){var L=S.label,hasBack=S.areas.back.length>0;
+    $$('.seg button').forEach(function(b){b.classList.toggle('on',b.dataset.kind===L.kind)});
+    var outBtn=$('.seg [data-kind=out]');outBtn.disabled=hasBack;$('#outWarn').hidden=!hasBack;
+    $('#kindHint').textContent=L.kind==='in'?"Printed inside, under the collar, instead of the factory tag. Size, fabric and care fill in by themselves.":"Printed outside, on the back, under the collar: the logo only, 3 × 3 in.";
+    $$('.tpl').forEach(function(b){b.classList.toggle('on',b.dataset.tpl===L.tpl)});}
+  // ---- price and summary: the first printed area is included, every other adds its price
+  function used(){var u=ORDER.filter(function(a){return a!=='label'&&S.areas[a].length});if(S.label.tpl!=='none')u.push('label');return u;}
+  function summary(){var u=used(),tot=BASE,parts=[];u.forEach(function(a,i){var p=a==='label'?(S.label.tpl==='brand'?0:EXTRA.label):(i===0?0:EXTRA[a]);tot+=p;parts.push(I.areas[a]+(p?' +'+money(p):' ('+I.included+')'));});
+    $$('.ar small').forEach(function(s){var a=s.parentNode.dataset.area;var first=u.filter(function(x){return x!=='label'})[0];s.textContent=(a==='label'?S.label.tpl==='brand':(first===a||!first))?I.included:'+'+money(+s.dataset.price);});
+    $('#sum').textContent=(S.cname||$('.sw.on').title)+' · '+S.size+' · '+(parts.length?parts.join(' · '):I.summaryNone);$('#tot').textContent=money(tot);}
+  function all(){ORDER.forEach(paintArea);paintLabel();paintLabelUi();renderLayers();tools();summary();}
+  // ---- order intent (checkout is not open yet)
+  var modal=$('#modal'),f=$('#wantf');
+  $('#cart').addEventListener('click',function(){modal.classList.add('on')});modal.addEventListener('click',function(e){if(e.target===modal)modal.classList.remove('on')});
+  f.addEventListener('submit',function(e){e.preventDefault();var btn=f.querySelector('button'),msg=f.querySelector('.ok');btn.disabled=true;
+    var design='editor '+used().map(function(a){return a==='label'?'label:'+S.label.kind+'/'+S.label.tpl:a+':'+S.areas[a].length}).join(',');
+    fetch('https://vertexhub.monili-vlr.workers.dev/shop/want',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:f.querySelector('input').value,product:'tee',design:design,color:S.color,size:S.size,lang:LANG})}).then(function(r){return r.json()}).then(function(j){msg.hidden=false;msg.textContent=j.ok?I.ok:I.err;btn.disabled=!!j.ok;}).catch(function(){msg.hidden=false;msg.textContent=I.err;btn.disabled=false;});});
+  all();showArea('front');showView('wornF');
+})();
+</script></body></html>
