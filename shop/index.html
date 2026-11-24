@@ -202,8 +202,8 @@ footer{color:var(--grey);font-size:.8rem}
 <section id="creator"><h2>Make your character</h2><p class="lead">Your own 3D body instead of the companion’s: the voice stays theirs, the body is yours.</p>
 <div class="creator"><div><ol><li>Pick hair, face, clothes and colours, right here on our site.</li><li>Save it: you get a 6-letter code.</li><li>In the app: ⚙ Options → Character code. From then on the companion has your body.</li></ol>
 <a class="pbtn main" href="character.html">Make your character →</a></div>
-<div class="prev" id="charprev"><model-viewer src="https://vertexhub.monili-vlr.workers.dev/characters/rio-summer.glb" autoplay animation-name="wave" auto-rotate rotation-per-second="20deg" camera-orbit="0deg 82deg auto" disable-zoom interaction-prompt="none" style="width:100%;height:100%;background:transparent"></model-viewer></div></div></section>
-<script type="module" src="https://vertexhub.monili-vlr.workers.dev/vendor/model-viewer-3.5.0.min.js"></script>
+<div class="prev" id="charprev"><model-viewer src="assets/rio-summer.glb" autoplay animation-name="wave" auto-rotate rotation-per-second="20deg" camera-orbit="0deg 82deg auto" disable-zoom interaction-prompt="none" style="width:100%;height:100%;background:transparent"></model-viewer></div></div></section>
+<script type="module" src="assets/model-viewer-3.5.0.min.js"></script>
 </main><footer>Vertex Barcelona · <a href="https://vertexhub.monili-vlr.workers.dev/legal?lang=en">Legal notice</a> · <a href="https://vertexhub.monili-vlr.workers.dev/privacy?lang=en">Privacy</a> · <a href="https://vertexhub.monili-vlr.workers.dev/cookies?lang=en">Cookies</a></footer>
 <div class="chat" id="chat"><button type="button" class="bubble" id="chatOpen" aria-label="chat"></button>
 <div class="panel"><div class="head"><div class="av" id="chatAv"></div><b id="chatName"><small id="chatSub">is here with you</small></b><span class="aib" title="Before we start">AI</span><button type="button" id="chatClose">×</button></div>
@@ -485,7 +485,7 @@ footer{color:var(--grey);font-size:.8rem}
   // ---- 3D renderer (to implement when the rigged models arrive). Same contract.
   // ---- glTF renderer: Google's <model-viewer> (one WebGL context per card, pauses when hidden) plays the model's own
   // clips. Rigged models from Grab3D ship idle/walk/run/wave/jump; moods map onto what the model has, idle otherwise.
-  var MV_SRC = ((window.TH && TH.apiBase && TH.apiBase()) || '') + 'https://vertexhub.monili-vlr.workers.dev/vendor/model-viewer-3.5.0.min.js';
+  var MV_SRC = ((window.TH && TH.apiBase && TH.apiBase()) || '') + 'assets/model-viewer-3.5.0.min.js';
   var CLIP_FOR = { wave: ['wave', 'Wave'], happy: ['wave', 'Wave', 'Happy'], invite: ['wave', 'Wave', 'Invite'], explain: ['wave', 'Wave', 'Explain'],
     excited: ['jump', 'Jump'], eureka: ['jump', 'Jump', 'Eureka'], laugh: ['jump', 'Jump', 'Laugh'], rain: ['RainIdle', 'idle', 'Idle'] };
   function loadModelViewer() {
@@ -835,7 +835,7 @@ footer{color:var(--grey);font-size:.8rem}
   var who=CTX.companion, hist=[], busy=false;
   try{hist=JSON.parse(sessionStorage.getItem('vertex.chat')||'[]')}catch(e){}
   var msgs=document.getElementById('chatMsgs');
-  function mv(){if(customElements.get('model-viewer'))return;if(document.getElementById('mvs'))return;var s=document.createElement('script');s.id='mvs';s.type='module';s.src='https://vertexhub.monili-vlr.workers.dev/vendor/model-viewer-3.5.0.min.js';document.head.appendChild(s);}
+  function mv(){if(customElements.get('model-viewer'))return;if(document.getElementById('mvs'))return;var s=document.createElement('script');s.id='mvs';s.type='module';s.src='assets/model-viewer-3.5.0.min.js';document.head.appendChild(s);}
   function head(){var c=THC.byId(who)||THC.byId('rio');var nm=who===CTX.companion&&CTX.name?CTX.name:c.name;if(!c.svg)mv();document.getElementById('chatAv').innerHTML=THC.portrait(c,44,'summer');document.getElementById('chatOpen').innerHTML=THC.portrait(c,52,'summer');var b=document.getElementById('chatName');b.childNodes[0]&&b.childNodes[0].nodeType===3?b.childNodes[0].textContent=nm+' ':b.insertBefore(document.createTextNode(nm+' '),b.firstChild);}
   function md(t){var h=String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
     h=h.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,'<a href="$2" target="_blank" rel="noopener">$1</a>');
