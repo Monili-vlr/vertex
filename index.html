@@ -56,7 +56,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .nav a.l:hover{background:var(--band)}
 @media (max-width:760px){.nav ul{display:none}}
 /* hero */
-.hero{position:relative;overflow:hidden;padding-block:72px 40px}
+.hero{position:relative;overflow:hidden;padding-block:64px 8px}
 .hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center}
 .hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
 .stack{position:relative;height:540px}
@@ -149,10 +149,10 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
   <nav class="wrap nav" aria-label="Main">
     <a class="brand" href="#top"><img src="img/logo.svg" alt="" width="36" height="36">Vertex</a>
     <ul>
+      <li><a class="l" href="#videos">Videos</a></li>
       <li><a class="l" href="#vertexhub">VertexHub</a></li>
       <li><a class="l" href="#barcelona">Barcelona</a></li>
       <li><a class="l" href="#bistro">Bistro</a></li>
-      <li><a class="l" href="#videos">Videos</a></li>
       <li><a class="l" href="shop/index.html">Shop</a></li>
       <li><a class="l" href="#measurements">Measurements</a></li>
       <li><a class="l" href="#privacy">Privacy</a></li>
@@ -176,7 +176,23 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
       <figure><img src="img/waiter-order.png" alt="Vertex Bistro order card ready to send on WhatsApp" width="440" height="900"></figure>
     </div>
   </div>
-  <div class="wrap" style="margin-top:48px">
+</section>
+
+<section id="videos" style="padding-top:24px">
+  <div class="wrap">
+    <p class="eyebrow rv">Demos</p>
+    <h2 class="rv" style="margin:12px 0 28px">Three minutes each, with voice.</h2>
+    <div class="videos">
+      <a class="vid rv" href="videos/vertexhub.html" style="background-image:url(img/city-paris.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>VertexHub</b><span>Every city, live, inside ChatGPT</span></span></a>
+      <a class="vid rv" href="videos/vertex-barcelona.html" style="background-image:url(img/bcn-sagrada.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>Vertex Barcelona</b><span>Barcelona, plugged into the chat</span></span></a>
+      <a class="vid rv" href="videos/vertex-bistro.html" style="background-image:url(img/restaurant.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>Vertex Bistro</b><span>The waiter and the restaurant search</span></span></a>
+    </div>
+    <p class="note">Each demo opens in its own page. Press “Play with voice”; Space pauses, F goes full screen.</p>
+  </div>
+</section>
+
+<section id="apps" style="padding-top:0">
+  <div class="wrap" style="margin-top:0">
     <div class="trio">
       <a class="rv" href="#vertexhub"><div class="pic" style="background-image:url(img/city-tokyo.webp)"></div><div class="txt"><span class="eyebrow">Any city</span><h3>VertexHub</h3><p style="color:var(--muted)">Live transport, open now, day plans and group rooms, wherever you land.</p></div></a>
       <a class="rv" href="#barcelona"><div class="pic" style="background-image:url(img/bcn-sagrada.webp)"></div><div class="txt"><span class="eyebrow">Barcelona edition</span><h3>Vertex Barcelona</h3><p style="color:var(--muted)">The services of Barcelona in one chat: TMB, Bicing, the beaches and the city agenda.</p></div></a>
@@ -278,18 +294,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
   </div>
 </section>
 
-<section id="videos" class="band">
-  <div class="wrap">
-    <p class="eyebrow rv">Demos</p>
-    <h2 class="rv" style="margin:12px 0 28px">Three minutes each, with voice.</h2>
-    <div class="videos">
-      <a class="vid rv" href="videos/vertexhub.html" style="background-image:url(img/city-paris.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>VertexHub</b><span>Every city, live, inside ChatGPT</span></span></a>
-      <a class="vid rv" href="videos/vertex-barcelona.html" style="background-image:url(img/bcn-sagrada.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>Vertex Barcelona</b><span>Barcelona, plugged into the chat</span></span></a>
-      <a class="vid rv" href="videos/vertex-bistro.html" style="background-image:url(img/restaurant.webp)"><span class="play" aria-hidden="true">▶</span><span class="t"><b>Vertex Bistro</b><span>The waiter and the restaurant search</span></span></a>
-    </div>
-    <p class="note">Each demo opens in its own page. Press “Play with voice”; Space pauses, F goes full screen.</p>
-  </div>
-</section>
+
 
 <section id="measurements">
   <div class="wrap">
