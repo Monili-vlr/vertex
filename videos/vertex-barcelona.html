@@ -85,7 +85,7 @@ model-viewer{width:100%;height:100%;background:transparent;--poster-color:transp
   <div id="bar"></div>
   <div id="pausedTag">Paused</div>
 <!-- voice:start --><div id="playgate"><button type="button" id="playbtn">▶ Play with voice</button></div><button type="button" id="voicebtn">Voice on</button>
-<audio id="voice" preload="auto" src="media/96b8effd1cc2.mp3"></audio>
+<audio id="voice" preload="auto" fetchpriority="high" src="media/96b8effd1cc2.mp3"></audio>
 <style>#playgate{position:absolute;inset:0;z-index:40;display:grid;place-items:center;background:rgba(20,27,46,.45)}#playgate button{font:800 26px var(--head);padding:20px 34px;border-radius:999px;border:0;background:var(--coral);color:#fff;cursor:pointer;box-shadow:0 20px 50px rgba(0,0,0,.3)}#playgate button:focus-visible,#voicebtn:focus-visible{outline:3px solid #fff;outline-offset:3px}#voicebtn{position:absolute;right:28px;top:62px;z-index:21;font:700 13px var(--body);border:0;border-radius:999px;padding:7px 12px;background:var(--ink);color:#fff;cursor:pointer}body.gated #pausedTag{display:none}</style>
 <!-- voice:end -->
 </div></div>

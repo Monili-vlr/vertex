@@ -84,7 +84,7 @@ model-viewer{width:100%;height:100%;background:transparent;--poster-color:transp
   <div id="bar"></div>
   <div id="pausedTag">Paused</div>
 <!-- voice:start --><div id="playgate"><button type="button" id="playbtn">▶ Play with voice</button></div><button type="button" id="voicebtn">Voice on</button>
-<audio id="voice" preload="auto" src="media/c32b3135e1ee.mp3"></audio>
+<audio id="voice" preload="auto" fetchpriority="high" src="media/c32b3135e1ee.mp3"></audio>
 <style>#playgate{position:absolute;inset:0;z-index:40;display:grid;place-items:center;background:rgba(20,27,46,.45)}#playgate button{font:800 26px var(--head);padding:20px 34px;border-radius:999px;border:0;background:var(--coral);color:#fff;cursor:pointer;box-shadow:0 20px 50px rgba(0,0,0,.3)}#playgate button:focus-visible,#voicebtn:focus-visible{outline:3px solid #fff;outline-offset:3px}#voicebtn{position:absolute;right:28px;top:62px;z-index:21;font:700 13px var(--body);border:0;border-radius:999px;padding:7px 12px;background:var(--ink);color:#fff;cursor:pointer}body.gated #pausedTag{display:none}</style>
 <!-- voice:end -->
 </div></div>
@@ -99,7 +99,7 @@ const PHONE = (shot, { x, y, w = 300, h = 600, scroll = 0, d: dl = 0, tilt = 0, 
   return `<div class="abs phonein" style="--d:${dl}s;left:${x}px;top:${y}px;width:${w}px;height:${h}px;--tilt:${tilt}deg">
     <div style="width:100%;height:100%;border-radius:38px;background:#1F2A44;padding:10px;box-sizing:border-box;box-shadow:0 30px 70px rgba(31,42,68,.35)">
       <div style="width:100%;height:100%;border-radius:30px;overflow:hidden;background:#fff;position:relative">
-        <img src="${PNG[shot]}" alt="" style="width:100%;display:block;animation:cardscroll ${sdur}s ease-in-out ${dl + sdel}s both;--sy:${-scroll * k}px">
+        <img fetchpriority="low" src="${PNG[shot]}" alt="" style="width:100%;display:block;animation:cardscroll ${sdur}s ease-in-out ${dl + sdel}s both;--sy:${-scroll * k}px">
       </div></div></div>`;
 };
 const TAP = (x, y, dl) => `<div class="abs" style="left:${x - 30}px;top:${y - 30}px;width:60px;height:60px;border-radius:50%;border:4px solid var(--coral);animation:tap 1.1s ease-out ${dl}s both;z-index:6"></div><div class="abs" style="left:${x - 9}px;top:${y - 9}px;width:18px;height:18px;border-radius:50%;background:var(--coral);animation:tapdot 1.1s ease-out ${dl}s both;z-index:6"></div>`;
@@ -149,7 +149,7 @@ const SEARCH = ({ x, y, dl = 0, tilt = 3, open = false, rank = false, w = 360, h
       ${[[70, 50, '#B8BECC'], [150, 24, '#B8BECC'], [260, 90, '#B8BECC'], [205, 100, 'var(--coral)']].map((p, i) => `<div style="position:absolute;left:${p[0]}px;top:${p[1]}px;width:20px;height:20px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:${p[2]};animation:pinpop .6s ease ${dl + 1 + i * .2}s both"></div>`).join('')}
     </div>
     <div style="padding:10px;display:grid;gap:8px">
-      ${(rank ? [['Casa Lola', '180 m', true], ['Trattoria on the corner', '240 m'], ['Pizza by the slice', '310 m'], ['Wine bar', '450 m']] : [['Trattoria on the corner', '240 m'], ['Casa Lola', '180 m', true], ['Pizza by the slice', '310 m'], ['Wine bar', '450 m']]).map((r, i) => `<div style="border-radius:14px;background:#fff;padding:9px 12px;border:${r[2] ? '3px solid var(--coral)' : '1px solid #EEE'};animation:in .5s ease ${dl + 1.6 + i * .2}s both${r[2] && rank ? ',glow 1.8s ease-in-out 3s infinite' : ''}"><img src="${THUMB[r[0]]}" alt="" style="float:left;width:46px;height:46px;border-radius:10px;object-fit:cover;margin-right:10px"><div style="display:flex;justify-content:space-between;font-size:15px"><b>${r[0]}</b><span style="color:var(--muted)">${r[1]}</span></div><div style="display:flex;gap:6px;margin-top:4px"><span class="tag live">open now</span>${r[2] ? '<span class="tag" style="background:var(--coral);color:#fff">🍽 virtual waiter</span>' : ''}</div></div>`).join('')}
+      ${(rank ? [['Casa Lola', '180 m', true], ['Trattoria on the corner', '240 m'], ['Pizza by the slice', '310 m'], ['Wine bar', '450 m']] : [['Trattoria on the corner', '240 m'], ['Casa Lola', '180 m', true], ['Pizza by the slice', '310 m'], ['Wine bar', '450 m']]).map((r, i) => `<div style="border-radius:14px;background:#fff;padding:9px 12px;border:${r[2] ? '3px solid var(--coral)' : '1px solid #EEE'};animation:in .5s ease ${dl + 1.6 + i * .2}s both${r[2] && rank ? ',glow 1.8s ease-in-out 3s infinite' : ''}"><img fetchpriority="low" src="${THUMB[r[0]]}" alt="" style="float:left;width:46px;height:46px;border-radius:10px;object-fit:cover;margin-right:10px"><div style="display:flex;justify-content:space-between;font-size:15px"><b>${r[0]}</b><span style="color:var(--muted)">${r[1]}</span></div><div style="display:flex;gap:6px;margin-top:4px"><span class="tag live">open now</span>${r[2] ? '<span class="tag" style="background:var(--coral);color:#fff">🍽 virtual waiter</span>' : ''}</div></div>`).join('')}
     </div>`}
   </div></div></div>`;
 // Restaurant pictures shown next to each result.
