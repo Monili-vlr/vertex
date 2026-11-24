@@ -143,12 +143,17 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .js .rv.pre{opacity:0;transform:translateY(28px)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .rv.pre{opacity:1;transform:none}}
 </style>
+<style id="mai-home-css">.mai-home{display:inline-flex;align-items:center;gap:7px;padding:5px 12px 5px 6px;border-radius:999px;border:1px solid rgba(128,128,140,.38);background:rgba(128,128,140,.10);color:inherit;font:600 13.5px/1.2 system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;white-space:nowrap;transition:border-color .2s}
+.mai-home:hover{border-color:#A5B4FC;text-decoration:none}
+.mai-home i{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:linear-gradient(100deg,#5EEAD4,#A5B4FC 34%,#F0ABFC 66%,#FDBA74);flex:none}
+.mai-home i svg{width:12px;height:12px}</style>
 </head>
 <body>
 <header class="top">
   <nav class="wrap nav" aria-label="Main">
     <a class="brand" href="#top"><img src="img/logo.svg" alt="" width="36" height="36">Vertex</a>
     <ul>
+      <li><a class="mai-home" href="https://monili-vlr.github.io/" title="All MoniliAI products"><i aria-hidden="true"><svg viewBox="0 0 18 18"><path d="M3.5 13.5V5l5.5 5.5L14.5 5v8.5" fill="none" stroke="#0B0C11" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></i>MoniliAI</a></li>
       <li><a class="l" href="#videos">Videos</a></li>
       <li><a class="l" href="#vertexhub">VertexHub</a></li>
       <li><a class="l" href="#barcelona">Barcelona</a></li>
@@ -387,5 +392,24 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
   els.forEach((el) => { if (el.getBoundingClientRect().top > innerHeight) { el.classList.add('pre'); io.observe(el); } });
 }
 </script>
+<style>#vmodal{border:0;padding:0;background:transparent;width:min(1180px,94vw);max-width:94vw}#vmodal::backdrop{background:rgba(10,14,24,.82)}
+#vmodal .frame{position:relative;aspect-ratio:16/9;width:100%;border-radius:14px;overflow:hidden;background:#141B2E;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#vmodal iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#vmodal .x{position:fixed;top:calc(14px + env(safe-area-inset-top,0px));right:calc(14px + env(safe-area-inset-right,0px));z-index:2;display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(15,18,28,.7);color:#fff;font:700 14px system-ui,-apple-system,"Segoe UI",sans-serif;cursor:pointer}</style>
+<dialog id="vmodal" aria-label="Video"><button class="x" type="button" id="vclose">&#x2715; Close video</button><div class="frame" id="vframe"></div></dialog>
+<script>(() => { // the demos open over this page; Close (or Esc) brings you back where you were
+  const dlg = document.getElementById('vmodal'), fr = document.getElementById('vframe');
+  if (!dlg.showModal) return;
+  document.querySelectorAll('a.vid[href^="videos/"]').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault();
+    const f = document.createElement('iframe'); f.src = a.getAttribute('href'); f.title = (a.querySelector('b') || a).textContent + ' video';
+    f.allow = 'autoplay; fullscreen'; f.allowFullscreen = true; fr.replaceChildren(f); dlg.showModal();
+    f.addEventListener('load', () => { try { f.contentWindow.focus(); } catch (err) {} }, { once: true });
+  }));
+  const close = () => { fr.replaceChildren(); if (dlg.open) dlg.close(); };
+  document.getElementById('vclose').addEventListener('click', close);
+  dlg.addEventListener('close', () => fr.replaceChildren());
+  dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
+})();</script>
 </body>
 </html>

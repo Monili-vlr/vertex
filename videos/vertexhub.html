@@ -293,8 +293,20 @@ tick = function (now) {
   [...bar.children].forEach((b, k) => { b.firstChild.style.width = k < i ? '100%' : k > i ? '0' : (100 * Math.min(1, el / S[i].d)) + '%'; });
   requestAnimationFrame(tick);
 };
+// start at once: with the voice if the browser allows it, otherwise silent until the first click
+if (!/[?&]t=/.test(location.search)) { gate.remove(); document.body.classList.remove('gated'); voice.currentTime = START[i] + el; paused = false; document.body.classList.remove('paused');
+  voice.play().catch(() => { voice.muted = true; voicebtn.textContent = 'Voice off · click to hear'; voice.play().catch(() => {});
+    const on = (e) => { voice.muted = false; voicebtn.textContent = 'Voice on'; e.stopPropagation(); e.preventDefault(); removeEventListener('click', on, true); }; addEventListener('click', on, true); }); }
 // voice:engine:end
 // Checking aid: ?s=3&t=6 freezes scene 3 at its sixth second.
 const _t = Number(new URLSearchParams(location.search).get('t')); if (_t) setTimeout(() => { paused = true; document.getAnimations().forEach((a) => { try { a.currentTime = _t * 1000; a.pause(); } catch (e) {} }); }, 300);
 </script>
+<style>#mai-vc{position:fixed;z-index:90;top:calc(12px + env(safe-area-inset-top,0px));right:calc(12px + env(safe-area-inset-right,0px));display:flex;gap:8px}#mai-vc a,#mai-vc button{display:inline-flex;align-items:center;gap:6px;padding:8px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(15,18,28,.66);color:#fff;font:700 13px system-ui,-apple-system,"Segoe UI",sans-serif;text-decoration:none;cursor:pointer;backdrop-filter:blur(6px)}#mai-vc .bk{display:none}html.standalone #mai-vc .bk{display:inline-flex}</style>
+<div id="mai-vc"><a class="bk" href="../#videos">&larr; Back to Vertex</a><button type="button" id="mai-fs">&#x26F6; Full screen</button></div>
+<script>(() => { if (window.self === window.top) document.documentElement.classList.add('standalone');
+  const box = document.getElementById('mai-vc'), b = document.getElementById('mai-fs');
+  ['click', 'pointerdown', 'mousedown'].forEach(t => box.addEventListener(t, e => e.stopPropagation()));
+  b.addEventListener('click', () => { if (document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen?.().catch(() => {}); });
+  document.addEventListener('fullscreenchange', () => { b.textContent = document.fullscreenElement ? '✕ Exit full screen' : '⛶ Full screen'; });
+})();</script>
 </body></html>
