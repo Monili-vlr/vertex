@@ -147,6 +147,7 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
 .mai-home:hover{border-color:#A5B4FC;text-decoration:none}
 .mai-home i{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;background:linear-gradient(100deg,#5EEAD4,#A5B4FC 34%,#F0ABFC 66%,#FDBA74);flex:none}
 .mai-home i svg{width:12px;height:12px}</style>
+<link rel="stylesheet" href="https://monili-vlr.github.io/mobile.css">
 </head>
 <body>
 <header class="top">
@@ -314,25 +315,25 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
     </div>
     <h3 class="rv" style="margin-top:40px">Benchmark: response time of the live tools</h3>
     <div class="tablewrap rv">
-      <table>
+      <table class="mai-cards">
         <thead><tr><th scope="col">Tool and request</th><th scope="col">First call</th><th scope="col">Next calls</th><th scope="col">Next calls, scale to 1 s</th></tr></thead>
         <tbody>
-          <tr><td>get_departures · Plaça de Catalunya</td><td>0.31 s</td><td>0.26 – 0.36 s</td><td><div class="bar"><i style="width:31%"></i></div></td></tr>
-          <tr><td>get_weather · Rome</td><td>1.16 s</td><td>0.27 – 0.58 s</td><td><div class="bar"><i style="width:43%"></i></div></td></tr>
-          <tr><td>mobility_get_coverage · Helsinki</td><td>0.67 s</td><td>0.52 – 0.54 s</td><td><div class="bar"><i style="width:53%"></i></div></td></tr>
-          <tr><td>find_nearby · pharmacy open now</td><td>16.4 s</td><td>0.31 – 0.33 s</td><td><div class="bar"><i style="width:32%"></i></div></td></tr>
+          <tr><td data-label="Tool and request">get_departures · Plaça de Catalunya</td><td data-label="First call">0.31 s</td><td data-label="Next calls">0.26 – 0.36 s</td><td data-label="Next calls, scale to 1 s"><div class="bar"><i style="width:31%"></i></div></td></tr>
+          <tr><td data-label="Tool and request">get_weather · Rome</td><td data-label="First call">1.16 s</td><td data-label="Next calls">0.27 – 0.58 s</td><td data-label="Next calls, scale to 1 s"><div class="bar"><i style="width:43%"></i></div></td></tr>
+          <tr><td data-label="Tool and request">mobility_get_coverage · Helsinki</td><td data-label="First call">0.67 s</td><td data-label="Next calls">0.52 – 0.54 s</td><td data-label="Next calls, scale to 1 s"><div class="bar"><i style="width:53%"></i></div></td></tr>
+          <tr><td data-label="Tool and request">find_nearby · pharmacy open now</td><td data-label="First call">16.4 s</td><td data-label="Next calls">0.31 – 0.33 s</td><td data-label="Next calls, scale to 1 s"><div class="bar"><i style="width:32%"></i></div></td></tr>
         </tbody>
       </table>
     </div>
     <p class="note">Three calls per tool from Barcelona over a home connection. The first call fetches open data from the source; the next ones are served from the server cache. Place searches depend on public OpenStreetMap servers, which can be slow at busy times.</p>
     <h3 class="rv" style="margin-top:40px">Open data coverage (UrbanFlow catalogue, 15 November 2026)</h3>
     <div class="tablewrap rv">
-      <table>
+      <table class="mai-cards">
         <thead><tr><th scope="col">Feed type</th><th scope="col">Feeds</th><th scope="col">Example cities</th></tr></thead>
         <tbody>
-          <tr><td>Timetables (GTFS)</td><td>2,808</td><td>Tirana, and almost every city with public transport</td></tr>
-          <tr><td>Live updates (GTFS-Realtime)</td><td>1,773</td><td>Barcelona, Helsinki, Boston, Cagliari</td></tr>
-          <tr><td>Shared bikes and scooters (GBFS)</td><td>1,279</td><td>Bicing, Blue Bikes, scooter and moped operators</td></tr>
+          <tr><td data-label="Feed type">Timetables (GTFS)</td><td data-label="Feeds">2,808</td><td data-label="Example cities">Tirana, and almost every city with public transport</td></tr>
+          <tr><td data-label="Feed type">Live updates (GTFS-Realtime)</td><td data-label="Feeds">1,773</td><td data-label="Example cities">Barcelona, Helsinki, Boston, Cagliari</td></tr>
+          <tr><td data-label="Feed type">Shared bikes and scooters (GBFS)</td><td data-label="Feeds">1,279</td><td data-label="Example cities">Bicing, Blue Bikes, scooter and moped operators</td></tr>
         </tbody>
       </table>
     </div>
@@ -354,13 +355,13 @@ footer ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
     </div>
     <h3 class="rv" style="margin-top:40px">How long data is kept</h3>
     <div class="tablewrap rv">
-      <table class="retention">
+      <table class="mai-cards retention">
         <thead><tr><th scope="col">Data</th><th scope="col">Why</th><th scope="col">Deleted after</th></tr></thead>
         <tbody>
-          <tr><td>Precise position code</td><td>To pass your position from your phone to the card</td><td>1 hour at most</td></tr>
-          <tr><td>Group room (names, votes, expenses, shared positions)</td><td>To run the room for your trip</td><td>30 days</td></tr>
-          <tr><td>Virtual waiter orders (dishes, quantities, table, time; no name or phone)</td><td>Statistics for the venue</td><td>30 days, then only totals per dish and day</td></tr>
-          <tr><td>Email for a waiting list or a gift</td><td>To write to you about it</td><td>12 months</td></tr>
+          <tr><td data-label="Data">Precise position code</td><td data-label="Why">To pass your position from your phone to the card</td><td data-label="Deleted after">1 hour at most</td></tr>
+          <tr><td data-label="Data">Group room (names, votes, expenses, shared positions)</td><td data-label="Why">To run the room for your trip</td><td data-label="Deleted after">30 days</td></tr>
+          <tr><td data-label="Data">Virtual waiter orders (dishes, quantities, table, time; no name or phone)</td><td data-label="Why">Statistics for the venue</td><td data-label="Deleted after">30 days, then only totals per dish and day</td></tr>
+          <tr><td data-label="Data">Email for a waiting list or a gift</td><td data-label="Why">To write to you about it</td><td data-label="Deleted after">12 months</td></tr>
         </tbody>
       </table>
     </div>
