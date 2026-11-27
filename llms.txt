@@ -1,0 +1,74 @@
+# Vertex
+
+> Your city, live, inside ChatGPT: real timetables, strikes, accessible routes and day plans that work.
+
+Made by Monili VLR (https://monili-vlr.github.io/). How to get it: Apps for ChatGPT (VertexHub for any city, Vertex Barcelona, Vertex Bistro). Ask through the Monili VLR contact form.
+Works in: ChatGPT. Example of what you write: "Plan my day in Barcelona, avoiding the metro strike."
+
+## Tools the AI can call (37)
+
+### VertexHub, Vertex Barcelona
+
+- `show_companion`: Show the travel companion: The chat card: the user's travel companion (an animated character) says your answer in a speech bubble, typed letter by letter, in front of a backdrop of real places nearby
+- `plan_route`: Plan a route: Use this to get directions between two places on foot, by bike, by car or by public transport (bus, metro, tram, train, ferry) worldwide, computed on real timetables: lines, where to board and get off
+
+### VertexHub
+
+- `reachable_in_time`: Where can I get to in N minutes: Use this to answer "where can I get to in 20 minutes from here?": computes every stop and area reachable by walking plus public transport within a time budget, on real timetables at the chosen time, a
+- `get_departures`: Get next departures: Use this for the next buses, trams, metros, trains or ferries leaving from stops near a place, with line, direction, local departure time, real-time delays and cancellations where the operator publish
+- `get_service_alerts`: Get public transport alerts: Use this to check strikes, closures, diversions, works and other disruptions on public transport around a place, for today or the next days, from the official real-time feeds of transit operators (GTF
+
+### VertexHub, Vertex Barcelona
+
+- `find_nearby`: Find nearby places: Use this to list real places of one category around a location, sorted by walking distance: restaurants, cafes, pharmacies, ATMs, toilets, museums, viewpoints, beaches, hotels, luggage storage, embass
+- `find_bike_share`: Find bike-share stations: Use this to find public bike-share stations near a place with live counts of available bikes (and e-bikes) and free docks, from about 800 systems worldwide (Citi Bike, Vélib', Santander Cycles, Bicing
+- `optimize_itinerary`: Optimise a day itinerary: Use this to turn a list of places into a realistic timed plan: it finds the visiting order with the least travel time on real walking, cycling or driving routes, builds a timeline (arrive, visit, leav
+- `start_guided_tour`: Start a guided tour: Use this when the user wants to follow an itinerary on the go, stop by stop: opens a guide card that shows the current stop, how to get to the next one right now (walking steps, or live public transpo
+- `show_map`: Show places on a map: Use this to display an interactive map with numbered pins: a shortlist of restaurants, sights, events, reachable destinations or a day plan
+- `search_places`: Search places: Use this to find a city, district, address, station, hotel or landmark by name and get its coordinates and a map link
+- `explore_sights`: Explore sights around a place: Use this to discover notable sights around a location: monuments, churches, museums, squares, historic buildings and other places that have a Wikipedia article, with distance, a short description and 
+- `get_place_info`: Get information about a sight: Use this when the user asks about one specific monument, museum, building, neighbourhood or city: returns the encyclopedia introduction (history and context), coordinates, an image and the official we
+- `get_city_guide`: Get city travel guide: Use this for practical, traveller-written guide content about a city or region: how to get in and around, what to see and do, where to eat, drink and sleep, safety tips and day trips
+- `suggest_events`: Suggest events in the city: Use this to propose what is on in the user's city: festivals, concerts, exhibitions, markets, sport, shows
+
+### VertexHub
+
+- `get_weather`: Get weather forecast: Use this for current weather and a forecast of up to 7 days at a place: temperature, rain probability, wind, UV index, sunrise/sunset and air quality
+
+### VertexHub, Vertex Barcelona
+
+- `play_umbrella_poem`: Play the umbrella word game: A small game for rainy moments: words rain down in a thick shower and a little traveller with an umbrella catches some of them
+- `play_catchme`: Play Catchme: "Catchme": a 45-second tap game for a dead moment (waiting for a bus or train, a queue, a delay, a long ride)
+- `suggest_souvenirs`: Suggest souvenirs of the trip: Use this once when the user is about to leave a destination (they mention the last day, packing, the flight home, or a stay you have followed for several days ends): proposes personalised print-on-dem
+- `get_travel_essentials`: Get travel essentials for a country: Use this before or at the start of a trip for practical country facts: emergency numbers, currency, languages, dialling code, side of the road, public holidays in the next 60 days (when shops and muse
+- `convert_currency`: Convert currency: Use this to convert an amount between any of 200+ world currencies with the latest daily rates: European Central Bank reference rates where available, otherwise an open daily dataset
+- `create_group`: Create a group room: Create a room for friends travelling together: a 6-letter code they join with
+- `join_group`: Join a group room: Join an existing room with its code and the name the user wants to use
+- `group_status`: Show the group room: Show the room: members (and distances, only for those who share their position), meeting point, stops with votes, expenses and who owes whom
+- `update_me_in_group`: Update my status in the room: Set the user's short status for the others ("at the café, 10 min late") and/or where they are, as a place they NAME ("Praça do Comércio"), which is geocoded
+- `set_meeting_point`: Set the meeting point: Set (or change) where and when the group meets
+- `vote_stop`: Propose or vote a stop: Propose a stop for the group (a place, a restaurant, a plan) or vote for one already proposed (by its name)
+- `add_expense`: Add a shared expense: Record something the user paid for the group ("I paid 48 for dinner")
+- `leave_group`: Leave the group room: Remove the user from the room: their name, position, status and expenses they paid are deleted
+- `tmb_route`: TMB route in Barcelona: Use this for a public-transport route inside Barcelona from A to B on the official TMB planner (metro, bus, tram, walking) with the current timetable: lines, stops, transfers and minutes
+
+### VertexHub
+
+- `sea_conditions`: Sea and beach conditions: Use this when the user asks whether they can swim, how the water or the waves are, or about sun protection at the beach in Barcelona: live water temperature, wave height (today and tomorrow) and the U
+
+### VertexHub, Vertex Barcelona
+
+- `public_holidays`: Public holidays: Use this when the user asks whether a day is a holiday, why shops are closed, or plans dates in Barcelona: official public holidays in Spain and Catalonia for the next 90 days
+- `open_now`: Places open right now: Use this when the user needs something open at this moment near a place, by free text: "pharmacy", "Italian restaurant", "sushi", "supermarket", "late-night bar", "copy shop"
+
+### VertexHub
+
+- `mobility_get_coverage`: Which live transport data covers a place: Use this to know which open transport data exists for a place before promising live information: timetable feeds, realtime feeds, live vehicle positions and shared-mobility systems listed in the Mobil
+- `mobility_get_vehicles`: Live buses, trams and trains nearby: Use this when the user asks where their bus, tram or train is right now, or which vehicles are moving near a place: positions from the operators' open GTFS-Realtime feeds, with the time of each positi
+- `mobility_find_shared`: Shared bikes, scooters, mopeds and cars nearby: Use this to find shared vehicles available right now near a place — dockless bikes, e-scooters, mopeds, car sharing and docked bike stations — from the operators' open GBFS feeds, with live counts
+- `mobility_find_charging`: EV chargers nearby: Use this to find electric-vehicle charging stations near a place with connector types, power in kW, number of points, cost notes and last reported status, from Open Charge Map
+
+## More
+
+- [All Monili VLR products](https://monili-vlr.github.io/llms.txt)
+- [Contact and access](https://monili-vlr.github.io/#contact)
